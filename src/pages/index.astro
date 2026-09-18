@@ -3,11 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site, cities } from '../data/site';
 
 const featured = [
-  { ...cities[0], img: '/images/flower-mound.jpg' },
-  { ...cities[1], img: '/images/highland-village.jpg' },
-  { ...cities[2], img: '/images/lewisville.jpg' },
-  { ...cities[3], img: '/images/grapevine.jpg' },
-  { ...cities[4], img: '/images/coppell.jpg' },
+  { ...cities[0], img: '/images/local/01-lakeside.jpg' }, // Flower Mound — Lakeside DFW
+  { ...cities[1], img: '/images/local/03-lake-rocks.jpg' }, // Highland Village — lake shore
+  { ...cities[2], img: '/images/local/06-waterfront.jpg' }, // Lewisville — waterfront lifestyle
+  { ...cities[3], img: '/images/local/04-grapevine-main.jpg' }, // Grapevine Main Street
+  { ...cities[4], img: '/images/local/06-waterfront.jpg' }, // Coppell — lifestyle (no Grapevine landmark)
 ];
 const moreCities = cities.slice(5);
 

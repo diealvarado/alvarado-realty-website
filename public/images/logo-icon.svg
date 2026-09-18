@@ -1,9 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" fill="none" aria-hidden="true">
-  <!-- single clear house silhouette -->
-  <path d="M8 28 L32 8 L56 28" stroke="#0a2540" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M18 20 V10 H24" stroke="#0a2540" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M14 28 V40 H50 V28" stroke="#0a2540" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <rect x="28" y="22" width="8" height="8" stroke="#0a2540" stroke-width="2.2"/>
-  <path d="M28 26 H36 M32 22 V30" stroke="#0a2540" stroke-width="1.8"/>
-  <path d="M38 40 V32 H46 V40" stroke="#0a2540" stroke-width="2.2" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 70" fill="none" aria-hidden="true">
+  <!-- Rear / right gable (behind) -->
+  <path d="M42 36 L68 12 L94 36" stroke="#0a2540" stroke-width="4.5" stroke-linejoin="miter" stroke-linecap="square"/>
+  <!-- Front / left gable (primary) -->
+  <path d="M6 42 L42 8 L78 42" stroke="#0a2540" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square"/>
+  <!-- Chimney on front-left slope -->
+  <rect x="22" y="10" width="8" height="16" fill="#0a2540"/>
+  <!-- 4-pane window centered under front peak -->
+  <g stroke="#0a2540" stroke-width="3" fill="none">
+    <rect x="34" y="26" width="16" height="16"/>
+    <path d="M34 34 H50 M42 26 V42"/>
+  </g>
 </svg>
