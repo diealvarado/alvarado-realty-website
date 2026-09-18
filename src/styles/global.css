@@ -152,3 +152,33 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;box-shadow:0 10px 30px rgba(10,37,64,.05)}
 .panel h3{margin-top:0}
 
+
+/* Header contrast: navy name, navy consult (not teal) */
+.site-header{background:rgba(255,255,255,.96)}
+.logo strong{color:var(--navy);font-size:1.65rem;font-weight:700}
+.logo span{color:#5b6b7c}
+.nav a{color:#334155}
+.nav a:hover{color:var(--navy)}
+.btn-nav{
+  background:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important;
+  padding:.7rem 1.1rem;border-radius:999px;text-decoration:none;
+  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+}
+.btn-nav:hover{background:var(--navy-soft)!important;color:#fff!important}
+
+/* Video hero */
+.hero-video{position:relative;min-height:min(88vh,760px);display:grid;align-items:end;overflow:hidden;color:#fff;background:#0a2540}
+.hero-video__media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-video__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,37,64,.45) 0%, rgba(10,37,64,.62) 45%, rgba(10,37,64,.9) 100%)}
+.hero-video__content{position:relative;z-index:1;padding:5rem 0 3.5rem}
+.hero-video .eyebrow{color:#d8b56a}
+.hero-video h1{color:#fff;max-width:14ch}
+.hero-video p{color:rgba(255,255,255,.9);max-width:36rem;font-size:clamp(1.05rem,1.6vw,1.2rem)}
+
+/* TREC required links — homepage, noticeable, >=10pt */
+.trec-bar{background:#f8fafc;border-bottom:1px solid var(--border);padding:.85rem 0}
+.trec-bar__links{display:flex;flex-wrap:wrap;gap:.55rem 1.35rem;align-items:center}
+.trec-bar__links a,.trec-links a{
+  font-size:10pt;font-weight:600;color:var(--navy);text-decoration:underline;text-underline-offset:2px
+}
+.trec-bar__links a:hover,.trec-links a:hover{color:var(--accent)}
