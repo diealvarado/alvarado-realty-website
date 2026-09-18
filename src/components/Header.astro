@@ -3,9 +3,15 @@ import { site } from '../data/site';
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo" href="/">
-      <strong>{site.name}</strong>
-      <span>{site.brandSecondary}</span>
+    <a class="logo" href="/" aria-label={`${site.name} · ${site.brandSecondary}`}>
+      <img
+        class="logo-mark"
+        src="/images/alvarado-realty-group-logo.png"
+        alt="Alvarado Realty Group"
+        width="220"
+        height="112"
+        decoding="async"
+      />
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="/areas/">Areas</a>
