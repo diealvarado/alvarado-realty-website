@@ -3,7 +3,7 @@ title: "Grapevine Real Estate | Diego Alvarado REALTOR®"
 name: "Grapevine"
 description: "Work with Diego Alvarado, REALTOR® in Grapevine, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Tarrant County"
-wave: "first"
+wave: "core"
 order: 4
 ---
 

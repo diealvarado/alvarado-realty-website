@@ -17,21 +17,33 @@ import { site } from '../data/site';
       <h3 style="color:#fff;font-family:var(--display);font-size:1.25rem;margin:0 0 .75rem;">Explore</h3>
       <p style="margin:0;line-height:1.9;">
         <a href="/areas/">Service areas</a><br />
-        <a href="/home-value/">Home value</a><br />
+        <a href="/client-services/">Client services</a><br />
         <a href="/buyers/">Buyers</a><br />
         <a href="/sellers/">Sellers</a><br />
+        <a href="/investors/">Investors</a><br />
+        <a href="/property-alerts/">Property alerts</a><br />
+        <a href="/home-value/">Home value</a><br />
         <a href="/insights/">Insights</a><br />
         <a href="/about/">About</a>
       </p>
     </div>
     <div>
-      <h3 style="color:#fff;font-family:var(--display);font-size:1.25rem;margin:0 0 .75rem;">Connect</h3>
-      <p style="margin:0;line-height:1.9;">
+      <h3 style="color:#fff;font-family:var(--display);font-size:1.25rem;margin:0 0 .75rem;">Stay in touch</h3>
+      <p style="margin:0 0 1rem;line-height:1.9;">
         <a href={site.gbp} target="_blank" rel="noopener">Google reviews</a><br />
         <a href={site.zillowReviews} target="_blank" rel="noopener">Zillow reviews</a><br />
         <a href="/ai-information/">AI / entity info</a><br />
         <a href="/contact/">Contact</a>
       </p>
+      <p style="margin:0 0 .5rem;color:#fff;font-weight:600;">Newsletter</p>
+      <p style="margin:0 0 .75rem;font-size:.9rem;color:#94a3b8;">Occasional local notes — not a daily blast.</p>
+      <form class="form form-inline form-on-dark" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <p hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
+        <label class="sr-only" for="footer-newsletter-email">Email</label>
+        <input id="footer-newsletter-email" type="email" name="email" placeholder="Email address" required />
+        <button class="btn btn-nav" type="submit">Subscribe</button>
+      </form>
     </div>
   </div>
   <div class="container footer-legal">

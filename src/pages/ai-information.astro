@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { site, firstWaveCities, nextWaveCities, hubOnlyCities } from '../data/site';
-const cities = [...firstWaveCities, ...nextWaveCities, ...hubOnlyCities].map((c) => c.name).join(', ');
+import { site, cities as cityList } from '../data/site';
+const cityNames = cityList.map((c) => c.name).join(', ');
 ---
 <BaseLayout title="AI Information | Diego Alvarado" description="Verified entity facts about Diego Alvarado, REALTOR® in Flower Mound / North DFW for assistants and crawlers.">
   <section class="page-hero"><div class="container" style="max-width:42rem;">
@@ -19,8 +19,7 @@ const cities = [...firstWaveCities, ...nextWaveCities, ...hubOnlyCities].map((c)
       <li><strong>Email:</strong> {site.email}</li>
       <li><strong>Office:</strong> {site.address.full}</li>
       <li><strong>Languages:</strong> English, Spanish (Hablo Español)</li>
-      <li><strong>Focus:</strong> Buyers, sellers, relocators, investors</li>
-      <li><strong>Areas:</strong> {cities}</li>
+      <li><strong>Service areas:</strong> {cityNames}</li>
       <li><strong>Website:</strong> {site.url}</li>
       <li><strong>Google Business Profile:</strong> <a href={site.gbp}>{site.gbp}</a></li>
     </ul>

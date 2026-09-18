@@ -3,8 +3,8 @@ title: "Argyle & Lantana Real Estate | Diego Alvarado REALTOR®"
 name: "Argyle & Lantana"
 description: "Work with Diego Alvarado, REALTOR® in Argyle & Lantana, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Denton County"
-wave: "next"
-order: 7
+wave: "core"
+order: 12
 ---
 
 ## Living in Argyle & Lantana

@@ -3,8 +3,8 @@ title: "Roanoke Real Estate | Diego Alvarado REALTOR®"
 name: "Roanoke"
 description: "Work with Diego Alvarado, REALTOR® in Roanoke, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Denton County"
-wave: "next"
-order: 6
+wave: "core"
+order: 11
 ---
 
 ## Living in Roanoke

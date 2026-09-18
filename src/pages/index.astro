@@ -1,19 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { site, firstWaveCities, nextWaveCities } from '../data/site';
+import { site, cities } from '../data/site';
 
-const areas = [
-  { ...firstWaveCities[0], img: '/images/flower-mound.jpg', blurb: 'Parks, master-plans, and family-oriented living near Grapevine Lake.' },
-  { ...firstWaveCities[1], img: '/images/highland-village.jpg', blurb: 'Lakeside village feel with a compact, walkable center.' },
-  { ...firstWaveCities[2], img: '/images/lewisville.jpg', blurb: 'Diverse housing and strong access across North DFW corridors.' },
-  { ...firstWaveCities[3], img: '/images/grapevine.jpg', blurb: 'Historic Main Street energy beside DFW Airport and the lake.' },
-  { ...firstWaveCities[4], img: '/images/grapevine.jpg', blurb: 'Established neighborhoods, strong schools, and easy DFW access.' },
+const featured = [
+  { ...cities[0], img: '/images/flower-mound.jpg' },
+  { ...cities[1], img: '/images/highland-village.jpg' },
+  { ...cities[2], img: '/images/lewisville.jpg' },
+  { ...cities[3], img: '/images/grapevine.jpg' },
+  { ...cities[4], img: '/images/grapevine.jpg' },
 ];
+const moreCities = cities.slice(5);
 
 const faqs = [
   {
     q: 'What areas does Diego Alvarado serve?',
-    a: 'Diego focuses on Flower Mound, Highland Village, Lewisville, Grapevine, Coppell, and the Grapevine Lake / North DFW belt — including Trophy Club, Roanoke, Argyle & Lantana, Bedford, Euless, Double Oak, Copper Canyon, and Northlake.',
+    a: 'Diego serves Flower Mound, Highland Village, Lewisville, Grapevine, Coppell, Double Oak, Copper Canyon, Bartonville, Northlake, Trophy Club, Roanoke, Argyle & Lantana, Bedford, and Euless — all as active markets, not a secondary tier.',
   },
   {
     q: 'Who does Diego work with?',
@@ -112,10 +113,10 @@ const faqs = [
       <div class="section-head">
         <p class="eyebrow">Service area</p>
         <h2>Built around the Grapevine Lake belt</h2>
-        <p>Flower Mound–centered coverage across the Grapevine Lake belt, Coppell, and nearby North DFW towns.</p>
+        <p>Every town below is an active market for Diego — Flower Mound, Coppell, Grapevine Lake communities, and the smaller towns around them.</p>
       </div>
       <div class="area-grid">
-        {areas.map((a) => (
+        {featured.map((a) => (
           <a class="area-tile" href={`/areas/${a.slug}/`}>
             <img src={a.img} alt={`${a.name}, Texas`} loading="lazy" />
             <div class="shade"></div>
@@ -125,10 +126,12 @@ const faqs = [
           </a>
         ))}
       </div>
-      <p style="margin-top:1.5rem;">
-        Also serving {nextWaveCities.map((c) => c.name).join(', ')}.
-        <a href="/areas/"> View all areas →</a>
-      </p>
+      <div class="city-chips" style="margin-top:1.5rem;">
+        {moreCities.map((c) => (
+          <a href={`/areas/${c.slug}/`}>{c.name}</a>
+        ))}
+      </div>
+      <p style="margin-top:1rem;"><a href="/areas/">View all service areas →</a></p>
     </div>
   </section>
 
@@ -142,8 +145,7 @@ const faqs = [
         <h2>Local research, written to decide — not to fill a blog</h2>
         <p>
           City comparisons, relocator notes, and practical buyer/seller guides for the
-          Flower Mound–Grapevine Lake corridor. Built to help humans choose and help
-          search engines understand Diego’s market.
+          Flower Mound–Grapevine Lake corridor — written so you can decide with clearer local context.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/insights/flower-mound-vs-highland-village/">Flower Mound vs Highland Village</a>

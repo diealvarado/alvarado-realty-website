@@ -3,7 +3,7 @@ export const site = {
   brandSecondary: 'Alvarado Realty Group',
   title: 'Diego Alvarado | REALTOR® | Flower Mound & North DFW',
   description:
-    'Diego Alvarado is a REALTOR® with Monument Realty serving Flower Mound, Grapevine Lake communities, Coppell, and North DFW suburbs. Buyer, seller, relocator, and investor representation. Hablo Español.',
+    'Diego Alvarado is a REALTOR® with Monument Realty serving Flower Mound, Coppell, Grapevine Lake communities, and North DFW suburbs. Buyer, seller, relocator, and investor representation. Hablo Español.',
   url: 'https://alvaradorealtygroup.com',
   phone: '(214) 833-8911',
   phoneHref: 'tel:+12148338911',
@@ -25,24 +25,25 @@ export const site = {
   },
 } as const;
 
-export const firstWaveCities = [
+/** All service cities — treated equally for SEO and on-site IA (no core/other split). */
+export const cities = [
   { slug: 'flower-mound', name: 'Flower Mound' },
   { slug: 'highland-village', name: 'Highland Village' },
   { slug: 'lewisville', name: 'Lewisville' },
   { slug: 'grapevine', name: 'Grapevine' },
   { slug: 'coppell', name: 'Coppell' },
-] as const;
-
-export const nextWaveCities = [
+  { slug: 'double-oak', name: 'Double Oak' },
+  { slug: 'copper-canyon', name: 'Copper Canyon' },
+  { slug: 'bartonville', name: 'Bartonville' },
+  { slug: 'northlake', name: 'Northlake' },
   { slug: 'trophy-club', name: 'Trophy Club' },
   { slug: 'roanoke', name: 'Roanoke' },
   { slug: 'argyle-lantana', name: 'Argyle & Lantana' },
   { slug: 'bedford', name: 'Bedford' },
   { slug: 'euless', name: 'Euless' },
-  { slug: 'double-oak', name: 'Double Oak' },
-  { slug: 'copper-canyon', name: 'Copper Canyon' },
-  { slug: 'northlake', name: 'Northlake' },
 ] as const;
 
-/** @deprecated removed from service map — kept empty so old imports do not break */
+/** @deprecated use `cities` — kept as aliases so older imports keep working during migration */
+export const firstWaveCities = cities;
+export const nextWaveCities = [] as const;
 export const hubOnlyCities = [] as const;

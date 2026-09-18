@@ -3,8 +3,8 @@ title: "Euless Real Estate | Diego Alvarado REALTOR®"
 name: "Euless"
 description: "Work with Diego Alvarado, REALTOR® in Euless, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Tarrant County"
-wave: "next"
-order: 9
+wave: "core"
+order: 14
 ---
 
 ## Living in Euless

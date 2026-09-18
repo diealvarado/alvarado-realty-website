@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Property Alerts | Diego Alvarado REALTOR®"
+  description="Set up custom property alerts with Diego Alvarado — tell him what you want and he watches the market for you."
+>
+  <section class="page-hero"><div class="container" style="max-width:42rem;">
+    <p class="eyebrow">Property alerts</p>
+    <h1>Tell Diego what to watch for</h1>
+    <p>
+      No live listing search on this site yet. Instead, share your criteria — cities,
+      price range, beds, must-haves — and Diego will text or email you when something
+      fits. Works for buyers and investors.
+    </p>
+  </div></section>
+  <section class="section" style="padding-top:0;"><div class="container" style="max-width:36rem;">
+    <form class="form" name="property-alerts" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/">
+      <input type="hidden" name="form-name" value="property-alerts" />
+      <p hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
+      <label>Name<input type="text" name="name" required /></label>
+      <label>Email<input type="email" name="email" required /></label>
+      <label>Phone<input type="tel" name="phone" /></label>
+      <label>Cities / areas<textarea name="areas" rows="2" placeholder="e.g. Flower Mound, Coppell, Double Oak" required></textarea></label>
+      <label>Price range<input type="text" name="price" placeholder="e.g. $450k–$650k" /></label>
+      <label>Beds / baths<input type="text" name="beds" placeholder="e.g. 3+ beds, 2+ baths" /></label>
+      <label>Must-haves<textarea name="must_haves" rows="3" placeholder="Yard, office, pool, single story, investment criteria…"></textarea></label>
+      <label>How should Diego reach you?
+        <select name="contact_pref">
+          <option>Text</option>
+          <option>Email</option>
+          <option>Either</option>
+        </select>
+      </label>
+      <button class="btn btn-primary" type="submit">Start my alerts</button>
+    </form>
+  </div></section>
+</BaseLayout>

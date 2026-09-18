@@ -175,11 +175,61 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
 }
 .trec-links a:hover{color:var(--gold,#d4a017)}
 
-/* Header logo + contrast */
-.site-header{background:rgba(255,255,255,.96)}
-.logo{display:flex;align-items:center;text-decoration:none}
-.logo-mark{display:block;height:52px;width:auto;max-width:min(220px,42vw)}
-@media (max-width:720px){.logo-mark{height:44px}}
+
+/* Client services dropdown */
+.nav-dd{position:relative}
+.nav-dd__trigger{cursor:pointer}
+.nav-dd__menu{
+  display:none;position:absolute;top:calc(100% + .55rem);left:0;min-width:14rem;
+  background:#fff;border:1px solid var(--border);border-radius:12px;padding:.45rem;
+  box-shadow:0 12px 30px rgba(10,37,64,.12);z-index:50;
+}
+.nav-dd__menu a{
+  display:block;padding:.65rem .8rem;border-radius:8px;text-transform:none;
+  letter-spacing:0;font-size:.9rem;color:var(--navy)!important;font-weight:600;
+}
+.nav-dd__menu a:hover{background:#f1f5f9}
+.nav-dd:hover .nav-dd__menu,.nav-dd:focus-within .nav-dd__menu{display:block}
+
+.city-chips{display:flex;flex-wrap:wrap;gap:.55rem}
+.city-chips a{
+  display:inline-block;padding:.45rem .85rem;border-radius:999px;border:1px solid var(--border);
+  background:#fff;color:var(--navy);text-decoration:none;font-size:.85rem;font-weight:600;
+}
+.city-chips a:hover{border-color:var(--navy)}
+
+.form{display:grid;gap:.85rem}
+.form label{display:grid;gap:.35rem;font-size:.9rem;font-weight:600;color:var(--navy)}
+.form input,.form textarea,.form select{
+  font:inherit;padding:.75rem .9rem;border:1px solid var(--border);border-radius:10px;background:#fff;
+}
+.form-inline{display:flex;flex-wrap:wrap;gap:.55rem;align-items:center}
+.form-inline input{flex:1;min-width:12rem}
+.form-on-dark input{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff}
+.form-on-dark input::placeholder{color:#94a3b8}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.card{display:block;padding:1.4rem;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+.card:hover{border-color:rgba(10,37,64,.25)}
+.prose ul{padding-left:1.2rem}
+
+/* Header brand lockup: icon + Diego name first */
+.site-header{background:rgba(255,255,255,.97)}
+.brand{
+  display:flex;align-items:center;gap:.85rem;text-decoration:none;color:var(--navy);
+  min-width:0;
+}
+.brand__icon{
+  display:block;height:56px;width:auto;flex:0 0 auto;
+}
+.brand__text{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.brand__name{
+  font-family:var(--display);font-size:clamp(1.35rem,2.4vw,1.85rem);font-weight:700;
+  letter-spacing:-0.01em;color:var(--navy);
+}
+.brand__sub{
+  margin-top:.2rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:#5b6b7c;
+}
 .nav a{color:#334155}
 .nav a:hover{color:var(--navy)}
 .btn-nav{
@@ -188,3 +238,8 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
   font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
 }
 .btn-nav:hover{background:var(--navy-soft)!important;color:#fff!important}
+@media (max-width:720px){
+  .brand__icon{height:46px}
+  .brand__name{font-size:1.25rem}
+  .brand__sub{font-size:.62rem;letter-spacing:.1em}
+}

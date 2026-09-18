@@ -3,8 +3,8 @@ title: "Trophy Club Real Estate | Diego Alvarado REALTOR®"
 name: "Trophy Club"
 description: "Work with Diego Alvarado, REALTOR® in Trophy Club, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Denton/Tarrant"
-wave: "next"
-order: 5
+wave: "core"
+order: 10
 ---
 
 ## Living in Trophy Club

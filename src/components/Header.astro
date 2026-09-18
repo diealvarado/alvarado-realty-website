@@ -3,20 +3,31 @@ import { site } from '../data/site';
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo" href="/" aria-label={`${site.name} · ${site.brandSecondary}`}>
+    <a class="brand" href="/" aria-label={`${site.name}, ${site.brandSecondary}`}>
       <img
-        class="logo-mark"
-        src="/images/alvarado-realty-group-logo.png"
-        alt="Alvarado Realty Group"
-        width="220"
-        height="112"
+        class="brand__icon"
+        src="/images/logo-icon.svg"
+        alt=""
+        width="72"
+        height="44"
         decoding="async"
       />
+      <span class="brand__text">
+        <strong class="brand__name">{site.name}</strong>
+        <span class="brand__sub">{site.brandSecondary}</span>
+      </span>
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="/areas/">Areas</a>
-      <a href="/buyers/">Buyers</a>
-      <a href="/sellers/">Sellers</a>
+      <div class="nav-dd">
+        <a href="/client-services/" class="nav-dd__trigger">Client services</a>
+        <div class="nav-dd__menu" role="list">
+          <a href="/buyers/" role="listitem">Buyers</a>
+          <a href="/sellers/" role="listitem">Sellers</a>
+          <a href="/investors/" role="listitem">Investors (off-market)</a>
+          <a href="/property-alerts/" role="listitem">Property alerts</a>
+        </div>
+      </div>
       <a href="/insights/">Insights</a>
       <a href="/about/">About</a>
       <a href="/reviews/">Reviews</a>

@@ -8,7 +8,7 @@ const areas = defineCollection({
     name: z.string(),
     description: z.string(),
     county: z.string().optional(),
-    wave: z.enum(['first', 'next', 'hub']),
+    wave: z.enum(['core']).default('core'),
     order: z.number().default(99),
   }),
 });

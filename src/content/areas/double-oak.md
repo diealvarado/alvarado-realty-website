@@ -3,8 +3,8 @@ title: "Double Oak Real Estate | Diego Alvarado REALTOR®"
 name: "Double Oak"
 description: "Work with Diego Alvarado, REALTOR® in Double Oak, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Denton County"
-wave: "next"
-order: 10
+wave: "core"
+order: 6
 ---
 
 ## Living in Double Oak

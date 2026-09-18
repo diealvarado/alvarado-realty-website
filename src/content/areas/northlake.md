@@ -3,8 +3,8 @@ title: "Northlake Real Estate | Diego Alvarado REALTOR®"
 name: "Northlake"
 description: "Work with Diego Alvarado, REALTOR® in Northlake, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Denton County"
-wave: "next"
-order: 12
+wave: "core"
+order: 9
 ---
 
 ## Living in Northlake

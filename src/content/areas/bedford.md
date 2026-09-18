@@ -3,8 +3,8 @@ title: "Bedford Real Estate | Diego Alvarado REALTOR®"
 name: "Bedford"
 description: "Work with Diego Alvarado, REALTOR® in Bedford, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Tarrant County"
-wave: "next"
-order: 8
+wave: "core"
+order: 13
 ---
 
 ## Living in Bedford

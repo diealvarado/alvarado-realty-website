@@ -3,7 +3,7 @@ title: "Lewisville Real Estate | Diego Alvarado REALTOR®"
 name: "Lewisville"
 description: "Work with Diego Alvarado, REALTOR® in Lewisville, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Denton County"
-wave: "first"
+wave: "core"
 order: 3
 ---
 

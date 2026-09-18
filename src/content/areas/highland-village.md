@@ -3,7 +3,7 @@ title: "Highland Village Real Estate | Diego Alvarado REALTOR®"
 name: "Highland Village"
 description: "Work with Diego Alvarado, REALTOR® in Highland Village, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Denton County"
-wave: "first"
+wave: "core"
 order: 2
 ---
 

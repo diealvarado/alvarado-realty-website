@@ -3,8 +3,8 @@ title: "Copper Canyon Real Estate | Diego Alvarado REALTOR®"
 name: "Copper Canyon"
 description: "Work with Diego Alvarado, REALTOR® in Copper Canyon, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Denton County"
-wave: "next"
-order: 11
+wave: "core"
+order: 7
 ---
 
 ## Living in Copper Canyon

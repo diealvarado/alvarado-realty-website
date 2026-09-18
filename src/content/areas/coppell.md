@@ -3,7 +3,7 @@ title: "Coppell Real Estate | Diego Alvarado REALTOR®"
 name: "Coppell"
 description: "Work with Diego Alvarado, REALTOR® in Coppell, TX — buyer, seller, relocator, and investor representation. Hablo Español."
 county: "Dallas County"
-wave: "first"
+wave: "core"
 order: 5
 ---
 

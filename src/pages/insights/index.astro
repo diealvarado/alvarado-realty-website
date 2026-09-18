@@ -9,7 +9,7 @@ const posts = (await getCollection('insights'))
   <section class="page-hero"><div class="container">
     <p class="eyebrow">Insights</p>
     <h1>Guides & market notes</h1>
-    <p>Weekly articles built to help humans — and help search engines understand Diego's local expertise.</p>
+    <p>City comparisons, relocator notes, and practical guides for Flower Mound and North DFW.</p>
   </div></section>
   <section class="section" style="padding-top:0;"><div class="container grid-2">
     {posts.map((post) => (
@@ -19,5 +19,16 @@ const posts = (await getCollection('insights'))
         <p class="hint">{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
       </a>
     ))}
+  </div></section>
+  <section class="section section-alt"><div class="container" style="max-width:36rem;">
+    <h2 style="margin-top:0;">Market notes by email</h2>
+    <p>Occasional local updates from Diego — not a daily blast. Unsubscribe anytime.</p>
+    <form class="form form-inline" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/">
+      <input type="hidden" name="form-name" value="newsletter" />
+      <p hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
+      <label class="sr-only" for="newsletter-email">Email</label>
+      <input id="newsletter-email" type="email" name="email" placeholder="Email address" required />
+      <button class="btn btn-primary" type="submit">Subscribe</button>
+    </form>
   </div></section>
 </BaseLayout>
