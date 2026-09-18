@@ -3,28 +3,29 @@ import { site } from '../data/site';
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div>
-      <h3 style="color:#fff;font-family:var(--font);font-size:1.1rem;">{site.name}</h3>
-      <p style="color:#c5cedb;">{site.brandSecondary}<br />{site.brokerage}</p>
-      <p style="color:#c5cedb;">
+    <div class="footer-brand">
+      <strong>{site.name}</strong>
+      <p style="margin:0 0 .75rem;">{site.brandSecondary}<br />{site.brokerage}</p>
+      <p style="margin:0;">
         <a href={site.phoneHref}>{site.phone}</a><br />
         <a href={`mailto:${site.email}`}>{site.email}</a><br />
         {site.address.full}
       </p>
-      <p style="color:#9aa6b8;font-size:0.9rem;">Hablo Español</p>
+      <p style="margin:.85rem 0 0;color:#94a3b8;font-size:.9rem;">Hablo Español</p>
     </div>
     <div>
-      <h3 style="color:#fff;font-family:var(--font);font-size:1.05rem;">Explore</h3>
-      <p>
+      <h3 style="color:#fff;font-family:var(--display);font-size:1.25rem;margin:0 0 .75rem;">Explore</h3>
+      <p style="margin:0;line-height:1.9;">
         <a href="/areas/">Service areas</a><br />
         <a href="/home-value/">Home value</a><br />
-        <a href="/reviews/">Reviews</a><br />
+        <a href="/buyers/">Buyers</a><br />
+        <a href="/sellers/">Sellers</a><br />
         <a href="/insights/">Insights</a>
       </p>
     </div>
     <div>
-      <h3 style="color:#fff;font-family:var(--font);font-size:1.05rem;">Connect</h3>
-      <p>
+      <h3 style="color:#fff;font-family:var(--display);font-size:1.25rem;margin:0 0 .75rem;">Connect</h3>
+      <p style="margin:0;line-height:1.9;">
         <a href={site.gbp} target="_blank" rel="noopener">Google reviews</a><br />
         <a href={site.zillowReviews} target="_blank" rel="noopener">Zillow reviews</a><br />
         <a href="/ai-information/">AI / entity info</a><br />
@@ -33,10 +34,10 @@ import { site } from '../data/site';
     </div>
   </div>
   <div class="container footer-legal">
-    <p>
+    <p style="margin:0 0 .5rem;">
       Diego Alvarado, REALTOR® · Texas Real Estate License #{site.license} · {site.brokerage}.
       Equal Housing Opportunity. Information deemed reliable but not guaranteed.
     </p>
-    <p><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
+    <p style="margin:0;"><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
   </div>
 </footer>

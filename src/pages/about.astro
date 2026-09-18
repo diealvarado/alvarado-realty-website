@@ -4,44 +4,50 @@ import { site } from '../data/site';
 ---
 <BaseLayout title={`About ${site.name} | REALTOR® Flower Mound`} description="Meet Diego Alvarado — investor-turned-REALTOR® with Monument Realty serving Flower Mound and North DFW. Hablo Español.">
   <section class="page-hero">
-    <div class="container hero-grid">
+    <div class="container split">
       <div>
         <p class="eyebrow">About</p>
         <h1>Diego Alvarado</h1>
-        <p>
-          REALTOR® with {site.brokerage}, serving buyers, sellers, relocators, and
-          investors across Flower Mound and the North DFW suburbs. Hablo Español.
+        <p class="hero-lead">
+          REALTOR® with {site.brokerage}, serving buyers, sellers, relocators, and investors across
+          Flower Mound and the North DFW suburbs. Hablo Español.
         </p>
       </div>
-      <div class="photo-placeholder">Headshot placeholder<br />Replace with Diego's photo</div>
+      <div class="portrait-card">
+        <div class="photo-placeholder">
+          <div>
+            <div class="label">Headshot coming soon</div>
+            <div class="name">{site.name}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <section class="section" style="padding-top:0;">
-    <div class="container prose" style="max-width:42rem;">
+    <div class="container prose">
       <h2>From investor to REALTOR®</h2>
       <p>
-        Diego's path into real estate started on the investment side — learning deals,
-        renovations, and property operations before earning his Texas real estate license
-        in April 2024 (License #{site.license}). That background shapes how he advises
-        clients: clear numbers, honest tradeoffs, and steady communication.
+        Diego’s path into real estate started on the investment side — learning deals, renovations,
+        and property operations — before earning his Texas real estate license in April 2024
+        (License #{site.license}). That sequence matters: it is why conversations tend to include
+        numbers, contingencies, and second-order risks, not just listing photos.
       </p>
       <h2>Who he works with</h2>
       <ul>
-        <li>First-time and move-up buyers</li>
+        <li>First-time and move-up buyers comparing North DFW suburbs</li>
         <li>Sellers who want a calm, organized listing process</li>
         <li>Relocators coordinating from another city or time zone</li>
-        <li>Investors evaluating rentals and long-term holds</li>
+        <li>Investors evaluating rentals and longer-term holds</li>
       </ul>
       <h2>Roots & languages</h2>
       <p>
-        Originally from Argentina, Diego brings an international perspective and bilingual
-        service (English and Spanish) that helps families feel understood — especially on
-        complex moves.
+        Originally from Argentina, Diego brings an international perspective and bilingual service
+        (English and Spanish) that helps families feel understood — especially on complex moves.
       </p>
       <h2>How he works</h2>
       <p>
-        Expect responsiveness, plain-language updates, and a vendor network for title,
-        inspection, and project needs. No template fluff — just a clear plan for your next step.
+        Expect responsiveness, plain-language updates, and a vendor network for title, inspection,
+        and project needs. No template fluff — a clear plan for the next step.
       </p>
       <p><a class="btn btn-primary" href="/contact/">Talk with Diego</a></p>
     </div>

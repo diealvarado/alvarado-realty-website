@@ -1,35 +1,178 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site, firstWaveCities, nextWaveCities } from '../data/site';
+
+const faqs = [
+  {
+    q: 'What areas does Diego Alvarado serve?',
+    a: 'Diego focuses on Flower Mound, Highland Village, Lewisville, Grapevine, and the wider Grapevine Lake / North DFW belt — including Trophy Club, Roanoke, Argyle & Lantana, Bedford, and Euless, with Southlake and Colleyville as part of the broader service map.',
+  },
+  {
+    q: 'Who does Diego typically work with?',
+    a: 'Buyers, sellers, relocators, and investors. Many clients want clear communication, bilingual support (Hablo Español), and an advisor who understands both lifestyle moves and investment math.',
+  },
+  {
+    q: 'Is Diego an investor as well as an agent?',
+    a: 'Yes. Diego came into real estate through investing first, then became a licensed Texas REALTOR® with Monument Realty. That background shapes how he evaluates risk, timing, and tradeoffs — without turning every conversation into a flip pitch.',
+  },
+  {
+    q: 'Can Diego help if I am relocating from another city or time zone?',
+    a: 'Yes. Remote and multi-timezone moves are a normal part of the practice — structured tours, clear updates, and coordination with lenders, inspectors, and title.',
+  },
+  {
+    q: 'How do I start?',
+    a: `Call or text ${site.phone}, email ${site.email}, or use the consultation form. Every relationship starts with a conversation about timing, budget, and what “done well” looks like for you.`,
+  },
+];
 ---
 <BaseLayout>
   <section class="hero">
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">Flower Mound · Grapevine Lake · North DFW</p>
-        <h1>{site.name}, REALTOR®</h1>
-        <p>
-          Clear guidance for buyers, sellers, relocators, and investors across
-          Flower Mound and the North DFW suburbs — with an investor-informed eye
-          and bilingual support. Hablo Español.
+        <h1>North DFW real estate, represented with clarity.</h1>
+        <p class="hero-lead">
+          Diego Alvarado helps buyers, sellers, relocators, and investors move with a clean plan —
+          investor-informed, bilingual, and rooted in the Flower Mound / Grapevine Lake corridor.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/contact/">Book a consultation</a>
-          <a class="btn btn-secondary" href="/home-value/">What's my home worth?</a>
+          <a class="btn btn-primary" href="/contact/">Private consultation</a>
+          <a class="btn btn-secondary" href="/home-value/">Home value consult</a>
           <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
         </div>
-        <div class="pill-row">
-          <span class="pill">Monument Realty</span>
-          <span class="pill">Hablo Español</span>
-          <span class="pill">Investor background</span>
+        <div class="trust-strip" aria-label="Trust highlights">
+          <div class="trust-item"><strong>Monument</strong><span>Realty</span></div>
+          <div class="trust-item"><strong>Hablo</strong><span>Español</span></div>
+          <div class="trust-item"><strong>Investor</strong><span>Background</span></div>
+          <div class="trust-item"><strong>Flower Mound</strong><span>Based</span></div>
+        </div>
+      </div>
+      <aside class="portrait-card">
+        <div class="photo-placeholder">
+          <div>
+            <div class="label">REALTOR® · TX #{site.license}</div>
+            <div class="name">{site.name}</div>
+          </div>
+        </div>
+        <div class="portrait-meta">
+          <p>
+            <strong>{site.brandSecondary}</strong><br />
+            {site.brokerage}<br />
+            {site.address.city}, TX
+          </p>
+          <p style="margin-top:.75rem;">
+            <a class="more" href="/about/" style="text-decoration:none;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;font-weight:700;">About Diego →</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Representation</p>
+        <h2>A working relationship, not a portal handoff</h2>
+        <p>
+          The best outcomes come from preparation and honest tradeoffs — not pressure.
+          Diego’s practice is built for people who want a clear read before they move.
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Buy with intention</h3>
+          <p>Shortlists that match commute, schools, and budget reality — including remote relocators coordinating across time zones.</p>
+          <a class="more" href="/buyers/">Buyer path →</a>
+        </article>
+        <article class="card">
+          <h3>Sell with a plan</h3>
+          <p>Pricing strategy, prep that actually matters, and a calm path through offers, inspections, and closing.</p>
+          <a class="more" href="/sellers/">Seller path →</a>
+        </article>
+        <article class="card">
+          <h3>Invest with eyes open</h3>
+          <p>Comps, rents, and risk flags informed by years of hands-on investing — before you write the offer.</p>
+          <a class="more" href="/about/">Diego’s background →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" style="color:var(--gold);">Local focus</p>
+        <h2>Built around the Grapevine Lake belt</h2>
+        <p>
+          Not every suburb needs the same strategy. Diego’s coverage concentrates where he can
+          actually add judgment — then expands outward with the same standard of care.
+        </p>
+      </div>
+      <div class="stat-grid" style="margin-bottom:2rem;">
+        <div class="stat"><strong>4</strong><span>First-wave cities</span></div>
+        <div class="stat"><strong>5+</strong><span>Next-wave communities</span></div>
+        <div class="stat"><strong>EN/ES</strong><span>Bilingual service</span></div>
+        <div class="stat"><strong>1:1</strong><span>Direct advisor access</span></div>
+      </div>
+      <div class="grid-2">
+        {firstWaveCities.map((c) => (
+          <a class="area-card" href={`/areas/${c.slug}/`}>
+            <div class="tag">Primary coverage</div>
+            <h3>{c.name}</h3>
+            <p>Neighborhood context, buyer/seller guidance, and a local point of view.</p>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:1.5rem;">
+        Also active in {nextWaveCities.map((c) => c.name).join(', ')}.
+        <a href="/areas/" style="margin-left:.35rem;">See all areas →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">The research desk</p>
+        <h2>Guides that help you decide — and help search engines understand Diego</h2>
+        <p>
+          Weekly insights on city comparisons, relocating to North DFW, and practical buyer/seller
+          questions. Built like a research desk, not filler content.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/insights/">Read insights</a>
+          <a class="btn btn-secondary" href="/insights/flower-mound-vs-highland-village/">Flower Mound vs Highland Village</a>
         </div>
       </div>
       <div class="card">
-        <div class="photo-placeholder">Professional headshot coming soon<br />Diego Alvarado</div>
-        <p style="margin-top:1rem;margin-bottom:0;">
-          <strong>{site.brandSecondary}</strong><br />
-          {site.address.city}, TX · License #{site.license}
+        <h3>Start here</h3>
+        <p>Comparing lakeside suburbs? Begin with the Flower Mound vs Highland Village guide, then branch into the city pages that match your shortlist.</p>
+        <p style="margin-bottom:0;"><a class="more" href="/areas/flower-mound/">Flower Mound area page →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Reviews</p>
+        <h2>Proof lives where clients already look</h2>
+        <p>
+          Leave a Google review first (best for local visibility), then Zillow if you’re willing to do both.
+          On-site testimonials will be published only with permission — never invented.
         </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={site.gbp} target="_blank" rel="noopener">Google reviews</a>
+          <a class="btn btn-secondary" href={site.zillowReviews} target="_blank" rel="noopener">Zillow reviews</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Hablo Español</h3>
+        <p>
+          Prefer to talk through the process in Spanish? Diego works comfortably in English and Spanish
+          so families can ask the real questions without translation friction.
+        </p>
+        <p style="margin-bottom:0;"><a class="more" href="/contact/">Start a conversation →</a></p>
       </div>
     </div>
   </section>
@@ -37,56 +180,31 @@ import { site, firstWaveCities, nextWaveCities } from '../data/site';
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <h2>How I help</h2>
-        <p>Practical representation for the moves that actually happen in this market.</p>
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions buyers and sellers ask first</h2>
       </div>
-      <div class="grid-3">
-        <article class="card">
-          <h3>Buyers & relocators</h3>
-          <p>From first tour to closing — including remote and multi-timezone moves.</p>
-          <a href="/buyers/">Buyer path →</a>
-        </article>
-        <article class="card">
-          <h3>Sellers</h3>
-          <p>Pricing strategy, prep priorities, and a clean transaction process.</p>
-          <a href="/sellers/">Seller path →</a>
-        </article>
-        <article class="card">
-          <h3>Investors</h3>
-          <p>Comps, rents, and risk flags shaped by years of hands-on investing.</p>
-          <a href="/about/">About Diego →</a>
-        </article>
+      <div class="faq" style="max-width:48rem;">
+        {faqs.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
 
   <section class="section" style="padding-top:0;">
     <div class="container">
-      <div class="section-head">
-        <h2>North DFW focus areas</h2>
-        <p>Deep coverage first where Diego works most — then the wider Grapevine Lake belt.</p>
-      </div>
-      <h3>First wave</h3>
-      <div class="city-list" style="margin-bottom:1.25rem;">
-        {firstWaveCities.map((c) => <a href={`/areas/${c.slug}/`}>{c.name}</a>)}
-      </div>
-      <h3>Next up</h3>
-      <div class="city-list">
-        {nextWaveCities.map((c) => <a href={`/areas/${c.slug}/`}>{c.name}</a>)}
-      </div>
-      <p style="margin-top:1.25rem;"><a href="/areas/">See all service areas →</a></p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0;">
-    <div class="container card" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
-      <div>
-        <h2 style="margin:0 0 .35rem;">Ready when you are</h2>
-        <p style="margin:0;">Call, text, or send a note — Hablo Español.</p>
-      </div>
-      <div class="hero-actions" style="margin:0;">
-        <a class="btn btn-primary" href="/contact/">Contact</a>
-        <a class="btn btn-secondary" href={site.gbp} target="_blank" rel="noopener">Google reviews</a>
+      <div class="cta-band">
+        <div>
+          <h2>Private representation, start to finish</h2>
+          <p>Whether buying, selling, relocating, or investing — every relationship starts with a conversation.</p>
+        </div>
+        <div class="hero-actions" style="margin:0;">
+          <a class="btn btn-light" href="/contact/">Request a consult</a>
+          <a class="btn btn-secondary" style="border-color:rgba(255,255,255,.35);color:#fff;" href={site.phoneHref}>{site.phone}</a>
+        </div>
       </div>
     </div>
   </section>
