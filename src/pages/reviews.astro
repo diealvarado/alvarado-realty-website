@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Reviews | Diego Alvarado REALTOR®" description="See Google and Zillow reviews for Diego Alvarado, Flower Mound REALTOR®.">
+  <section class="page-hero"><div class="container" style="max-width:42rem;">
+    <p class="eyebrow">Reviews</p>
+    <h1>What clients say</h1>
+    <p>Leave a review on Google first (helps local search), then Zillow if you are willing to do both.</p>
+  </div></section>
+  <section class="section" style="padding-top:0;"><div class="container grid-2">
+    <a class="card" href={site.gbp} target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+      <h2>Google</h2>
+      <p>Primary review destination for Maps and local pack visibility.</p>
+      <span>Open Google reviews →</span>
+    </a>
+    <a class="card" href={site.zillowReviews} target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+      <h2>Zillow</h2>
+      <p>Secondary portal reviews after Google.</p>
+      <span>Open Zillow reviews →</span>
+    </a>
+  </div>
+  <div class="container" style="margin-top:1.5rem;max-width:42rem;">
+    <p class="hint">Client quote highlights will be added here with permission — no fabricated testimonials.</p>
+  </div></section>
+</BaseLayout>

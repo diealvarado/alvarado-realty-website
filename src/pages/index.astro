@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, firstWaveCities, nextWaveCities } from '../data/site';
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Flower Mound · Grapevine Lake · North DFW</p>
+        <h1>{site.name}, REALTOR®</h1>
+        <p>
+          Clear guidance for buyers, sellers, relocators, and investors across
+          Flower Mound and the North DFW suburbs — with an investor-informed eye
+          and bilingual support. Hablo Español.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/contact/">Book a consultation</a>
+          <a class="btn btn-secondary" href="/home-value/">What's my home worth?</a>
+          <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+        </div>
+        <div class="pill-row">
+          <span class="pill">Monument Realty</span>
+          <span class="pill">Hablo Español</span>
+          <span class="pill">Investor background</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="photo-placeholder">Professional headshot coming soon<br />Diego Alvarado</div>
+        <p style="margin-top:1rem;margin-bottom:0;">
+          <strong>{site.brandSecondary}</strong><br />
+          {site.address.city}, TX · License #{site.license}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>How I help</h2>
+        <p>Practical representation for the moves that actually happen in this market.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Buyers & relocators</h3>
+          <p>From first tour to closing — including remote and multi-timezone moves.</p>
+          <a href="/buyers/">Buyer path →</a>
+        </article>
+        <article class="card">
+          <h3>Sellers</h3>
+          <p>Pricing strategy, prep priorities, and a clean transaction process.</p>
+          <a href="/sellers/">Seller path →</a>
+        </article>
+        <article class="card">
+          <h3>Investors</h3>
+          <p>Comps, rents, and risk flags shaped by years of hands-on investing.</p>
+          <a href="/about/">About Diego →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <h2>North DFW focus areas</h2>
+        <p>Deep coverage first where Diego works most — then the wider Grapevine Lake belt.</p>
+      </div>
+      <h3>First wave</h3>
+      <div class="city-list" style="margin-bottom:1.25rem;">
+        {firstWaveCities.map((c) => <a href={`/areas/${c.slug}/`}>{c.name}</a>)}
+      </div>
+      <h3>Next up</h3>
+      <div class="city-list">
+        {nextWaveCities.map((c) => <a href={`/areas/${c.slug}/`}>{c.name}</a>)}
+      </div>
+      <p style="margin-top:1.25rem;"><a href="/areas/">See all service areas →</a></p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container card" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
+      <div>
+        <h2 style="margin:0 0 .35rem;">Ready when you are</h2>
+        <p style="margin:0;">Call, text, or send a note — Hablo Español.</p>
+      </div>
+      <div class="hero-actions" style="margin:0;">
+        <a class="btn btn-primary" href="/contact/">Contact</a>
+        <a class="btn btn-secondary" href={site.gbp} target="_blank" rel="noopener">Google reviews</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const areas = await getCollection('areas');
+  return areas.map((area) => ({ params: { slug: area.id }, props: { area } }));
+}
+
+const { area } = Astro.props;
+const { Content } = await render(area);
+---
+<BaseLayout title={area.data.title} description={area.data.description}>
+  <section class="page-hero"><div class="container" style="max-width:42rem;">
+    <p class="eyebrow">{area.data.county}</p>
+    <h1>{area.data.name} real estate</h1>
+    <p>{area.data.description}</p>
+  </div></section>
+  <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
+    <Content />
+  </div></section>
+</BaseLayout>

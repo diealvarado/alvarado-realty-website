@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Thank you | Diego Alvarado" description="Thanks for reaching out to Diego Alvarado.">
+  <section class="page-hero">
+    <div class="container" style="max-width:40rem;">
+      <h1>Message received</h1>
+      <p>Diego will follow up soon. If it is urgent, call or text <a href={site.phoneHref}>{site.phone}</a>.</p>
+      <p><a class="btn btn-primary" href="/">Back home</a></p>
+    </div>
+  </section>
+</BaseLayout>

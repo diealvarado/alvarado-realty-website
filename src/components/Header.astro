@@ -1,0 +1,19 @@
+---
+import { site } from '../data/site';
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="/">
+      <strong>{site.name}</strong>
+      <span>{site.brandSecondary} · {site.brokerage}</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/areas/">Areas</a>
+      <a href="/buyers/">Buyers</a>
+      <a href="/sellers/">Sellers</a>
+      <a href="/insights/">Insights</a>
+      <a href="/about/">About</a>
+      <a class="btn btn-primary" href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>

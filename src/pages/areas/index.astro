@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const areas = (await getCollection('areas')).sort((a, b) => a.data.order - b.data.order);
+const first = areas.filter((a) => a.data.wave === 'first');
+const next = areas.filter((a) => a.data.wave === 'next');
+const hub = areas.filter((a) => a.data.wave === 'hub');
+---
+<BaseLayout title="Service Areas | Diego Alvarado REALTOR®" description="Flower Mound, Highland Village, Lewisville, Grapevine, and North DFW suburbs served by Diego Alvarado.">
+  <section class="page-hero"><div class="container">
+    <p class="eyebrow">Areas</p>
+    <h1>North DFW & Grapevine Lake belt</h1>
+    <p>Diego's focus map runs from Flower Mound and Highland Village through Lewisville, Grapevine, and nearby mid-cities communities.</p>
+  </div></section>
+  <section class="section" style="padding-top:0;"><div class="container">
+    <h2>First-wave cities</h2>
+    <div class="city-list" style="margin-bottom:2rem;">{first.map((a) => <a href={`/areas/${a.id}/`}>{a.data.name}</a>)}</div>
+    <h2>Next-wave cities</h2>
+    <div class="city-list" style="margin-bottom:2rem;">{next.map((a) => <a href={`/areas/${a.id}/`}>{a.data.name}</a>)}</div>
+    <h2>Also served</h2>
+    <div class="city-list">{hub.map((a) => <a href={`/areas/${a.id}/`}>{a.data.name}</a>)}</div>
+  </div></section>
+</BaseLayout>
