@@ -9,7 +9,7 @@ order: 5
 
 ## Living in Trophy Club
 
-Master-planned golf-community living near Roanoke and Southlake with a polished suburban feel.
+Master-planned golf-community living near Roanoke and Flower Mound with a polished suburban feel.
 
 Diego Alvarado helps buyers, sellers, relocators, and investors navigate Trophy Club with clear communication and an investor-informed perspective. Whether you are comparing neighborhoods, timing a move from out of state, or evaluating a property as a long-term hold, you get practical guidance — not pressure.
 

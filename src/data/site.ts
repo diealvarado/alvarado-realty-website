@@ -3,7 +3,7 @@ export const site = {
   brandSecondary: 'Alvarado Realty Group',
   title: 'Diego Alvarado | REALTOR® | Flower Mound & North DFW',
   description:
-    'Diego Alvarado is a REALTOR® with Monument Realty serving Flower Mound, Grapevine Lake communities, and North DFW suburbs. Buyer, seller, relocator, and investor representation. Hablo Español.',
+    'Diego Alvarado is a REALTOR® with Monument Realty serving Flower Mound, Grapevine Lake communities, Coppell, and North DFW suburbs. Buyer, seller, relocator, and investor representation. Hablo Español.',
   url: 'https://alvaradorealtygroup.com',
   phone: '(214) 833-8911',
   phoneHref: 'tel:+12148338911',
@@ -30,6 +30,7 @@ export const firstWaveCities = [
   { slug: 'highland-village', name: 'Highland Village' },
   { slug: 'lewisville', name: 'Lewisville' },
   { slug: 'grapevine', name: 'Grapevine' },
+  { slug: 'coppell', name: 'Coppell' },
 ] as const;
 
 export const nextWaveCities = [
@@ -38,9 +39,10 @@ export const nextWaveCities = [
   { slug: 'argyle-lantana', name: 'Argyle & Lantana' },
   { slug: 'bedford', name: 'Bedford' },
   { slug: 'euless', name: 'Euless' },
+  { slug: 'double-oak', name: 'Double Oak' },
+  { slug: 'copper-canyon', name: 'Copper Canyon' },
+  { slug: 'northlake', name: 'Northlake' },
 ] as const;
 
-export const hubOnlyCities = [
-  { slug: 'southlake', name: 'Southlake' },
-  { slug: 'colleyville', name: 'Colleyville' },
-] as const;
+/** @deprecated removed from service map — kept empty so old imports do not break */
+export const hubOnlyCities = [] as const;

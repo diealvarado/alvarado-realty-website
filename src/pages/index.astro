@@ -7,12 +7,13 @@ const areas = [
   { ...firstWaveCities[1], img: '/images/highland-village.jpg', blurb: 'Lakeside village feel with a compact, walkable center.' },
   { ...firstWaveCities[2], img: '/images/lewisville.jpg', blurb: 'Diverse housing and strong access across North DFW corridors.' },
   { ...firstWaveCities[3], img: '/images/grapevine.jpg', blurb: 'Historic Main Street energy beside DFW Airport and the lake.' },
+  { ...firstWaveCities[4], img: '/images/grapevine.jpg', blurb: 'Established neighborhoods, strong schools, and easy DFW access.' },
 ];
 
 const faqs = [
   {
     q: 'What areas does Diego Alvarado serve?',
-    a: 'Diego focuses on Flower Mound, Highland Village, Lewisville, Grapevine, and the Grapevine Lake / North DFW belt — including Trophy Club, Roanoke, Argyle & Lantana, Bedford, and Euless, with Southlake and Colleyville on the broader map.',
+    a: 'Diego focuses on Flower Mound, Highland Village, Lewisville, Grapevine, Coppell, and the Grapevine Lake / North DFW belt — including Trophy Club, Roanoke, Argyle & Lantana, Bedford, Euless, Double Oak, Copper Canyon, and Northlake.',
   },
   {
     q: 'Who does Diego work with?',
@@ -111,7 +112,7 @@ const faqs = [
       <div class="section-head">
         <p class="eyebrow">Service area</p>
         <h2>Built around the Grapevine Lake belt</h2>
-        <p>Deep coverage where Diego works most — then the surrounding North DFW communities.</p>
+        <p>Flower Mound–centered coverage across the Grapevine Lake belt, Coppell, and nearby North DFW towns.</p>
       </div>
       <div class="area-grid">
         {areas.map((a) => (
@@ -119,14 +120,13 @@ const faqs = [
             <img src={a.img} alt={`${a.name}, Texas`} loading="lazy" />
             <div class="shade"></div>
             <div class="body">
-              <span>Primary coverage</span>
               <h3>{a.name}</h3>
             </div>
           </a>
         ))}
       </div>
       <p style="margin-top:1.5rem;">
-        Also serving {nextWaveCities.map((c) => c.name).join(', ')}, plus Southlake & Colleyville.
+        Also serving {nextWaveCities.map((c) => c.name).join(', ')}.
         <a href="/areas/"> View all areas →</a>
       </p>
     </div>
