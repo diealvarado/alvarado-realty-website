@@ -1,13 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 70" fill="none" aria-hidden="true">
-  <!-- Rear / right gable (behind) -->
-  <path d="M42 36 L68 12 L94 36" stroke="#0a2540" stroke-width="4.5" stroke-linejoin="miter" stroke-linecap="square"/>
-  <!-- Front / left gable (primary) -->
-  <path d="M6 42 L42 8 L78 42" stroke="#0a2540" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 64" fill="none" aria-hidden="true">
+  <!--
+    Dual-roof mark matching ARG logo:
+    - Front gable is primary; window sits under its peak
+    - Rear gable is offset right; its LEFT stroke ends ON the front roof (above the window)
+  -->
+  <!-- Rear / right roof: short left leg ends on front roof, then peak, then right eave -->
+  <path
+    d="M54 20 L70 8 L94 36"
+    stroke="#0a2540"
+    stroke-width="4.5"
+    stroke-linejoin="miter"
+    stroke-linecap="square"
+  />
+  <!-- Front / primary roof (drawn on top so it owns the intersection) -->
+  <path
+    d="M6 44 L42 6 L78 44"
+    stroke="#0a2540"
+    stroke-width="5"
+    stroke-linejoin="miter"
+    stroke-linecap="square"
+  />
   <!-- Chimney on front-left slope -->
-  <rect x="22" y="10" width="8" height="16" fill="#0a2540"/>
-  <!-- 4-pane window centered under front peak -->
-  <g stroke="#0a2540" stroke-width="3" fill="none">
-    <rect x="34" y="26" width="16" height="16"/>
-    <path d="M34 34 H50 M42 26 V42"/>
+  <rect x="22" y="8" width="7.5" height="15" fill="#0a2540"/>
+  <!-- 4-pane window under front peak only -->
+  <g stroke="#0a2540" stroke-width="2.75" fill="none">
+    <rect x="34" y="24" width="16" height="16"/>
+    <path d="M34 32 H50 M42 24 V40"/>
   </g>
 </svg>
