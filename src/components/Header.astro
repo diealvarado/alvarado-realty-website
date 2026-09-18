@@ -4,16 +4,9 @@ import { site } from '../data/site';
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label={`${site.name}, ${site.brandSecondary}`}>
-      <img
-        class="brand__icon"
-        src="/images/logo-icon.svg"
-        alt=""
-        width="72"
-        height="44"
-        decoding="async"
-      />
-      <span class="brand__text">
-        <strong class="brand__name">{site.name}</strong>
+      <img class="brand__mark" src="/images/logo-icon.svg" alt="" width="64" height="40" decoding="async" />
+      <span class="brand__copy">
+        <span class="brand__name">{site.name}</span>
         <span class="brand__sub">{site.brandSecondary}</span>
       </span>
     </a>
@@ -24,7 +17,7 @@ import { site } from '../data/site';
         <div class="nav-dd__menu" role="list">
           <a href="/buyers/" role="listitem">Buyers</a>
           <a href="/sellers/" role="listitem">Sellers</a>
-          <a href="/investors/" role="listitem">Investors (off-market)</a>
+          <a href="/investors/" role="listitem">Investors</a>
           <a href="/property-alerts/" role="listitem">Property alerts</a>
         </div>
       </div>

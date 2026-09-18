@@ -214,21 +214,44 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
 
 /* Header brand lockup: icon + Diego name first */
 .site-header{background:rgba(255,255,255,.97)}
+
+
+
+
+
+.nav a{color:#334155}
+.nav a:hover{color:var(--navy)}
+.btn-nav{
+  background:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important;
+  padding:.7rem 1.1rem;border-radius:999px;text-decoration:none;
+  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+}
+.btn-nav:hover{background:var(--navy-soft)!important;color:#fff!important}
+@media (max-width:720px){
+  
+  
+  
+}
+
+/* Header: house mark + Diego name (no overlap) */
 .brand{
-  display:flex;align-items:center;gap:.85rem;text-decoration:none;color:var(--navy);
-  min-width:0;
+  display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:var(--navy);
+  flex:0 1 auto;min-width:0;max-width:min(100%,22rem);
 }
-.brand__icon{
-  display:block;height:56px;width:auto;flex:0 0 auto;
+.brand__mark{
+  display:block;flex:0 0 auto;width:56px;height:36px;object-fit:contain;
 }
-.brand__text{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.brand__copy{
+  display:flex;flex-direction:column;justify-content:center;gap:0.15rem;min-width:0;
+}
 .brand__name{
-  font-family:var(--display);font-size:clamp(1.35rem,2.4vw,1.85rem);font-weight:700;
-  letter-spacing:-0.01em;color:var(--navy);
+  display:block;font-family:var(--display);font-size:clamp(1.2rem,2.2vw,1.65rem);
+  font-weight:700;letter-spacing:-0.015em;color:var(--navy);line-height:1.05;
+  white-space:nowrap;
 }
 .brand__sub{
-  margin-top:.2rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;
-  text-transform:uppercase;color:#5b6b7c;
+  display:block;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:#5b6b7c;line-height:1.2;white-space:nowrap;
 }
 .nav a{color:#334155}
 .nav a:hover{color:var(--navy)}
@@ -239,7 +262,8 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
 }
 .btn-nav:hover{background:var(--navy-soft)!important;color:#fff!important}
 @media (max-width:720px){
-  .brand__icon{height:46px}
-  .brand__name{font-size:1.25rem}
-  .brand__sub{font-size:.62rem;letter-spacing:.1em}
+  .brand{gap:.55rem;max-width:14rem}
+  .brand__mark{width:44px;height:28px}
+  .brand__name{font-size:1.1rem}
+  .brand__sub{font-size:.58rem;letter-spacing:.08em}
 }

@@ -18,6 +18,7 @@ export const site = {
   license: '822481',
   brokerage: 'Monument Realty',
   gbp: 'https://maps.app.goo.gl/RYobBs8dCmZNnQQbA?g_st=ac',
+  wholesales: 'https://dfw-wholesales.netlify.app/',
   zillowReviews: 'https://www.zillow.com/profile/diegoealvarado/#reviews',
   social: {
     instagram: 'https://www.instagram.com/diegoalvarado_realtor/',
