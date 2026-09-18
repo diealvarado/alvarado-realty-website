@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { cityImages, defaultCityImage } from '../../data/cityImages';
 
 export async function getStaticPaths() {
   const areas = await getCollection('areas');
@@ -9,14 +10,19 @@ export async function getStaticPaths() {
 
 const { area } = Astro.props;
 const { Content } = await render(area);
+const hero = cityImages[area.id] ?? defaultCityImage;
 ---
 <BaseLayout title={area.data.title} description={area.data.description}>
-  <section class="page-hero"><div class="container" style="max-width:42rem;">
-    <p class="eyebrow">{area.data.county}</p>
-    <h1>{area.data.name} real estate</h1>
-    <p>{area.data.description}</p>
-  </div></section>
-  <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
+  <section class="area-hero">
+    <img class="area-hero__img" src={hero} alt={`${area.data.name}, Texas`} />
+    <div class="area-hero__shade"></div>
+    <div class="container area-hero__content">
+      <p class="eyebrow">{area.data.county}</p>
+      <h1>{area.data.name}</h1>
+      <p>{area.data.description}</p>
+    </div>
+  </section>
+  <section class="section"><div class="container prose" style="max-width:42rem;">
     <Content />
   </div></section>
 </BaseLayout>

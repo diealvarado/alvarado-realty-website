@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+<BaseLayout
+  title="Contacto | Diego Alvarado REALTOR®"
+  description="Contacte a Diego Alvarado en español para comprar, vender o reubicarse en Flower Mound y North DFW."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Contacto</p>
+      <h1>Hablemos de su próximo paso</h1>
+      <p>Llame, escriba o envíe el formulario — atención en español.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0;">
+    <div class="container grid-2">
+      <div class="card">
+        <form class="form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/">
+          <input type="hidden" name="form-name" value="contacto" />
+          <input type="hidden" name="language" value="es" />
+          <p hidden><label>No complete esto: <input name="bot-field" /></label></p>
+          <label>Nombre<input required name="name" autocomplete="name" /></label>
+          <label>Correo electrónico<input required type="email" name="email" autocomplete="email" /></label>
+          <label>Teléfono<input type="tel" name="phone" autocomplete="tel" /></label>
+          <label>Estoy
+            <select name="interest">
+              <option>Comprando</option>
+              <option>Vendiendo</option>
+              <option>Reubicándome</option>
+              <option>Invirtiendo</option>
+              <option>Aún no estoy seguro</option>
+            </select>
+          </label>
+          <label>Mensaje<textarea name="message" placeholder="Zonas, tiempos, preguntas..."></textarea></label>
+          <label style="font-weight:400;font-size:0.9rem;">
+            <input type="checkbox" name="sms-consent" />
+            <span class="hint">Acepto recibir mensajes de texto sobre mi consulta. Pueden aplicar tarifas. Responda STOP para cancelar.</span>
+          </label>
+          <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+        </form>
+      </div>
+      <div>
+        <div class="card">
+          <h2>Contacte a Diego directamente</h2>
+          <p><a href={site.phoneHref}>{site.phone}</a><br /><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p>{site.address.full}</p>
+          <p class="hint">{site.brokerage} · Licencia #{site.license}</p>
+          <p><a href="/contact/">English contact form →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

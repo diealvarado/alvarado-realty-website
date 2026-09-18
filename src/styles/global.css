@@ -267,3 +267,12 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
   .brand__name{font-size:1.1rem}
   .brand__sub{font-size:.58rem;letter-spacing:.08em}
 }
+
+/* Area page single hero (no duplicate house tiles) */
+.area-hero{position:relative;min-height:min(52vh,420px);display:grid;align-items:end;overflow:hidden;color:#fff;background:#0a2540}
+.area-hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.area-hero__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,37,64,.25),rgba(10,37,64,.82))}
+.area-hero__content{position:relative;z-index:1;padding:4rem 0 2.5rem}
+.area-hero__content .eyebrow{color:#d8b56a}
+.area-hero__content h1{color:#fff;margin:0 0 .5rem}
+.area-hero__content p{color:rgba(255,255,255,.92);max-width:36rem}
