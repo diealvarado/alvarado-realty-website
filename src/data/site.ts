@@ -23,6 +23,7 @@ export const site = {
   social: {
     instagram: 'https://www.instagram.com/diegoalvarado_realtor/',
     facebook: 'https://www.facebook.com/p/Diego-Alvarado-Realtor-61559689857939/',
+    linkedin: 'https://www.linkedin.com/in/alvarado',
   },
 } as const;
 
