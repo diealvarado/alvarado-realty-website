@@ -16,6 +16,7 @@ export const site = {
     full: '870 International Pkwy Ste 280, Flower Mound, TX 75022',
   },
   license: '822481',
+  gaId: 'G-XSWC5Y9YXT',
   brokerage: 'Monument Realty',
   gbp: 'https://maps.app.goo.gl/RYobBs8dCmZNnQQbA?g_st=ac',
   wholesales: 'https://dfw-wholesales.netlify.app/',
