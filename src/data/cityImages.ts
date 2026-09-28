@@ -1,20 +1,23 @@
 /**
- * Found licensed landmark photos (Wikimedia / Pexels / Flickr CC).
+ * City photos: Diego's Google Drive uploads (2026-09-27), plus licensed photos
+ * listed in public/images/cities/CREDITS.md.
  * Only assign a photo when it depicts that place or its true shared lake.
- * Diego’s personal uploads are not used for city cards.
  */
 export const cityImages: Record<string, string> = {
-  'flower-mound': '/images/cities/flower-mound.jpg', // North Shore / lakeside trail
-  'highland-village': '/images/cities/highland-village.jpg', // Lake Lewisville (not Grapevine Lake)
-  'lewisville': '/images/cities/lewisville.jpg', // Old Town / W Main
-  'grapevine': '/images/cities/grapevine.jpg', // Main Street Old Town
-  'coppell': '/images/cities/coppell.jpg', // Grapevine Springs Park
-  'roanoke': '/images/cities/roanoke.jpg', // Silver Spur / Old Town
-  'bartonville': '/images/cities/bartonville.jpg', // horse-country character
+  'flower-mound': '/images/cities/flower-mound.jpg', // Flower Mound River Walk
+  'highland-village': '/images/cities/highland-village.jpg', // aerial of Highland Village neighborhood
+  'lewisville': '/images/cities/lewisville.jpg', // Mill Street, Old Town
+  'grapevine': '/images/cities/grapevine.jpg', // Visitor Information Center, Main Street
+  'coppell': '/images/cities/coppell.jpg', // Old Town Coppell aerial
+  'roanoke': '/images/cities/roanoke.jpg', // Roanoke water tower
+  'bartonville': '/images/cities/bartonville.jpg', // Town of Bartonville entrance sign
   'copper-canyon': '/images/cities/copper-canyon.jpg', // Lewisville Lake community
-
-  // No free landmark photo found yet — omit unique shot (fall back)
-  // northlake, trophy-club, double-oak, argyle-lantana, bedford, euless
+  'northlake': '/images/cities/northlake.jpg', // Pecan Square
+  'trophy-club': '/images/cities/trophy-club.jpg', // Trophy Club clock tower
+  'double-oak': '/images/cities/double-oak.jpg', // Double Oak Town Hall
+  'argyle-lantana': '/images/cities/argyle-lantana.jpg', // Lantana aerial
+  'bedford': '/images/cities/bedford.jpg', // Bedford water tower
+  'euless': '/images/cities/euless.jpg', // Euless water tower
 };
 
 export const defaultCityImage = '/images/cities/flower-mound.jpg';

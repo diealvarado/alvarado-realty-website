@@ -1,15 +1,19 @@
-# City photo credits (found licensed images)
+# City photo credits
 
 | File | Subject | Source | License |
 |------|---------|--------|---------|
-| flower-mound.jpg | Flower Mound — North Shore trail / lakeside | Wikimedia Commons: North Shore Trail - panoramio.jpg | CC (Panoramio) |
+| flower-mound.jpg | Flower Mound River Walk | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
 | flower-mound-aerial.jpg | Flower Mound aerial | Wikimedia: Flower Mound Texas Aerial | CC-BY-SA |
-| highland-village.jpg | Highland Village area — Lake Lewisville park (not Grapevine Lake) | Wikimedia: Lake Lewisville Park Area.jpg | CC |
-| grapevine.jpg | Grapevine Main Street / Old Town | Wikimedia: GrapevineTX MainSt 04Mar2018.jpg | CC-BY-SA |
-| lewisville.jpg | Lewisville Old Town / W Main Street | Wikimedia: Lewisville August 2019 36 (W Main Street).jpg | CC-BY-SA |
-| coppell.jpg | Coppell — Grapevine Springs Park | Wikimedia: Grapevine springs park channel and bridge.jpg | CC |
-| roanoke.jpg | Roanoke Old Town — Silver Spur Saloon | Wikimedia: Silver Spur Saloon Roanoke Wiki | CC |
-| bartonville.jpg | North Texas horse-country character (Bartonville) | Flickr CC-BY | CC-BY |
+| highland-village.jpg | Highland Village neighborhood aerial | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
+| grapevine.jpg | Grapevine Visitor Information Center, Main Street | Wikimedia Commons: Downtown Grapevine Wiki (1 of 1).jpg, by Renelibrary (Google Drive upload by Diego Alvarado, 2026-09-27) | CC BY-SA 4.0 (attribution required) |
+| lewisville.jpg | Lewisville — Mill Street, Old Town | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
+| coppell.jpg | Old Town Coppell aerial | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
+| roanoke.jpg | Roanoke water tower | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
+| bartonville.jpg | Town of Bartonville entrance sign | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
 | copper-canyon.jpg | Lewisville Lake lifestyle (Copper Canyon lake community) | Pexels Lewisville Lake | Pexels License |
-
-Northlake: no suitable free-licensed landmark photo found online.
+| northlake.jpg | Northlake — Pecan Square | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
+| trophy-club.jpg | Trophy Club clock tower | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
+| double-oak.jpg | Double Oak Town Hall | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
+| argyle-lantana.jpg | Lantana aerial | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
+| bedford.jpg | Bedford water tower | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
+| euless.jpg | Euless water tower | Provided by Diego Alvarado (Google Drive upload, 2026-09-27) | Provided by Diego Alvarado |
