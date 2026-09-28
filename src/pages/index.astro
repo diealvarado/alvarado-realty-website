@@ -7,6 +7,8 @@ const featured = featuredCitySlugs.map((slug) => {
   const city = cities.find((c) => c.slug === slug)!;
   return { ...city, img: cityImages[slug] ?? defaultCityImage };
 });
+/** Homepage hero slideshow: Diego's updated city photos (first one loads eagerly) */
+const heroSlides = ['flower-mound', 'grapevine', 'lewisville', 'highland-village', 'coppell', 'roanoke', 'copper-canyon'];
 const moreCities = cities.filter((c) => !featuredCitySlugs.includes(c.slug as typeof featuredCitySlugs[number]));
 
 const faqs = [
@@ -34,9 +36,15 @@ const faqs = [
 ---
 <BaseLayout>
   <section class="hero-video">
-    <video class="hero-video__media" autoplay muted loop playsinline poster="/images/cities/flower-mound.jpg" aria-hidden="true">
-      <source src="/videos/local-north-dfw.mp4" type="video/mp4" />
-    </video>
+    <div class="hero-video__media" aria-hidden="true">
+      {heroSlides.map((slug, i) => (
+        i === 0 ? (
+          <img class="hero-video__slide is-active" src={cityImages[slug]} alt="" loading="eager" fetchpriority="high" decoding="async" />
+        ) : (
+          <img class="hero-video__slide" data-src={cityImages[slug]} alt="" decoding="async" />
+        )
+      ))}
+    </div>
     <div class="hero-video__shade"></div>
     <div class="container hero-video__content">
       <p class="eyebrow">Flower Mound · Grapevine Lake · North DFW</p>
@@ -52,6 +60,25 @@ const faqs = [
       </div>
     </div>
   </section>
+  <script is:inline>
+    (function () {
+      var slides = document.querySelectorAll('.hero-video__slide');
+      if (slides.length < 2) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var start = function () {
+        slides.forEach(function (img) { if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); } });
+        var i = 0;
+        setInterval(function () {
+          var next = (i + 1) % slides.length;
+          if (!slides[next].complete) return;
+          slides[i].classList.remove('is-active');
+          slides[next].classList.add('is-active');
+          i = next;
+        }, 6000);
+      };
+      if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+    })();
+  </script>
 
   <div class="trust-bar">
     <div class="container row">

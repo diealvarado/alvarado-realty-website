@@ -157,6 +157,8 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
 /* Video hero */
 .hero-video{position:relative;min-height:min(88vh,760px);display:grid;align-items:end;overflow:hidden;color:#fff;background:#0a2540}
 .hero-video__media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-video__slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+.hero-video__slide.is-active{opacity:1}
 .hero-video__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,37,64,.45) 0%, rgba(10,37,64,.62) 45%, rgba(10,37,64,.9) 100%)}
 .hero-video__content{position:relative;z-index:1;padding:5rem 0 3.5rem}
 .hero-video .eyebrow{color:#d8b56a}
