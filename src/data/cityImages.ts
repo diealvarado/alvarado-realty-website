@@ -11,7 +11,7 @@ export const cityImages: Record<string, string> = {
   'coppell': '/images/cities/coppell.jpg', // Old Town Coppell aerial
   'roanoke': '/images/cities/roanoke.jpg', // Roanoke water tower
   'bartonville': '/images/cities/bartonville.jpg', // Town of Bartonville entrance sign
-  'copper-canyon': '/images/cities/copper-canyon.jpg', // Lewisville Lake community
+  'copper-canyon': '/images/cities/copper-canyon.jpg', // Old Alton Bridge
   'northlake': '/images/cities/northlake.jpg', // Pecan Square
   'trophy-club': '/images/cities/trophy-club.jpg', // Trophy Club clock tower
   'double-oak': '/images/cities/double-oak.jpg', // Double Oak Town Hall
