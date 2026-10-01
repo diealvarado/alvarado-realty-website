@@ -48,7 +48,7 @@ export const findMeLinks = [
   },
   {
     label: 'BiggerPockets',
-    href: 'https://www.biggerpockets.com/users/diegoa5?utm_source=website&utm_medium=referral&utm_campaign=find-me',
+    href: 'https://www.biggerpockets.com/users/diegoa5?utm_source=alvaradorealtygroup.com&utm_medium=referral&utm_campaign=find_me',
   },
 ] as const;
 

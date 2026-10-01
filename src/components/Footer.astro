@@ -1,5 +1,7 @@
 ---
-import { site } from '../data/site';
+import { findMeLinks, site } from '../data/site';
+
+const biggerPocketsLink = findMeLinks.find(({ label }) => label === 'BiggerPockets');
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
@@ -35,6 +37,7 @@ import { site } from '../data/site';
         <a href={site.social.instagram} target="_blank" rel="noopener">Instagram</a><br />
         <a href={site.social.facebook} target="_blank" rel="noopener">Facebook</a><br />
         <a href={site.social.linkedin} target="_blank" rel="noopener">LinkedIn</a><br />
+        <a href={biggerPocketsLink?.href} target="_blank" rel="noopener">BiggerPockets</a><br />
         <a href="/ai-information/">AI / entity info</a><br />
         <a href="/contact/">Contact</a>
       </p>
