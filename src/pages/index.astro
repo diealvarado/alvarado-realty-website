@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site, cities } from '../data/site';
 import { cityImages, featuredCitySlugs, defaultCityImage } from '../data/cityImages';
+import FindMe from '../components/FindMe.astro';
 
 const featured = featuredCitySlugs.map((slug) => {
   const city = cities.find((c) => c.slug === slug)!;
@@ -186,6 +187,7 @@ const faqs = [
           <a class="btn btn-secondary" href={site.zillowReviews} target="_blank" rel="noopener">Zillow reviews</a>
           <a class="btn btn-secondary" href="/about/">Meet Diego</a>
         </div>
+        <FindMe />
       </div>
       <div class="panel">
         <h3>Hablo Español</h3>

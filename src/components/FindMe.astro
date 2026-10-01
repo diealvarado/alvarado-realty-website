@@ -1,0 +1,14 @@
+---
+import { findMeLinks } from '../data/site';
+---
+<p class="find-me">
+  <span class="find-me__label">Find me</span>
+  {
+    findMeLinks.map((link, i) => (
+      <span>
+        {i > 0 && <span class="find-me__sep" aria-hidden="true">·</span>}
+        <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+      </span>
+    ))
+  }
+</p>
