@@ -74,3 +74,11 @@ export const cities = [
 export const firstWaveCities = cities;
 export const nextWaveCities = [] as const;
 export const hubOnlyCities = [] as const;
+
+/** Real Estate Planner positioning (SEO ticket #11 — Diego-approved 2026-10-02). */
+export const realEstatePlanner = {
+  title: 'Real Estate Planner',
+  body: 'I help you map the property side of your plan—goals, timeline, and ownership structure—then connect you with the right specialist when you need a trust or LLC (attorney), tax strategy (CPA), or broader financial plan (financial planner).',
+  disclaimer:
+    'I am not a financial planner, attorney, or CPA. This is not legal, tax, or investment advice.',
+} as const;
