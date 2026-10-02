@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RealEstatePlanner from '../../components/RealEstatePlanner.astro';
 import { getCollection, render } from 'astro:content';
 import { formatPubDate } from '../../utils/formatPubDate';
 
@@ -14,9 +15,14 @@ const { Content } = await render(post);
   <section class="page-hero"><div class="container" style="max-width:42rem;">
     <p class="eyebrow">Insights</p>
     <h1>{post.data.title}</h1>
-    <p class="hint">{formatPubDate(post.data.pubDate)}</p>
+    <p class="hint">{formatPubDate(post.data.pubDate)} · By Diego Alvarado, Real Estate Planner</p>
   </div></section>
   <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
     <Content />
+    <aside class="real-estate-planner-bio panel" style="margin-top:2.5rem;">
+      <p class="eyebrow" style="margin-bottom:.5rem;">About the author</p>
+      <p style="margin-top:0;"><strong>Diego Alvarado</strong> · REALTOR® · Real Estate Planner</p>
+      <RealEstatePlanner level="h3" />
+    </aside>
   </div></section>
 </BaseLayout>
