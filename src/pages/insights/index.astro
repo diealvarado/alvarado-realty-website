@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { formatPubDate } from '../../utils/formatPubDate';
 const posts = (await getCollection('insights'))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -16,7 +17,7 @@ const posts = (await getCollection('insights'))
       <a class="card" href={`/insights/${post.id}/`} style="text-decoration:none;color:inherit;">
         <h2 style="font-size:1.25rem;">{post.data.title}</h2>
         <p>{post.data.description}</p>
-        <p class="hint">{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+        <p class="hint">{formatPubDate(post.data.pubDate, 'short')}</p>
       </a>
     ))}
   </div></section>

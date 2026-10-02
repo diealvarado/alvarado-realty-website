@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { formatPubDate } from '../../utils/formatPubDate';
 
 export async function getStaticPaths() {
   const posts = await getCollection('insights');
@@ -13,7 +14,7 @@ const { Content } = await render(post);
   <section class="page-hero"><div class="container" style="max-width:42rem;">
     <p class="eyebrow">Insights</p>
     <h1>{post.data.title}</h1>
-    <p class="hint">{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+    <p class="hint">{formatPubDate(post.data.pubDate)}</p>
   </div></section>
   <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
     <Content />
