@@ -19,7 +19,7 @@ export const site = {
   gaId: 'G-HV8H3GDDDZ',
   brokerage: 'Monument Realty',
   gbp: 'https://maps.app.goo.gl/RYobBs8dCmZNnQQbA?g_st=ac',
-  wholesales: 'https://dfw-wholesales.netlify.app/',
+  wholesales: 'https://alvacomhomes.com/offmarket',
   zillowReviews: 'https://www.zillow.com/profile/diegoealvarado/#reviews',
   social: {
     instagram: 'https://www.instagram.com/diegoalvarado_realtor/',

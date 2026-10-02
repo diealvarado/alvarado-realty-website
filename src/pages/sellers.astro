@@ -1,19 +1,83 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, cities } from '../data/site';
 ---
-<BaseLayout title="Sellers | Diego Alvarado REALTOR®" description="Sell your North DFW home with clear pricing strategy and steady communication. Hablo Español.">
+<BaseLayout
+  title="Sellers | Diego Alvarado REALTOR®"
+  description="Sell your North DFW home with clear pricing, prep that matters, and steady communication. Hablo Español."
+>
   <section class="page-hero"><div class="container" style="max-width:42rem;">
     <p class="eyebrow">Sellers</p>
     <h1>Sell with fewer surprises</h1>
-    <p>Pricing, preparation, and presentation — sequenced so buyers see value without drama.</p>
+    <p>
+      Pricing, preparation, and presentation — sequenced so buyers see value without drama.
+      Diego keeps sellers oriented with comparable-based pricing, prep that actually moves
+      offers, and calm negotiation support through closing.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/home-value/">Get a home value consult</a>
+      <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+    </div>
   </div></section>
+
   <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
-    <h2>Seller focus areas</h2>
+    <h2>How Diego works with sellers</h2>
+    <p>
+      Listing is a project with a sequence. Diego starts with what the comps say — not wishful
+      thinking — then focuses prep and presentation where buyers in your pocket actually care.
+    </p>
+    <ol>
+      <li><strong>Comparable-based pricing</strong> — recent sales, active competition, and condition, so the ask matches the market you are in.</li>
+      <li><strong>Prep that moves offers</strong> — paint, repairs, and staging choices that change buyer perception, not a long vanity punch list.</li>
+      <li><strong>Listing, feedback loops, and showings</strong> — clear marketing, honest feedback from tours, and adjustments when the market talks.</li>
+      <li><strong>Negotiation and closing support</strong> — offers, repairs, and timeline coordination so you are not guessing mid-deal.</li>
+    </ol>
+
+    <h2>What to expect</h2>
     <ul>
-      <li>Comparable-based pricing — not wishful thinking</li>
-      <li>Prep that actually moves offers</li>
-      <li>Listing feedback loops and negotiation support</li>
+      <li>Plain-language updates on activity, feedback, and next moves</li>
+      <li>Honest talk when price, condition, or timing needs a reset</li>
+      <li>Coordination with photographers, title, and vendors without you chasing every detail</li>
+      <li>Bilingual support when Spanish helps your household decide — see <a href="/contacto/">/contacto/</a></li>
     </ul>
-    <p><a class="btn btn-primary" href="/home-value/">Get a home value consult</a></p>
+
+    <h2>When to call</h2>
+    <p>Reach out when you are ready to:</p>
+    <ul>
+      <li>Price a North DFW home before you list — or before you accept a private offer</li>
+      <li>Decide what prep is worth doing versus what buyers will overlook</li>
+      <li>Sell and buy in the same window and need the timelines to line up</li>
+      <li>Talk through HOA, rental history, or condition issues that could slow a sale</li>
+    </ul>
+    <p>
+      Call <a href={site.phoneHref}>{site.phone}</a>, start at <a href="/contact/">/contact/</a>, or use <a href="/contacto/">Hablo Español → /contacto/</a>. For a focused pricing conversation,
+      use <a href="/home-value/">/home-value/</a>.
+    </p>
+
+    <h2>Areas Diego covers for sellers</h2>
+    <p>
+      Every city below is part of active listing representation — Flower Mound through the
+      Grapevine Lake belt and airport-side suburbs.
+    </p>
+  </div>
+
+  <div class="container" style="margin-top:1rem;">
+    <div class="city-list">
+      {cities.map((c) => <a href={`/areas/${c.slug}/`}>{c.name}</a>)}
+    </div>
+  </div>
+
+  <div class="container prose" style="max-width:42rem;margin-top:2rem;">
+    <h2>Next step</h2>
+    <p>
+      Buying after you sell? See the <a href="/buyers/">buyer process</a>. Comparing pockets
+      before you list? Browse <a href="/areas/">service areas</a>.
+    </p>
+    <p class="hero-actions" style="margin-top:1.25rem;">
+      <a class="btn btn-primary" href="/home-value/">Get a home value consult</a>
+      <a class="btn btn-secondary" href="/contact/">Contact Diego</a>
+      <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+      <a class="btn btn-secondary" href="/contacto/">Hablo Español</a>
+    </p>
   </div></section>
 </BaseLayout>

@@ -1,20 +1,83 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, cities } from '../data/site';
 ---
-<BaseLayout title="Buyers | Diego Alvarado REALTOR®" description="Buyer representation in Flower Mound and North DFW — first-time buyers, relocators, and investors. Hablo Español.">
+<BaseLayout
+  title="Buyers | Diego Alvarado REALTOR®"
+  description="Buyer representation in Flower Mound and North DFW — how Diego works, what to expect, and every city he covers. Hablo Español."
+>
   <section class="page-hero"><div class="container" style="max-width:42rem;">
     <p class="eyebrow">Buyers</p>
     <h1>Buy with a clear plan</h1>
-    <p>Whether you are local, relocating, or buying as an investment, Diego keeps the process organized and jargon-light.</p>
+    <p>
+      Whether you are local, relocating, or buying your next home in North DFW, Diego keeps
+      the process organized and jargon-light — shortlists over endless scrolling, comps before
+      offers, and plain-language updates through closing.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/contact/">Start as a buyer</a>
+      <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+    </div>
   </div></section>
+
   <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
-    <h2>What working together looks like</h2>
+    <h2>How Diego works with buyers</h2>
+    <p>
+      Expect a practical sequence, not a portal handoff. Diego clarifies what you need, where
+      it fits in North DFW, and what tradeoffs matter before you tour — then stays close through
+      inspections, negotiations, and closing.
+    </p>
     <ol>
-      <li>Clarify must-haves, budget, and timing</li>
-      <li>Tour the right pockets — not every listing</li>
-      <li>Offer strategy with comps and contingency clarity</li>
-      <li>Inspections, negotiations, and a clean close</li>
+      <li><strong>Clarify must-haves, budget, and timing</strong> — commute, lot, schools by address, and how soon you need keys.</li>
+      <li><strong>Tour the right pockets</strong> — not every listing. Two or three neighborhoods that actually fit beat twenty random open houses.</li>
+      <li><strong>Offer strategy with comps and contingency clarity</strong> — so you know what you are writing and why.</li>
+      <li><strong>Inspections, negotiations, and a clean close</strong> — vendor coordination, timeline discipline, and updates you can follow without decoding jargon.</li>
     </ol>
-    <p><a class="btn btn-primary" href="/contact/">Start as a buyer</a></p>
+
+    <h2>What to expect</h2>
+    <ul>
+      <li>Responsive communication in English — and Spanish when your household needs it</li>
+      <li>Honest feedback on condition, pricing, and risk flags before you fall for a kitchen</li>
+      <li>Help comparing suburbs side by side when relocators are choosing between lake-corridor and airport-side options</li>
+      <li>A clear next step after every call or tour — not a vague “we’ll see what’s out there”</li>
+    </ul>
+
+    <h2>When to call</h2>
+    <p>Reach out when you are ready to:</p>
+    <ul>
+      <li>Shortlist Flower Mound, Coppell, Grapevine Lake towns, or nearby North DFW cities</li>
+      <li>Relocate from another city or time zone and need a local guide who can tour on your timeline</li>
+      <li>Buy as a first-time or move-up household and want the process explained without pressure</li>
+      <li>Ask hard questions about HOAs, flood/drainage pockets, or school assignments by address</li>
+    </ul>
+    <p>
+      Call <a href={site.phoneHref}>{site.phone}</a>, start at <a href="/contact/">/contact/</a>, or use <a href="/contacto/">Hablo Español → /contacto/</a> if Spanish fits your household better.
+    </p>
+
+    <h2>Areas Diego covers for buyers</h2>
+    <p>
+      Every city below is part of active buyer representation — from Flower Mound and Coppell
+      to the smaller towns around Grapevine Lake.
+    </p>
+  </div>
+
+  <div class="container" style="margin-top:1rem;">
+    <div class="city-list">
+      {cities.map((c) => <a href={`/areas/${c.slug}/`}>{c.name}</a>)}
+    </div>
+  </div>
+
+  <div class="container prose" style="max-width:42rem;margin-top:2rem;">
+    <h2>Next step</h2>
+    <p>
+      Prefer a value consult first if you are selling and buying? See <a href="/home-value/">home value</a> or
+      <a href="/sellers/">seller process</a>. Investors evaluating holds or small multifamily
+      can start on <a href="/investors/">/investors/</a>.
+    </p>
+    <p class="hero-actions" style="margin-top:1.25rem;">
+      <a class="btn btn-primary" href="/contact/">Start as a buyer</a>
+      <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+      <a class="btn btn-secondary" href="/contacto/">Hablo Español</a>
+    </p>
   </div></section>
 </BaseLayout>

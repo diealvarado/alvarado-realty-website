@@ -1,35 +1,111 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const offMarketUrl = site.wholesales;
+const biggerPocketsUrl = 'https://www.biggerpockets.com/users/diegoa5';
 ---
 <BaseLayout
   title="Investors | Diego Alvarado REALTOR®"
-  description="DFW-wide investor representation with Diego Alvarado. Off-market and wholesale deals live on DFW Wholesales."
+  description="DFW investor representation with Diego Alvarado — long-term holds, small multifamily, risk flags, and 1031. Off-market deals on Alvacom Homes."
 >
   <section class="page-hero"><div class="container" style="max-width:42rem;">
     <p class="eyebrow">Investors</p>
     <h1>Investor coverage across DFW</h1>
     <p>
-      Diego works with investors metro-wide — not only the Flower Mound belt. For live
-      off-market and wholesale opportunities, deals are listed on the dedicated investor site.
+      Diego works with investors metro-wide — not only the Flower Mound belt. Conversations
+      center on long-term holds, small multifamily, and practical risk flags before you write.
+      For live off-market / investor deals, inventory is listed on Alvacom Homes.
     </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={offMarketUrl} target="_blank" rel="noopener noreferrer">Browse off-market deals</a>
+      <a class="btn btn-secondary" href="/contact/">Talk with Diego</a>
+    </div>
   </div></section>
+
   <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
-    <h2>Where the deals live</h2>
+    <h2>Long-term holds</h2>
     <p>
-      Wholesale and off-market inventory for investors is on
-      <a href="https://dfw-wholesales.netlify.app/" target="_blank" rel="noopener">DFW Wholesales</a>.
-      That site is built for deal flow. This site is Diego’s realtor brand for buyers, sellers,
-      and relocators in North DFW — with investor guidance when you need an agent’s seat at the table.
+      Buy-and-hold work is about rent reality, expense discipline, and exit options — not
+      just purchase price. Diego helps investors pressure-test cash flow assumptions, vacancy
+      and repair buffers, and whether a pocket supports the hold length you actually plan.
+    </p>
+    <ul>
+      <li>Comps and rent context before you chase a “deal” photo</li>
+      <li>Neighborhood and property-level risk flags that show up after closing, not in the listing copy</li>
+      <li>Buy-side representation when a licensed agent needs to sit at the table through title and inspection</li>
+    </ul>
+
+    <h2>Small multifamily</h2>
+    <p>
+      Duplexes, triplexes, and small multifamily can fit investors who want unit mix without
+      jumping straight into large commercial. Diego helps compare unit economics, condition,
+      and financing path — and keeps the conversation grounded in what the property can
+      support, not what a spreadsheet hopes for.
+    </p>
+
+    <h2>Risk flags worth naming early</h2>
+    <ul>
+      <li>Deferred maintenance that eats year-one cash flow</li>
+      <li>Rent that only works if every unit stays full at optimistic numbers</li>
+      <li>Insurance, HOA, or municipal constraints that change the math after you are under contract</li>
+      <li>Exit liquidity — who buys this asset class in this pocket if your timeline moves</li>
+    </ul>
+    <p>
+      The goal is fewer surprises between offer and year two of ownership. Diego will say when
+      a deal looks thin, even when that is not what you hoped to hear.
+    </p>
+
+    <h2>1031 exchanges</h2>
+    <p>
+      If you are selling an investment property and considering a 1031 exchange, Diego can
+      help on the real-estate side: identifying replacement candidates, coordinating timelines
+      with your exchange facilitator and tax advisor, and keeping purchase contracts aligned
+      with exchange deadlines. Tax and legal structure stay with your CPA and attorney — Diego
+      keeps the property search and closing path from becoming the bottleneck.
+    </p>
+
+    <h2>Off-market / investor deals on Alvacom Homes</h2>
+    <p>
+      Wholesale and off-market inventory for investors lives on <a href={offMarketUrl} target="_blank" rel="noopener noreferrer">Alvacom Homes off-market</a>
+      (<code>alvacomhomes.com/offmarket</code>). That board is built for deal flow. This site is
+      Diego’s realtor brand for buyers, sellers, and relocators in North DFW — with investor
+      guidance when you need an agent’s seat at the table.
     </p>
     <p>
-      <a class="btn btn-primary" href="https://dfw-wholesales.netlify.app/" target="_blank" rel="noopener">Browse investor deals</a>
-      <a class="btn btn-secondary" href="/contact/" style="margin-left:.5rem;">Talk with Diego</a>
+      <a class="btn btn-primary" href={offMarketUrl} target="_blank" rel="noopener noreferrer">Browse Alvacom off-market deals</a>
     </p>
+
+    <h2>BiggerPockets</h2>
+    <p>
+      Diego is active in the investor community on BiggerPockets — Pro Agent in Flower Mound,
+      TX, member since 2016, markets DFW, Hablo Español. You can find his profile and reach him
+      there, or call directly.
+    </p>
+    <p>
+      <a href={biggerPocketsUrl} target="_blank" rel="noopener noreferrer">BiggerPockets profile — diegoa5</a>
+      · <a href={site.phoneHref}>{site.phone}</a>
+    </p>
+
     <h2>How Diego helps investors</h2>
     <ul>
       <li>DFW-wide buy-side representation when a deal needs a licensed agent</li>
       <li>Comps, rents, and risk flags before you write</li>
       <li>Coordination through title, inspection, and closing</li>
+      <li>Handoff to off-market inventory on Alvacom when that is the right channel</li>
     </ul>
+
+    <h2>Next step</h2>
+    <p>
+      Call <a href={site.phoneHref}>{site.phone}</a>, write via <a href="/contact/">/contact/</a>, use <a href="/contacto/">Hablo Español → /contacto/</a>, open the <a href={biggerPocketsUrl} target="_blank" rel="noopener noreferrer">BiggerPockets profile</a>,
+      or browse <a href={offMarketUrl} target="_blank" rel="noopener noreferrer">Alvacom Homes off-market deals</a>.
+    </p>
+    <p class="hero-actions" style="margin-top:1.25rem;">
+      <a class="btn btn-primary" href="/contact/">Talk with Diego</a>
+      <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+      <a class="btn btn-secondary" href="/contacto/">Hablo Español</a>
+      <a class="btn btn-secondary" href={offMarketUrl} target="_blank" rel="noopener noreferrer">Alvacom off-market</a>
+      <a class="btn btn-secondary" href={biggerPocketsUrl} target="_blank" rel="noopener noreferrer">BiggerPockets</a>
+    </p>
   </div></section>
 </BaseLayout>

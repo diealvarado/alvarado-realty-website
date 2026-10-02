@@ -8,3 +8,15 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/invest"
+  to = "/investors/"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/invest/"
+  to = "/investors/"
+  status = 301
+  force = false
