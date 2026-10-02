@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { flowerMoundSubdivisions } from '../../../../data/flowerMoundSubdivisions';
+
+const title = 'Flower Mound Subdivisions | Diego Alvarado REALTOR®';
+const description =
+  'Explore 64 Flower Mound, TX subdivisions — original neighborhood blurbs for lake, golf, estate, and master-planned living. Work with Diego Alvarado, REALTOR®. Hablo Español.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="page-hero">
+    <div class="container" style="max-width:42rem;">
+      <p class="eyebrow">Denton County · Flower Mound</p>
+      <h1>Flower Mound subdivisions</h1>
+      <p>
+        Short, original blurbs for all {flowerMoundSubdivisions.length} approved Flower Mound community names —
+        lake corridor, golf, estate, and everyday residential living. Not a directory scrape; use these as a
+        starting shortlist, then tour the street.
+      </p>
+      <p style="margin-bottom:0;">
+        <a href="/areas/flower-mound/">← Back to Flower Mound</a>
+        &nbsp;·&nbsp;
+        <a href="/contact/">Contact Diego</a>
+        &nbsp;·&nbsp;
+        <a href="tel:+12148338911">(214) 833-8911</a>
+        &nbsp;·&nbsp;
+        <a href="/contacto/">Hablo Español</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container" style="max-width:48rem;">
+      <nav class="fm-sub-index" aria-label="Jump to subdivision">
+        {flowerMoundSubdivisions.map((s) => (
+          <a href={`#${s.slug}`}>{s.name}</a>
+        ))}
+      </nav>
+
+      <div class="prose fm-sub-list">
+        {flowerMoundSubdivisions.map((s) => (
+          <article class="fm-sub-item" id={s.slug}>
+            <h2>{s.name}</h2>
+            <p>{s.blurb}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="cta-band" style="margin-top:2.5rem;">
+        <div>
+          <h2 style="color:#fff;margin:0 0 .4rem;">Buying or selling in Flower Mound?</h2>
+          <p style="color:rgba(255,255,255,.85);margin:0;max-width:36rem;">
+            Diego Alvarado helps you compare communities, verify taxes and HOAs by address, and move with a clear plan.
+          </p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem;">
+          <a class="btn btn-on-dark" href="/areas/flower-mound/">Flower Mound overview</a>
+          <a class="btn btn-primary" href="/contact/">Contact</a>
+          <a class="btn btn-on-dark" href="tel:+12148338911">(214) 833-8911</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .fm-sub-index {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.75rem;
+    margin: 0 0 2rem;
+    padding: 1.1rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .fm-sub-index a {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--navy);
+  }
+  .fm-sub-index a:hover {
+    color: var(--accent);
+  }
+  .fm-sub-list {
+    max-width: none;
+  }
+  .fm-sub-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 5.5rem;
+  }
+  .fm-sub-item:last-child {
+    border-bottom: none;
+  }
+  .fm-sub-item h2 {
+    font-size: clamp(1.35rem, 2vw, 1.65rem);
+    margin: 0 0 0.45rem;
+    color: var(--navy);
+  }
+  .fm-sub-item p {
+    margin: 0;
+  }
+</style>
