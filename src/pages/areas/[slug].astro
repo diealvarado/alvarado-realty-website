@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { cityImages, defaultCityImage } from '../../data/cityImages';
+import ProofStrip from '../../components/ProofStrip.astro';
 
 export async function getStaticPaths() {
   const areas = await getCollection('areas');
@@ -25,4 +26,13 @@ const hero = cityImages[area.id] ?? defaultCityImage;
   <section class="section"><div class="container prose" style="max-width:42rem;">
     <Content />
   </div></section>
+  <section class="section section-alt" style="padding-top:2rem;">
+    <div class="container" style="max-width:42rem;">
+      <div class="section-head" style="margin-bottom:0.5rem;">
+        <p class="eyebrow">Client proof</p>
+        <h2>What clients say</h2>
+      </div>
+      <ProofStrip />
+    </div>
+  </section>
 </BaseLayout>

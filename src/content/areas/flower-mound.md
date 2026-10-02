@@ -57,18 +57,6 @@ Sellers need pricing against the *right* comps: same community feel, similar upd
 
 Investors should underwrite Flower Mound **street by street** — rent context, rehab scope, HOA rental rules, and hold thesis vary. As an investor-turned-REALTOR®, Diego brings comps, repair estimates, and landlord-practical questions into the conversation before you are under contract — not only after closing.
 
-## Client proof
-
-**[5.0 on Google · 22 reviews](https://maps.app.goo.gl/RYobBs8dCmZNnQQbA?g_st=ac)** · also on [Zillow](https://www.zillow.com/profile/diegoealvarado/#reviews)
-
-Google reviews (first names only; quoted verbatim):
-
-> “We were looking for our first home and had no idea where to start. Our first meeting with Diego he let us know that he would be with us every step of the way, from looking at our first home to signing our contract!! Diego has extensive knowledge and experience with homes of all kinds! We trust his opinions and in the end we have our wonderful home that our kids can grow up in. We will always stay with Diego and recommend him to everyone!!” — **Ruby**
-
-> “Diego was a pleasure to work with from the very start of our short sale process all the way to the end. He was professional yet warm, knowledgeable, communicative and clear in his responses. He held our hand throughout, making sure we were well-informed of all the things we needed to know and do. He made sure everything was done in a timely fashion. He worked on our behalf and sought what was in our best interest. It didn't matter that our house was small. Diego gave it his all. We highly recommend him! Thank you, Diego!” — **Cris**
-
-> “I can't say enough good things about working with Diego as our realtor! Diego recently helped my wife and me purchase our first investment property. As an experienced investor himself, his guidance throughout the process was invaluable. He was truly a partner and mentor throughout the process. I've learned so much from him.He was always very responsive to calls, emails and texts. Not only did he help by running comps to determine values and estimated rents, he also helped with estimating repair costs and evaluating rehab bids, reviewing and negotiating contracts.Once we had a property under contract, Diego came over to ensure our rehab bid included everything we need to get top rent, told us what to expect with tenant screening and tips on being an effective landlord.And his service has not stopped just because our transaction closed. He continues to make himself available throughout the rehab process.I will definitely be working with Diego again for our next real estate transaction.” — **Nate**
-
 ## FAQs
 
 **Is Flower Mound only master-planned communities?**  

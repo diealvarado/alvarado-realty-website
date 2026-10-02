@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site, cities } from '../data/site';
 import { cityImages, featuredCitySlugs, defaultCityImage } from '../data/cityImages';
 import FindMe from '../components/FindMe.astro';
+import ProofStrip from '../components/ProofStrip.astro';
 
 const featured = featuredCitySlugs.map((slug) => {
   const city = cities.find((c) => c.slug === slug)!;
@@ -174,22 +175,22 @@ const faqs = [
   </section>
 
   <section class="section section-alt">
-    <div class="container split">
-      <div>
+    <div class="container">
+      <div class="section-head">
         <p class="eyebrow">Proof</p>
         <h2>Reviews where clients already look</h2>
         <p>
           Google first for local visibility, then Zillow. On-site quotes are published only
           with permission — never invented.
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href={site.gbp} target="_blank" rel="noopener">Google reviews</a>
-          <a class="btn btn-secondary" href={site.zillowReviews} target="_blank" rel="noopener">Zillow reviews</a>
-          <a class="btn btn-secondary" href="/about/">Meet Diego</a>
-        </div>
-        <FindMe />
       </div>
-      <div class="panel">
+      <ProofStrip />
+      <div class="hero-actions" style="margin-top:1.5rem;">
+        <a class="btn btn-secondary" href="/about/">Meet Diego</a>
+        <a class="btn btn-secondary" href="/reviews/">All review links</a>
+      </div>
+      <FindMe />
+      <div class="panel" style="margin-top:1.75rem;max-width:36rem;">
         <h3>Hablo Español</h3>
         <p>
           ¿Prefiere hablar del proceso en español? Diego atiende con claridad en inglés y en

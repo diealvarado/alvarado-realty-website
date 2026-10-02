@@ -282,3 +282,20 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
 .find-me__label{font-weight:700;color:var(--navy);margin-right:.4rem}
 .find-me__sep{color:var(--muted);margin:0 .35rem}
 .find-me a{white-space:nowrap}
+
+/* Sitewide proof module (homepage, city pages, /reviews/) */
+.proof-strip{margin:1.25rem 0 0}
+.proof-strip__head{margin-bottom:1.25rem}
+.proof-strip__rating{margin:0 0 .4rem;font-size:1.15rem;color:var(--ink)}
+.proof-strip__rating strong{font-family:var(--display);font-size:1.45rem;color:var(--navy)}
+.proof-strip__links{margin:0;font-size:.95rem}
+.proof-strip__sep{color:var(--muted);margin:0 .4rem}
+.proof-strip__source{margin:0 0 .75rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.proof-strip__quotes{display:grid;gap:1rem}
+.proof-strip__quote{margin:0;padding:1.15rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);border-left:3px solid var(--accent)}
+.proof-strip__quote p{margin:0 0 .75rem;color:var(--ink-soft);font-size:.98rem}
+.proof-strip__quote footer{font-weight:700;color:var(--navy);font-size:.9rem}
+@media(min-width:900px){
+  .proof-strip__quotes{grid-template-columns:repeat(3,1fr)}
+  .proof-strip__quote p{font-size:.92rem}
+}
