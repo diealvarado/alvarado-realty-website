@@ -19,8 +19,8 @@ Diego Alvarado helps buyers, sellers, relocators, and investors navigate Highlan
 - **Sellers:** pricing strategy, prep priorities, and a clean path to closing
 - **Investors:** rent/comp context and risk flags before you write an offer
 
-### Nearby areas
+### Nearby areas & related Insights
 
-Explore neighboring communities across the Grapevine Lake and North DFW belt on the [areas hub](/areas/).
+Explore neighboring communities across the Grapevine Lake and North DFW belt on the [areas hub](/areas/). Compare next door: [Flower Mound](/areas/flower-mound/). Deep dive: [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/).
 
-Ready to talk about Highland Village? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). Hablo Español.
+Ready to talk about Highland Village? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). Hablo Español — [contacto](/contacto/).
