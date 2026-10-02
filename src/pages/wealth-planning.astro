@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+<BaseLayout
+  title="Real Estate Wealth Planning | Diego Alvarado REALTOR®"
+  description="Orient the property side of your plan—goals, timeline, and ownership structure—then connect with the right specialist. Hablo Español."
+>
+  <section class="page-hero"><div class="container" style="max-width:42rem;">
+    <p class="eyebrow">Real estate wealth planning</p>
+    <h1>Orient the property side of your plan</h1>
+    <p>
+      Diego helps you clarify property-side goals, timeline, and ownership structure —
+      then connects you with the right specialist when legal, tax, or broader financial
+      planning questions need a licensed expert. This is orientation and referral, not
+      advice from an attorney, CPA, or financial planner.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/contact/">Book a wealth-planning consult</a>
+      <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+    </div>
+  </div></section>
+
+  <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
+    <h2>What the consult covers</h2>
+    <p>
+      A real estate wealth-planning consult is a structured conversation about how your
+      properties fit the plan you already have — or the one you are starting to sketch.
+      Diego stays on the property side of the table.
+    </p>
+    <ul>
+      <li><strong>Property-side goals</strong> — hold, sell, refinance, consolidate, or buy next; what each property is meant to do for you.</li>
+      <li><strong>Timeline</strong> — when decisions need to land, how buy/sell windows interact, and what can wait.</li>
+      <li><strong>Ownership structure orientation</strong> — how title is held today, what questions to bring to specialists, and which specialist usually owns which question.</li>
+      <li><strong>Referral to the right specialist</strong> — attorney, CPA, or financial planner when the next step leaves real-estate representation.</li>
+    </ul>
+
+    <h2>What this is not</h2>
+    <p>
+      Diego does not provide legal, tax, or financial-planner advice. The consult does
+      <strong>not</strong> include:
+    </p>
+    <ul>
+      <li>Legal advice, trust drafting, or court filings</li>
+      <li>Tax advice, return preparation, or audit representation</li>
+      <li>Investment advice or a full financial plan</li>
+      <li>Entity formation (LLC, trust, or otherwise)</li>
+      <li>Filings of any kind with government or regulatory bodies</li>
+    </ul>
+    <p>
+      When those services are needed, Diego refers you to the appropriate professional
+      and keeps the real-estate path coordinated.
+    </p>
+
+    <h2>Referral framing</h2>
+    <p>Different questions belong to different specialists:</p>
+    <ul>
+      <li><strong>Attorney</strong> — trusts, LLCs, estate documents, and other legal structures</li>
+      <li><strong>CPA</strong> — tax treatment, timing, and reporting questions</li>
+      <li><strong>Financial planner</strong> — how real estate fits a broader household or retirement plan</li>
+    </ul>
+    <p>
+      Diego’s role is to clarify the property picture so those conversations start with
+      the right facts — then stay available on the buy, sell, or hold side when real
+      estate work is next.
+    </p>
+
+    <h2>When to call</h2>
+    <p>Reach out when you want to:</p>
+    <ul>
+      <li>Map which properties support which goals before you list or buy</li>
+      <li>Sort timeline tradeoffs across a sale, purchase, or hold decision</li>
+      <li>Understand how ownership questions usually get answered — and who answers them</li>
+      <li>Get pointed to an attorney, CPA, or financial planner for work outside real estate</li>
+    </ul>
+    <p>
+      Call <a href={site.phoneHref}>{site.phone}</a>, start at <a href="/contact/">/contact/</a>, or use <a href="/contacto/">Hablo Español → /contacto/</a> if Spanish fits your household better.
+    </p>
+
+    <h2>Disclaimer</h2>
+    <p>
+      I am not a financial planner, attorney, or CPA. This is not legal, tax, or investment advice.
+    </p>
+
+    <h2>Next step</h2>
+    <p>
+      Prefer a focused buy or sell conversation first? See <a href="/buyers/">buyers</a>,
+      <a href="/sellers/">sellers</a>, or <a href="/investors/">investors</a>. Ready to
+      orient the property side of your plan? Start with a consult.
+    </p>
+    <p class="hero-actions" style="margin-top:1.25rem;">
+      <a class="btn btn-primary" href="/contact/">Book a wealth-planning consult</a>
+      <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+      <a class="btn btn-secondary" href="/contacto/">Hablo Español</a>
+    </p>
+  </div></section>
+</BaseLayout>
