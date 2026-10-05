@@ -1,0 +1,25 @@
+---
+import { realEstatePlanner } from '../data/site';
+
+interface Props {
+  /** Page section (h2) vs insight byline block (h3). */
+  level?: 'h2' | 'h3';
+}
+const { level = 'h2' } = Astro.props;
+const Heading = level;
+---
+<div class="real-estate-planner">
+  <Heading class="real-estate-planner__title">{realEstatePlanner.title}</Heading>
+  <p>{realEstatePlanner.body}</p>
+  <p class="hint real-estate-planner__disclaimer">{realEstatePlanner.disclaimer}</p>
+</div>
+
+<style>
+  .real-estate-planner__title {
+    margin-top: 0;
+  }
+  .real-estate-planner__disclaimer {
+    margin-bottom: 0;
+    font-style: italic;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RealEstatePlanner from '../components/RealEstatePlanner.astro';
 import { site } from '../data/site';
 ---
 <BaseLayout title={`About ${site.name} | REALTOR® Flower Mound`} description="Meet Diego Alvarado — investor-turned-REALTOR® with Monument Realty serving Flower Mound and North DFW. Hablo Español.">
@@ -39,6 +40,7 @@ import { site } from '../data/site';
         <li>Relocators coordinating from another city or time zone</li>
         <li>Investors evaluating rentals and longer-term holds</li>
       </ul>
+      <RealEstatePlanner />
       <h2>Roots & languages</h2>
       <p>
         Originally from Argentina, Diego brings an international perspective and bilingual
