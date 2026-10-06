@@ -31,3 +31,57 @@ import { site } from '../data/site';
     </nav>
   </div>
 </header>
+<script>
+  // Progressive enhancement for touch: the first tap on "Client services"
+  // toggles the dropdown instead of navigating. Mouse clicks and keyboard
+  // Enter still follow the link; without JS the label is a plain link.
+  const dd = document.querySelector<HTMLElement>('.nav-dd');
+  const trigger = dd?.querySelector<HTMLAnchorElement>('.nav-dd__trigger');
+  if (dd && trigger) {
+    const noHover = window.matchMedia('(hover: none)');
+    let lastPointer = '';
+    const isOpen = () => dd.classList.contains('is-open');
+    const open = () => {
+      dd.classList.remove('is-dismissed');
+      dd.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    };
+    const close = (refocusTrigger: boolean) => {
+      dd.classList.remove('is-open');
+      dd.classList.add('is-dismissed');
+      trigger.setAttribute('aria-expanded', 'false');
+      const active = document.activeElement;
+      if (active instanceof HTMLElement && dd.contains(active)) {
+        if (refocusTrigger) trigger.focus();
+        else active.blur();
+      }
+    };
+    trigger.addEventListener('pointerdown', (e) => { lastPointer = e.pointerType; });
+    trigger.addEventListener('click', (e) => {
+      const pointer = lastPointer;
+      lastPointer = '';
+      if (e.detail === 0) return; // keyboard / assistive activation: follow the link
+      const touch = pointer ? pointer === 'touch' : noHover.matches;
+      if (!touch) return;
+      e.preventDefault();
+      if (isOpen()) close(false);
+      else open();
+    });
+    document.addEventListener('pointerdown', (e) => {
+      if (isOpen() && !dd.contains(e.target as Node)) close(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (isOpen() || dd.matches(':focus-within')) close(true);
+      } else if (e.key === 'Tab') {
+        dd.classList.remove('is-dismissed');
+      }
+    });
+    dd.addEventListener('pointerenter', (e) => {
+      if (e.pointerType === 'mouse') dd.classList.remove('is-dismissed');
+    });
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted && isOpen()) close(false);
+    });
+  }
+</script>

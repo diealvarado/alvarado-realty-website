@@ -197,6 +197,11 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
 }
 .nav-dd__menu a:hover{background:#f1f5f9}
 .nav-dd:hover .nav-dd__menu,.nav-dd:focus-within .nav-dd__menu{display:block}
+/* Touch: Header.astro script toggles .is-open on the first tap of the trigger
+   (instead of navigating). .is-dismissed force-closes the panel when sticky
+   touch :hover/:focus-within would otherwise keep it visible. */
+.nav-dd.is-open .nav-dd__menu{display:block}
+.nav-dd.is-dismissed .nav-dd__menu{display:none}
 
 .city-chips{display:flex;flex-wrap:wrap;gap:.55rem}
 .city-chips a{
