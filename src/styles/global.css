@@ -186,6 +186,11 @@ p{margin:0 0 1rem;color:var(--ink-soft)}
   background:#fff;border:1px solid var(--border);border-radius:12px;padding:.45rem;
   box-shadow:0 12px 30px rgba(10,37,64,.12);z-index:50;
 }
+/* Transparent hover bridge across the .55rem gap above the panel so moving
+   the pointer from the trigger into the list keeps .nav-dd:hover active. */
+.nav-dd__menu::before{
+  content:"";position:absolute;left:0;right:0;bottom:100%;height:calc(.55rem + 2px);
+}
 .nav-dd__menu a{
   display:block;padding:.65rem .8rem;border-radius:8px;text-transform:none;
   letter-spacing:0;font-size:.9rem;color:var(--navy)!important;font-weight:600;
