@@ -46,6 +46,14 @@ import '../../styles/rental-tour.css';
             <select id="rt-property" required></select>
             <div class="rt-err" id="rt-err-property"></div>
           </div>
+          <div id="rt-noself" class="rt-noself" hidden role="status" aria-live="polite">
+            <h3>Self-guided tours aren't available for this home</h3>
+            <p>To schedule a tour, text <a href={rentalTour.smsHref}>{rentalTour.textPhone}</a> with your name, the address, and the times you prefer.</p>
+            <a class="btn btn-primary" id="rt-noself-sms" href={rentalTour.smsHref}>Text {rentalTour.textPhone}</a>
+          </div>
+        </div>
+        <div id="rt-bookable">
+        <div class="rt-row">
           <div class="rt-field" data-f="name">
             <label for="rt-name">Full name</label>
             <input id="rt-name" type="text" autocomplete="name" maxlength="80" required />
@@ -85,6 +93,7 @@ import '../../styles/rental-tour.css';
         </div>
         <div class="rt-actions">
           <button type="submit" class="btn btn-primary" id="rt-next">Continue</button>
+        </div>
         </div>
       </form>
 
@@ -175,6 +184,8 @@ import '../../styles/rental-tour.css';
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
   const state = {
     slots: {} as Record<string, Slot[]>,
+    /** address -> can be booked online. Rentals without self-tour are listed with a "text us" note. */
+    selfTour: {} as Record<string, boolean>,
     details: null as null | { property: string; name: string; email: string; phone: string; slotStart: number; website: string },
     whenLabel: '',
     idImage: '',
@@ -240,6 +251,23 @@ import '../../styles/rental-tour.css';
   const daySel = $<HTMLSelectElement>('rt-day');
   const timeSel = $<HTMLSelectElement>('rt-time');
 
+  // iOS Messages reads the body after "&", Android after "?".
+  const IS_IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function smsHref(body: string) { return SMS + (IS_IOS ? '&' : '?') + 'body=' + encodeURIComponent(body); }
+
+  /** Self-tour rental: show the booking fields. Otherwise: hide them and show the "text us" note + button. */
+  function updateMode() {
+    const p = propSel.value;
+    const blocked = !!p && state.selfTour[p] === false;
+    $('rt-noself').hidden = !blocked;
+    $('rt-bookable').hidden = blocked;
+    if (blocked) {
+      const name = $<HTMLInputElement>('rt-name').value.trim();
+      $<HTMLAnchorElement>('rt-noself-sms').href = smsHref(
+        "Hi, I'd like to schedule a tour of " + p + '.\nMy name: ' + name + '\nTimes I prefer: ');
+    }
+  }
+
   function fillProperties(props: string[], selected: string) {
     propSel.innerHTML = '';
     if (props.length !== 1) propSel.appendChild(el('option', 'Choose a rental', { value: '' }));
@@ -299,7 +327,7 @@ import '../../styles/rental-tour.css';
     if (d.email) parts.push('Email: ' + d.email);
     if (d.phone) parts.push('Phone: ' + d.phone);
     parts.push('Time I want: ');
-    $<HTMLAnchorElement>('rt-sms-soon').href = SMS + '?&body=' + encodeURIComponent(parts.join('\n'));
+    $<HTMLAnchorElement>('rt-sms-soon').href = smsHref(parts.join('\n'));
   }
   function summary(listId: string, d: NonNullable<typeof state.details>, when: string) {
     const ul = $(listId);
@@ -312,6 +340,12 @@ import '../../styles/rental-tour.css';
     });
   }
   function handleServerError(res: Res, fromStep: number) {
+    if (res.code === 'NO_SELF_TOUR') {
+      state.selfTour[propSel.value] = false;
+      goStep(1);
+      updateMode();
+      return;
+    }
     if (res.code === 'SLOT_TAKEN') {
       state.slots[propSel.value] = (res.slots as Slot[]) || [];
       timeSel.value = '';
@@ -331,7 +365,7 @@ import '../../styles/rental-tour.css';
     alertTop(res.message || 'Something went wrong. Please try again, or text ' + TEXT_PHONE + '.');
   }
 
-  propSel.addEventListener('change', () => { daySel.value = ''; fillDays(); updateSoonSms(); });
+  propSel.addEventListener('change', () => { daySel.value = ''; fillDays(); updateSoonSms(); updateMode(); });
   daySel.addEventListener('change', fillTimes);
   ['rt-name', 'rt-email', 'rt-phone'].forEach((id) => $(id).addEventListener('change', updateSoonSms));
   // Clear a field's error as soon as it is edited.
@@ -541,8 +575,12 @@ import '../../styles/rental-tour.css';
       return;
     }
     state.slots = res.slots || {};
+    // Older backends send no propertyInfo: treat every listed rental as self-tour.
+    (res.properties || []).forEach((a: string) => { state.selfTour[a] = true; });
+    ((res.propertyInfo || []) as { address: string; selfTour: boolean }[]).forEach((p) => { state.selfTour[p.address] = !!p.selfTour; });
     fillProperties(res.properties || [], res.selected || '');
     $('rt-step1').hidden = false;
+    updateMode();
     updateSoonSms();
   })();
 </script>

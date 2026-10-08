@@ -41,7 +41,7 @@ import '../../styles/rental-tour.css';
           <a class="btn btn-secondary" id="rta-sheet" href="#" target="_blank" rel="noopener">Open sheet (Codes)</a>
           <button class="btn btn-secondary" id="rta-signout" type="button">Sign out</button>
         </div>
-        <p id="rta-codes" class="rt-note" hidden></p>
+        <div id="rta-codes" class="rt-note rt-codes" hidden></div>
         <h2 class="rt-sec">Pending approval</h2>
         <div id="rta-pending"><p class="rt-empty">Loading…</p></div>
         <h2 class="rt-sec">Approved, upcoming</h2>
@@ -221,13 +221,20 @@ import '../../styles/rental-tour.css';
     show('rta-signin', false);
     show('rta-app', true);
     if (typeof res.sheetUrl === 'string' && res.sheetUrl.startsWith('https://docs.google.com/')) $<HTMLAnchorElement>('rta-sheet').href = res.sheetUrl;
+    // Lockbox-code coverage per self-tour rental + setup warnings (the API never sends the codes themselves).
     const c = res.codes;
     const codesEl = $('rta-codes');
-    if (c && c.hoursInWindow) {
-      codesEl.textContent = 'Lockbox codes: ' + c.hoursFilled + ' of ' + c.hoursInWindow + ' tour hours (8 AM-5 PM starts) left in the next 14 days have a code' +
-        (c.firstMissing ? '. First missing: ' + c.firstMissing + '.' : '.') + (c.skippedRows ? ' ' + c.skippedRows + ' Codes row(s) could not be read; run checkCodes in Apps Script.' : '');
-      codesEl.hidden = false;
-    } else codesEl.hidden = true;
+    codesEl.innerHTML = '';
+    if (c) {
+      const props: { address: string; hoursFilled: number; hoursInWindow: number; firstMissing: string }[] = c.properties || [];
+      props.forEach((p) => codesEl.appendChild(el('p', 'Lockbox codes, ' + p.address.split(',')[0] + ': ' + p.hoursFilled + ' of ' + p.hoursInWindow +
+        ' tour hours in the next 14 days' + (p.firstMissing ? '. First missing: ' + p.firstMissing + '.' : ' covered.'))));
+      if (!props.length && c.hoursInWindow) codesEl.appendChild(el('p', 'Lockbox codes: ' + c.hoursFilled + ' of ' + c.hoursInWindow + ' tour hours in the next 14 days.'));
+      const covered = props.map((p) => p.address + ':');
+      ((c.warnings || []) as string[]).filter((w) => !covered.some((a) => w.startsWith(a)))
+        .forEach((w) => codesEl.appendChild(el('p', '⚠ ' + w, { class: 'rt-warn' })));
+    }
+    codesEl.hidden = !codesEl.childNodes.length;
     render('rta-pending', res.pending || [], 'pending');
     render('rta-upcoming', res.upcoming || [], 'approved');
     renderRecent(res.recent || []);
