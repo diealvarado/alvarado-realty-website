@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { RENTAL_TOUR_API } from '../../data/rentalTour';
+import '../../styles/rental-tour.css';
+---
+<BaseLayout title="Tour requests (admin) | Alvarado Realty Group" description="Rental self-tour requests." noindex analytics={false}>
+  <section class="page-hero rt-hero">
+    <div class="rt-narrow">
+      <p class="eyebrow">Rental self-tour · admin</p>
+      <h1>Tour requests</h1>
+    </div>
+  </section>
+
+  <section class="rt-section rt-admin">
+    <div class="rt-narrow" id="rta" data-api={RENTAL_TOUR_API}>
+      <div id="rt-alert" class="rt-alert" role="alert" hidden></div>
+      <noscript><div class="rt-card"><p style="margin:0">This page needs JavaScript.</p></div></noscript>
+
+      <!-- Emailed Approve / Deny link -->
+      <section id="rta-token" class="rt-card" hidden aria-live="polite">
+        <h2 id="rta-token-title">Review request</h2>
+        <div id="rta-token-body"><p>Loading…</p></div>
+      </section>
+
+      <!-- Admin key sign-in -->
+      <form id="rta-signin" class="rt-card" hidden autocomplete="off">
+        <h2>Sign in</h2>
+        <p>Enter the admin key from the Apps Script log (<code>initSecrets</code>).</p>
+        <div class="rt-field">
+          <label for="rta-key">Admin key</label>
+          <input id="rta-key" type="password" autocomplete="off" spellcheck="false" autocapitalize="off" />
+        </div>
+        <label class="rt-check" style="margin-top:.8rem"><input type="checkbox" id="rta-remember" checked /> <span>Keep me signed in on this device</span></label>
+        <div class="rt-actions"><button class="btn btn-primary" type="submit" id="rta-signin-btn">Sign in</button></div>
+      </form>
+
+      <!-- Dashboard -->
+      <section id="rta-app" hidden>
+        <div class="rt-toolbar">
+          <button class="btn btn-secondary" id="rta-refresh" type="button">Refresh</button>
+          <a class="btn btn-secondary" id="rta-sheet" href="#" target="_blank" rel="noopener">Open sheet (Codes)</a>
+          <button class="btn btn-secondary" id="rta-signout" type="button">Sign out</button>
+        </div>
+        <p id="rta-codes" class="rt-note" hidden></p>
+        <h2 class="rt-sec">Pending approval</h2>
+        <div id="rta-pending"><p class="rt-empty">Loading…</p></div>
+        <h2 class="rt-sec">Approved, upcoming</h2>
+        <div id="rta-upcoming"></div>
+        <h2 class="rt-sec">Recent</h2>
+        <div id="rta-recent"></div>
+      </section>
+    </div>
+  </section>
+
+  <button type="button" class="rt-viewer" id="rta-viewer" aria-label="Close photo"><img id="rta-viewer-img" alt="" /></button>
+  <div id="rta-toast" class="rt-toast" role="status"></div>
+</BaseLayout>
+
+<script>
+  type Res = { ok: boolean; code?: string; message?: string; [k: string]: any };
+  type Req = {
+    id: string; name: string; email: string; phone: string; phoneHref: string; property: string; status: string;
+    when: string; created: string; codeStatus: string; hasImages: boolean; notes: string;
+  };
+
+  const root = document.getElementById('rta') as HTMLElement;
+  const API = root.dataset.api || '';
+  const KEY_NAME = 'rtAdminKey';
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+
+  let key = '';
+  try { key = localStorage.getItem(KEY_NAME) || sessionStorage.getItem(KEY_NAME) || ''; } catch {}
+
+  async function post(body: Record<string, unknown>, timeoutMs = 45000): Promise<Res> {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), timeoutMs);
+    try {
+      // text/plain string body = CORS simple request (no preflight)
+      const r = await fetch(API, { method: 'POST', body: JSON.stringify(body), signal: ctl.signal });
+      return (await r.json()) as Res;
+    } catch {
+      return { ok: false, code: 'NETWORK', message: 'Could not reach the server. Check your connection and try again.' };
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  function el<K extends keyof HTMLElementTagNameMap>(tag: K, text?: string | null, attrs?: Record<string, string>) {
+    const e = document.createElement(tag);
+    if (text != null) e.textContent = text;
+    if (attrs) Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v));
+    return e;
+  }
+  function alertTop(msg: string, ok = false) {
+    const a = $('rt-alert');
+    a.textContent = msg || '';
+    a.classList.toggle('is-ok', ok);
+    a.hidden = !msg;
+  }
+  function toast(msg: string) {
+    const t = $('rta-toast');
+    t.textContent = msg;
+    t.classList.add('is-shown');
+    setTimeout(() => t.classList.remove('is-shown'), 5000);
+  }
+  function busy(btn: HTMLButtonElement, on: boolean) { btn.disabled = on; btn.classList.toggle('is-busy', on); }
+  function show(id: string, on: boolean) { $(id).hidden = !on; }
+  function safeImg(dataUrl: unknown) { return typeof dataUrl === 'string' && /^data:image\/(jpeg|png|webp);base64,/.test(dataUrl) ? dataUrl : ''; }
+
+  // ---------------------------------------------------------------- photos
+  function picBox(label: string) {
+    const b = el('button', null, { class: 'rt-pic', type: 'button' });
+    b.appendChild(el('span', 'Loading ' + label + '…'));
+    b.appendChild(el('b', label));
+    return b;
+  }
+  async function loadPic(box: HTMLElement, body: Record<string, unknown>, kind: 'id' | 'selfie') {
+    const res = await post({ ...body, kind });
+    const label = box.querySelector('b');
+    box.innerHTML = '';
+    const src = res.ok ? safeImg(res.dataUrl) : '';
+    if (!src) box.appendChild(el('span', res.message || 'Not available'));
+    else {
+      const img = el('img', null, { alt: kind === 'id' ? 'ID photo' : 'Selfie' });
+      img.src = src;
+      box.appendChild(img);
+      box.addEventListener('click', () => { $<HTMLImageElement>('rta-viewer-img').src = src; $('rta-viewer').classList.add('is-open'); });
+    }
+    if (label) box.appendChild(label);
+  }
+  function addPics(card: HTMLElement, body: Record<string, unknown>, auto: boolean) {
+    const pics = el('div', null, { class: 'rt-pics' });
+    const idBox = picBox('ID'), selfieBox = picBox('Selfie');
+    pics.appendChild(idBox);
+    pics.appendChild(selfieBox);
+    const go = () => { card.insertBefore(pics, card.querySelector('.rt-actions')); loadPic(idBox, body, 'id'); loadPic(selfieBox, body, 'selfie'); };
+    if (auto) go();
+    else {
+      const b = el('button', 'Show photos', { class: 'btn btn-secondary', type: 'button', style: 'margin-top:.5rem' });
+      b.addEventListener('click', () => { b.remove(); go(); });
+      card.appendChild(b);
+    }
+  }
+  $('rta-viewer').addEventListener('click', () => { $('rta-viewer').classList.remove('is-open'); $<HTMLImageElement>('rta-viewer-img').src = ''; });
+
+  function requestDetails(card: HTMLElement, r: Req) {
+    card.appendChild(el('h3', r.name));
+    card.appendChild(el('p', r.when, { class: 'rt-when' }));
+    card.appendChild(el('p', r.property, { class: 'rt-meta' }));
+    const contact = el('p', null, { class: 'rt-meta' });
+    contact.appendChild(el('a', r.phone, { href: r.phoneHref }));
+    contact.appendChild(document.createTextNode(' · '));
+    contact.appendChild(el('a', r.email, { href: 'mailto:' + r.email }));
+    card.appendChild(contact);
+    card.appendChild(el('p', 'Requested ' + r.created, { class: 'rt-meta rt-hint' }));
+    if (r.codeStatus) card.appendChild(el('span', r.codeStatus, { class: 'rt-badge' + (/pending/i.test(r.codeStatus) ? ' is-warn' : '') }));
+    if (r.notes) card.appendChild(el('p', 'Notes: ' + r.notes, { class: 'rt-meta rt-hint' }));
+  }
+  function resultMessage(action: string, res: Res) {
+    if (action === 'approve') return res.codeSent ? 'Approved. The invite and lockbox code were sent.' : 'Approved. Invite sent. There is no code for that hour yet: add it to the Codes tab and it goes out automatically.';
+    if (action === 'deny') return 'Denied. The renter was notified and the time is open again.';
+    return 'Cancelled. The renter was notified.';
+  }
+
+  // ---------------------------------------------------------------- emailed link (#act=approve|deny&t=TOKEN)
+  async function tokenMode(token: string) {
+    show('rta-token', true);
+    const body = $('rta-token-body');
+    const res = await post({ action: 'tokenInfo', token });
+    body.innerHTML = '';
+    if (!res.ok) {
+      $('rta-token-title').textContent = res.code === 'TOKEN_USED' ? 'Already handled' : res.code === 'TOKEN_EXPIRED' ? 'Link expired' : 'Link not valid';
+      body.appendChild(el('p', res.message || 'This link cannot be used.'));
+      const open = el('a', 'Open the admin page', { class: 'btn btn-secondary', href: location.pathname });
+      body.appendChild(open);
+      return;
+    }
+    const a = res.act === 'deny' ? 'deny' : 'approve';
+    $('rta-token-title').textContent = a === 'approve' ? 'Approve this tour?' : 'Deny this tour?';
+    const card = el('div', null, { class: 'rt-req' });
+    requestDetails(card, res.request as Req);
+    const actions = el('div', null, { class: 'rt-actions' });
+    card.appendChild(actions);
+    if ((res.request as Req).hasImages) addPics(card, { action: 'tokenImage', token }, true);
+    card.appendChild(el('p', (a === 'approve'
+      ? 'Confirming adds the renter to the calendar invite and emails the lockbox code (if it is in the Codes tab).'
+      : 'Confirming releases the time and sends the renter a short note.') + ' This link works once and expires ' + res.expires + '.', { class: 'rt-hint', style: 'margin-top:.8rem' }));
+    const go = el('button', a === 'approve' ? 'Confirm approve' : 'Confirm deny', { class: a === 'approve' ? 'btn btn-primary' : 'btn btn-danger', type: 'button' }) as HTMLButtonElement;
+    const other = el('a', 'Open the admin page instead', { class: 'btn btn-secondary', href: location.pathname });
+    actions.appendChild(other);
+    actions.appendChild(go);
+    body.appendChild(card);
+    go.addEventListener('click', async () => {
+      busy(go, true);
+      const r = await post({ action: 'tokenAct', token });
+      busy(go, false);
+      if (!r.ok) { alertTop(r.message || 'That did not work.'); return; }
+      go.remove();
+      $('rta-token-title').textContent = a === 'approve' ? 'Approved' : 'Denied';
+      alertTop(resultMessage(a, r), true);
+    });
+  }
+
+  // ---------------------------------------------------------------- key-authorized dashboard
+  function signOut(msg = '') {
+    key = '';
+    try { localStorage.removeItem(KEY_NAME); sessionStorage.removeItem(KEY_NAME); } catch {}
+    show('rta-app', false);
+    show('rta-signin', true);
+    alertTop(msg);
+  }
+  function isAuthError(res: Res) { return res.code === 'AUTH' || res.code === 'LOCKED'; }
+
+  async function load() {
+    alertTop('');
+    const btn = $<HTMLButtonElement>('rta-refresh');
+    busy(btn, true);
+    const res = await post({ action: 'adminList', key });
+    busy(btn, false);
+    if (!res.ok) { if (isAuthError(res)) signOut(res.message || 'Sign in again.'); else alertTop(res.message || 'Could not load requests.'); return false; }
+    show('rta-signin', false);
+    show('rta-app', true);
+    if (typeof res.sheetUrl === 'string' && res.sheetUrl.startsWith('https://docs.google.com/')) $<HTMLAnchorElement>('rta-sheet').href = res.sheetUrl;
+    const c = res.codes;
+    const codesEl = $('rta-codes');
+    if (c && c.hoursInWindow) {
+      codesEl.textContent = 'Lockbox codes: ' + c.hoursFilled + ' of ' + c.hoursInWindow + ' tour hours (8 AM-5 PM starts) left in the next 14 days have a code' +
+        (c.firstMissing ? '. First missing: ' + c.firstMissing + '.' : '.') + (c.skippedRows ? ' ' + c.skippedRows + ' Codes row(s) could not be read; run checkCodes in Apps Script.' : '');
+      codesEl.hidden = false;
+    } else codesEl.hidden = true;
+    render('rta-pending', res.pending || [], 'pending');
+    render('rta-upcoming', res.upcoming || [], 'approved');
+    renderRecent(res.recent || []);
+    return true;
+  }
+  function render(targetId: string, list: Req[], kind: 'pending' | 'approved') {
+    const box = $(targetId);
+    box.innerHTML = '';
+    if (!list.length) { box.appendChild(el('p', kind === 'pending' ? 'Nothing waiting for you.' : 'None.', { class: 'rt-empty' })); return; }
+    list.forEach((r) => box.appendChild(card(r, kind)));
+  }
+  function card(r: Req, kind: 'pending' | 'approved') {
+    const c = el('article', null, { class: 'rt-card rt-req' });
+    requestDetails(c, r);
+    const actions = el('div', null, { class: 'rt-actions' });
+    if (kind === 'pending') {
+      const deny = el('button', 'Deny', { class: 'btn btn-danger', type: 'button' }) as HTMLButtonElement;
+      const approve = el('button', 'Approve', { class: 'btn btn-primary', type: 'button' }) as HTMLButtonElement;
+      deny.addEventListener('click', () => act('deny', r, 'Deny this tour? The renter gets a short note and the time is released.', [deny, approve]));
+      approve.addEventListener('click', () => act('approve', r, 'Approve ' + r.name + ' for ' + r.when + '? The renter gets the invite and the lockbox code (if entered).', [deny, approve]));
+      actions.appendChild(deny);
+      actions.appendChild(approve);
+    } else {
+      const cancel = el('button', 'Cancel tour', { class: 'btn btn-danger', type: 'button' }) as HTMLButtonElement;
+      cancel.addEventListener('click', () => act('cancel', r, 'Cancel this approved tour? The renter is emailed that it is cancelled. Change the lockbox code if one was already sent.', [cancel]));
+      actions.appendChild(cancel);
+    }
+    c.appendChild(actions);
+    if (r.hasImages) addPics(c, { action: 'adminImage', key, id: r.id }, kind === 'pending');
+    return c;
+  }
+  async function act(action: 'approve' | 'deny' | 'cancel', r: Req, question: string, buttons: HTMLButtonElement[]) {
+    if (!window.confirm(question)) return;
+    buttons.forEach((b) => (b.disabled = true));
+    const res = await post({ action: action === 'approve' ? 'adminApprove' : action === 'deny' ? 'adminDeny' : 'adminCancel', key, id: r.id });
+    if (!res.ok) {
+      buttons.forEach((b) => (b.disabled = false));
+      if (isAuthError(res)) signOut(res.message || 'Sign in again.');
+      else alertTop(res.message || 'That did not work.');
+      return;
+    }
+    toast(resultMessage(action, res));
+    load();
+  }
+  function renderRecent(list: Req[]) {
+    const box = $('rta-recent');
+    box.innerHTML = '';
+    if (!list.length) { box.appendChild(el('p', 'None.', { class: 'rt-empty' })); return; }
+    const t = el('table', null, { class: 'rt-recent' });
+    list.forEach((r) => {
+      const tr = el('tr');
+      tr.appendChild(el('td', r.when));
+      tr.appendChild(el('td', r.name + ' · ' + r.property.split(',')[0]));
+      tr.appendChild(el('td', r.status));
+      t.appendChild(tr);
+    });
+    box.appendChild(t);
+  }
+
+  $('rta-signin').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const input = $<HTMLInputElement>('rta-key');
+    const k = input.value.trim();
+    if (!k) return;
+    key = k;
+    input.value = '';
+    const btn = $<HTMLButtonElement>('rta-signin-btn');
+    busy(btn, true);
+    const ok = await load();
+    busy(btn, false);
+    if (ok) {
+      try {
+        if ($<HTMLInputElement>('rta-remember').checked) localStorage.setItem(KEY_NAME, key);
+        else sessionStorage.setItem(KEY_NAME, key);
+      } catch {}
+    }
+  });
+  $('rta-refresh').addEventListener('click', () => load());
+  $('rta-signout').addEventListener('click', () => signOut('Signed out.'));
+
+  // ---------------------------------------------------------------- boot
+  // Opening a second emailed link in a tab already on this page only changes the #fragment: reload to handle it.
+  window.addEventListener('hashchange', () => { if (new URLSearchParams(location.hash.replace(/^#/, '')).get('t')) location.reload(); });
+  const hash = new URLSearchParams(location.hash.replace(/^#/, ''));
+  const token = hash.get('t');
+  if (token) {
+    // Drop the token from the address bar and history right away; it stays only in memory.
+    history.replaceState(null, '', location.pathname + location.search);
+    tokenMode(token);
+  } else if (key) {
+    load();
+  } else {
+    show('rta-signin', true);
+  }
+</script>

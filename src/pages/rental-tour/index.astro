@@ -1,0 +1,548 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+import { RENTAL_TOUR_API, rentalTour } from '../../data/rentalTour';
+import '../../styles/rental-tour.css';
+---
+<BaseLayout
+  title="Schedule a Rental Self-Tour | Alvarado Realty Group"
+  description="Book a self-guided tour of an Alvarado Realty Group rental: pick a time, verify your ID, and get your lockbox code by email once confirmed."
+  noindex
+>
+  <section class="page-hero rt-hero">
+    <div class="rt-narrow">
+      <p class="eyebrow">Rental self-tour</p>
+      <h1>Schedule a tour</h1>
+      <p>Pick a time, verify your ID, and tour the home on your own once Diego confirms your request.</p>
+      <ol class="rt-steps" aria-hidden="true">
+        <li class="is-on" data-step-label="1">Your tour</li>
+        <li data-step-label="2">Verify ID</li>
+        <li data-step-label="3">Done</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="rt-section">
+    <div
+      class="rt-narrow"
+      id="rt"
+      data-api={RENTAL_TOUR_API}
+      data-text-phone={rentalTour.textPhone}
+      data-sms={rentalTour.smsHref}
+      data-max-side={rentalTour.maxImageSide}
+      data-selfie-max-age={rentalTour.selfieMaxAgeMinutes}
+    >
+      <div id="rt-alert" class="rt-alert" role="alert" hidden></div>
+
+      <div id="rt-loading" class="rt-card"><p style="margin:0">Loading open tour times…</p></div>
+      <noscript><div class="rt-card"><p style="margin:0">Online booking needs JavaScript. To schedule a tour, text <a href={rentalTour.smsHref}>{rentalTour.textPhone}</a> with your name, the address, your email, and the time you want.</p></div></noscript>
+
+      <!-- STEP 1: details -->
+      <form id="rt-step1" class="rt-card" novalidate hidden>
+        <h2>Your tour</h2>
+        <div class="rt-row">
+          <div class="rt-field" data-f="property">
+            <label for="rt-property">Rental address</label>
+            <select id="rt-property" required></select>
+            <div class="rt-err" id="rt-err-property"></div>
+          </div>
+          <div class="rt-field" data-f="name">
+            <label for="rt-name">Full name</label>
+            <input id="rt-name" type="text" autocomplete="name" maxlength="80" required />
+            <div class="rt-err" id="rt-err-name"></div>
+          </div>
+          <div class="rt-row two">
+            <div class="rt-field" data-f="email">
+              <label for="rt-email">Email</label>
+              <input id="rt-email" type="email" autocomplete="email" inputmode="email" maxlength="254" required />
+              <div class="rt-err" id="rt-err-email"></div>
+            </div>
+            <div class="rt-field" data-f="phone">
+              <label for="rt-phone">Mobile phone</label>
+              <input id="rt-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="(214) 555-0123" required />
+              <div class="rt-err" id="rt-err-phone"></div>
+            </div>
+          </div>
+          <div class="rt-row two">
+            <div class="rt-field" data-f="day">
+              <label for="rt-day">Day</label>
+              <select id="rt-day" required></select>
+            </div>
+            <div class="rt-field" data-f="slotStart">
+              <label for="rt-time">Time <span class="rt-hint" style="display:inline">(1 hour, Central)</span></label>
+              <select id="rt-time" required></select>
+            </div>
+          </div>
+          <div class="rt-err" id="rt-err-slotStart"></div>
+          <p class="rt-note">
+            Tours must be booked at least {rentalTour.minLeadHours} hours ahead. Want a sooner time?
+            <a id="rt-sms-soon" href={rentalTour.smsHref}>Text {rentalTour.textPhone}</a>
+            with your name, the address, your email, your phone, and the time you want.
+          </p>
+          <div class="rt-hp" aria-hidden="true">
+            <label>Website <input id="rt-website" type="text" tabindex="-1" autocomplete="off" /></label>
+          </div>
+        </div>
+        <div class="rt-actions">
+          <button type="submit" class="btn btn-primary" id="rt-next">Continue</button>
+        </div>
+      </form>
+
+      <!-- STEP 2: consent + photos -->
+      <section id="rt-step2" class="rt-card" hidden aria-labelledby="rt-h2">
+        <h2 id="rt-h2">Verify your identity</h2>
+        <ul class="rt-summary" id="rt-sum2"></ul>
+
+        <div class="rt-consent">
+          <h3>Photo consent</h3>
+          <p style="font-size:.92rem;margin-bottom:.3rem">To protect the home, Diego Alvarado personally checks each renter's ID before a self-tour.</p>
+          <ul>
+            <li>You will add a photo of your government-issued ID and take a selfie.</li>
+            <li>They are used only so Diego can look at them and confirm who is touring. No automated face matching or face scan is done.</li>
+            <li>They are stored privately, are not sold, and are not shared with anyone else unless the law requires it.</li>
+            <li>They are deleted within {rentalTour.retentionDays} days after your tour date.</li>
+          </ul>
+          <label class="rt-check"><input type="checkbox" id="rt-consent" /> <span>I have read this and I consent to Alvarado Realty Group collecting my ID photo and selfie for this purpose (Texas Business &amp; Commerce Code § 503.001).</span></label>
+          <div class="rt-err" id="rt-err-consent"></div>
+        </div>
+
+        <div class="rt-upload is-disabled" id="rt-up-id">
+          <h3>1. Photo of your ID</h3>
+          <p class="rt-hint">Driver license, state ID, or passport. All four corners visible, no glare. You can take a new photo or use one already on your phone.</p>
+          <div class="rt-btns">
+            <button type="button" class="btn btn-secondary" id="rt-id-cam" disabled>Take photo</button>
+            <button type="button" class="btn btn-secondary" id="rt-id-pick" disabled>Choose from phone</button>
+          </div>
+          <input class="rt-file" type="file" id="rt-id-cam-file" accept="image/*" capture="environment" disabled />
+          <input class="rt-file" type="file" id="rt-id-pick-file" accept="image/*" disabled />
+          <img class="rt-preview" id="rt-id-prev" alt="ID photo preview" />
+          <div class="rt-err" id="rt-err-idImage"></div>
+        </div>
+
+        <div class="rt-upload is-disabled" id="rt-up-selfie">
+          <h3>2. Selfie</h3>
+          <p class="rt-hint">Take it now with your front camera, in good light, no hat or sunglasses. Saved photos can't be used for the selfie.</p>
+          <div class="rt-btns">
+            <button type="button" class="btn btn-secondary" id="rt-selfie-btn" disabled>Take selfie</button>
+          </div>
+          <input class="rt-file" type="file" id="rt-selfie-file" accept="image/*" capture="user" disabled />
+          <img class="rt-preview" id="rt-selfie-prev" alt="Selfie preview" />
+          <div class="rt-err" id="rt-err-selfieImage"></div>
+        </div>
+
+        <div class="rt-actions">
+          <button type="button" class="btn btn-secondary" id="rt-back">Back</button>
+          <button type="button" class="btn btn-primary" id="rt-submit" disabled>Send tour request</button>
+        </div>
+      </section>
+
+      <!-- STEP 3: confirmation -->
+      <section id="rt-step3" class="rt-card rt-done" hidden aria-live="polite">
+        <div class="rt-big-check" aria-hidden="true">✓</div>
+        <h2>Request received</h2>
+        <p>Diego will review your ID and selfie. Your time is held while he reviews.</p>
+        <ul class="rt-summary" id="rt-sum3"></ul>
+        <p>Once your tour is confirmed you'll get an email at <strong id="rt-done-email"></strong> with the lockbox code and instructions. Please check your spam folder.</p>
+        <p>Your tour is not confirmed until you get that email. Questions? Text <a href={rentalTour.smsHref}>{rentalTour.textPhone}</a>.</p>
+      </section>
+
+      <p class="rt-hint" style="text-align:center;margin-top:1.5rem">{site.brandSecondary} · {site.brokerage} · <a href="/privacy/">Privacy</a></p>
+    </div>
+  </section>
+
+  <div class="rt-cam" id="rt-cam" role="dialog" aria-modal="true" aria-label="Take a selfie">
+    <video id="rt-cam-video" playsinline muted autoplay></video>
+    <p>Center your face and tap Capture.</p>
+    <div class="rt-actions">
+      <button type="button" class="btn btn-outline-light" id="rt-cam-cancel">Cancel</button>
+      <button type="button" class="btn btn-light" id="rt-cam-shot">Capture</button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  type Slot = { start: number; end: number; day: string; dayLabel: string; label: string };
+  type Res = { ok: boolean; code?: string; message?: string; errors?: Record<string, string>; [k: string]: any };
+
+  const root = document.getElementById('rt') as HTMLElement;
+  const API = root.dataset.api || '';
+  const TEXT_PHONE = root.dataset.textPhone || '';
+  const SMS = root.dataset.sms || '';
+  const MAX_SIDE = Number(root.dataset.maxSide) || 1200;
+  const SELFIE_MAX_AGE_MS = (Number(root.dataset.selfieMaxAge) || 10) * 60000;
+  const MAX_DATAURL = 2_000_000;
+
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+  const state = {
+    slots: {} as Record<string, Slot[]>,
+    details: null as null | { property: string; name: string; email: string; phone: string; slotStart: number; website: string },
+    whenLabel: '',
+    idImage: '',
+    selfieImage: '',
+    selfieSource: '' as '' | 'live' | 'file',
+  };
+
+  // ---------------------------------------------------------------- API (CORS simple requests only)
+  async function call(method: 'GET' | 'POST', payload: Record<string, unknown>, timeoutMs: number): Promise<Res> {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), timeoutMs);
+    try {
+      let res: Response;
+      if (method === 'GET') {
+        const u = new URL(API);
+        Object.entries(payload).forEach(([k, v]) => { if (v != null && v !== '') u.searchParams.set(k, String(v)); });
+        res = await fetch(u, { method: 'GET', cache: 'no-store', signal: ctl.signal });
+      } else {
+        // A string body is sent as text/plain, so the browser makes no CORS preflight (Apps Script can't answer one).
+        res = await fetch(API, { method: 'POST', body: JSON.stringify(payload), signal: ctl.signal });
+      }
+      return (await res.json()) as Res;
+    } catch {
+      return { ok: false, code: 'NETWORK', message: 'Could not reach the booking system. Check your connection and try again, or text ' + TEXT_PHONE + '.' };
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  // ---------------------------------------------------------------- UI helpers
+  function el<K extends keyof HTMLElementTagNameMap>(tag: K, text?: string | null, attrs?: Record<string, string>) {
+    const e = document.createElement(tag);
+    if (text != null) e.textContent = text;
+    if (attrs) Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v));
+    return e;
+  }
+  function alertTop(msg: string, ok = false) {
+    const a = $('rt-alert');
+    a.textContent = msg || '';
+    a.classList.toggle('is-ok', ok);
+    a.hidden = !msg;
+    if (msg) a.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function busy(btn: HTMLButtonElement, on: boolean) { btn.disabled = on; btn.classList.toggle('is-busy', on); }
+  function goStep(n: number) {
+    [1, 2, 3].forEach((i) => { $('rt-step' + i).hidden = i !== n; });
+    document.querySelectorAll('[data-step-label]').forEach((li) => li.classList.toggle('is-on', Number((li as HTMLElement).dataset.stepLabel) <= n));
+    window.scrollTo({ top: 0 });
+  }
+  function clearErrors() {
+    document.querySelectorAll('#rt .rt-err').forEach((e) => { e.textContent = ''; });
+    document.querySelectorAll('#rt .rt-field.is-bad').forEach((e) => e.classList.remove('is-bad'));
+  }
+  function setError(field: string, msg: string) {
+    const e = document.getElementById('rt-err-' + field);
+    if (e) e.textContent = msg;
+    const f = document.querySelector('#rt .rt-field[data-f="' + field + '"]');
+    if (f) f.classList.add('is-bad');
+  }
+
+  // ---------------------------------------------------------------- step 1
+  const propSel = $<HTMLSelectElement>('rt-property');
+  const daySel = $<HTMLSelectElement>('rt-day');
+  const timeSel = $<HTMLSelectElement>('rt-time');
+
+  function fillProperties(props: string[], selected: string) {
+    propSel.innerHTML = '';
+    if (props.length !== 1) propSel.appendChild(el('option', 'Choose a rental', { value: '' }));
+    props.forEach((p) => propSel.appendChild(el('option', p, { value: p })));
+    if (selected) propSel.value = selected;
+    fillDays();
+  }
+  function fillDays() {
+    const prev = daySel.value;
+    daySel.innerHTML = '';
+    const list = state.slots[propSel.value] || [];
+    if (!propSel.value) { daySel.appendChild(el('option', 'Choose a rental first', { value: '' })); daySel.disabled = true; fillTimes(); return; }
+    daySel.disabled = false;
+    if (!list.length) { daySel.appendChild(el('option', 'No open days. Text ' + TEXT_PHONE, { value: '' })); fillTimes(); return; }
+    daySel.appendChild(el('option', 'Choose a day', { value: '' }));
+    const seen = new Set<string>();
+    list.forEach((s) => { if (!seen.has(s.day)) { seen.add(s.day); daySel.appendChild(el('option', s.dayLabel, { value: s.day })); } });
+    if (prev && seen.has(prev)) daySel.value = prev;
+    fillTimes();
+  }
+  function fillTimes() {
+    const prev = timeSel.value;
+    timeSel.innerHTML = '';
+    const list = (state.slots[propSel.value] || []).filter((s) => s.day === daySel.value);
+    if (!daySel.value) { timeSel.appendChild(el('option', 'Choose a day first', { value: '' })); timeSel.disabled = true; return; }
+    timeSel.disabled = false;
+    timeSel.appendChild(el('option', 'Choose a time', { value: '' }));
+    list.forEach((s) => timeSel.appendChild(el('option', s.label, { value: String(s.start) })));
+    if (prev && list.some((s) => String(s.start) === prev)) timeSel.value = prev;
+  }
+  function readDetails() {
+    return {
+      property: propSel.value,
+      name: $<HTMLInputElement>('rt-name').value.trim(),
+      email: $<HTMLInputElement>('rt-email').value.trim(),
+      phone: $<HTMLInputElement>('rt-phone').value.trim(),
+      slotStart: Number(timeSel.value) || 0,
+      website: $<HTMLInputElement>('rt-website').value,
+    };
+  }
+  function clientValidate(d: ReturnType<typeof readDetails>) {
+    let ok = true;
+    if (!d.property) { setError('property', 'Choose a rental from the list.'); ok = false; }
+    if (d.name.split(/\s+/).filter(Boolean).length < 2) { setError('name', 'Enter your first and last name.'); ok = false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { setError('email', 'Enter a valid email address.'); ok = false; }
+    const digits = d.phone.replace(/\D/g, '');
+    if (!(digits.length === 10 || (digits.length === 11 && digits[0] === '1'))) { setError('phone', 'Enter a 10-digit US mobile number.'); ok = false; }
+    if (!d.slotStart) { setError('slotStart', 'Choose a day and time.'); ok = false; }
+    return ok;
+  }
+  /** Prefills the "text us for a sooner tour" message with whatever has been typed so far. */
+  function updateSoonSms() {
+    const d = readDetails();
+    const parts = ['Hi, I would like a sooner self-tour.'];
+    if (d.name) parts.push('Name: ' + d.name);
+    if (d.property) parts.push('Address: ' + d.property);
+    if (d.email) parts.push('Email: ' + d.email);
+    if (d.phone) parts.push('Phone: ' + d.phone);
+    parts.push('Time I want: ');
+    $<HTMLAnchorElement>('rt-sms-soon').href = SMS + '?&body=' + encodeURIComponent(parts.join('\n'));
+  }
+  function summary(listId: string, d: NonNullable<typeof state.details>, when: string) {
+    const ul = $(listId);
+    ul.innerHTML = '';
+    ([['Address', d.property], ['When', when], ['Name', d.name], ['Email', d.email], ['Phone', d.phone]] as const).forEach(([k, v]) => {
+      const li = el('li');
+      li.appendChild(el('span', k));
+      li.appendChild(el('span', v));
+      ul.appendChild(li);
+    });
+  }
+  function handleServerError(res: Res, fromStep: number) {
+    if (res.code === 'SLOT_TAKEN') {
+      state.slots[propSel.value] = (res.slots as Slot[]) || [];
+      timeSel.value = '';
+      fillDays();
+      goStep(1);
+      setError('slotStart', res.message || 'That time is no longer available.');
+      alertTop(res.message || 'That time is no longer available. Please pick another time.');
+      return;
+    }
+    if (res.code === 'INVALID' && res.errors) {
+      const step1 = ['property', 'name', 'email', 'phone', 'slotStart'];
+      if (fromStep === 2 && Object.keys(res.errors).some((k) => step1.includes(k))) goStep(1);
+      Object.entries(res.errors).forEach(([k, v]) => setError(k, v));
+      alertTop('Please fix the highlighted items.');
+      return;
+    }
+    alertTop(res.message || 'Something went wrong. Please try again, or text ' + TEXT_PHONE + '.');
+  }
+
+  propSel.addEventListener('change', () => { daySel.value = ''; fillDays(); updateSoonSms(); });
+  daySel.addEventListener('change', fillTimes);
+  ['rt-name', 'rt-email', 'rt-phone'].forEach((id) => $(id).addEventListener('change', updateSoonSms));
+  // Clear a field's error as soon as it is edited.
+  document.querySelectorAll('#rt .rt-field').forEach((f) => {
+    const clear = () => { f.classList.remove('is-bad'); const e = document.getElementById('rt-err-' + (f as HTMLElement).dataset.f); if (e) e.textContent = ''; };
+    f.addEventListener('input', clear);
+    f.addEventListener('change', clear);
+  });
+  timeSel.addEventListener('change', () => { $('rt-err-slotStart').textContent = ''; });
+
+  $('rt-step1').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    clearErrors();
+    alertTop('');
+    const d = readDetails();
+    if (!clientValidate(d)) return;
+    const btn = $<HTMLButtonElement>('rt-next');
+    busy(btn, true);
+    const res = await call('POST', { action: 'check', ...d }, 30000);
+    busy(btn, false);
+    if (!res.ok) return handleServerError(res, 1);
+    state.details = d;
+    state.whenLabel = res.whenLabel || '';
+    summary('rt-sum2', d, state.whenLabel);
+    goStep(2);
+  });
+
+  // ---------------------------------------------------------------- step 2: consent + photos
+  const consent = $<HTMLInputElement>('rt-consent');
+  const photoControls = ['rt-id-cam', 'rt-id-pick', 'rt-id-cam-file', 'rt-id-pick-file', 'rt-selfie-btn', 'rt-selfie-file'];
+  function updateSubmit() { $<HTMLButtonElement>('rt-submit').disabled = !(consent.checked && state.idImage && state.selfieImage); }
+  consent.addEventListener('change', () => {
+    photoControls.forEach((id) => { ($(id) as HTMLButtonElement | HTMLInputElement).disabled = !consent.checked; });
+    $('rt-up-id').classList.toggle('is-disabled', !consent.checked);
+    $('rt-up-selfie').classList.toggle('is-disabled', !consent.checked);
+    if (consent.checked) $('rt-err-consent').textContent = '';
+    updateSubmit();
+  });
+  $('rt-back').addEventListener('click', () => { alertTop(''); goStep(1); });
+
+  /** Draws the source onto a canvas no larger than MAX_SIDE and re-encodes as JPEG (also drops GPS/EXIF data). */
+  function toJpeg(src: CanvasImageSource, w: number, h: number): string {
+    const sc = Math.min(1, MAX_SIDE / Math.max(w, h));
+    const c = document.createElement('canvas');
+    c.width = Math.round(w * sc);
+    c.height = Math.round(h * sc);
+    const ctx = c.getContext('2d');
+    if (!ctx) throw new Error('This browser could not process the photo.');
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.drawImage(src, 0, 0, c.width, c.height);
+    let q = 0.82;
+    let data = c.toDataURL('image/jpeg', q);
+    while (data.length > MAX_DATAURL && q > 0.45) { q -= 0.12; data = c.toDataURL('image/jpeg', q); }
+    if (!data.startsWith('data:image/jpeg')) throw new Error('This browser could not process the photo.');
+    return data;
+  }
+  function fileToJpeg(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      if (!/^image\//.test(file.type || 'image/')) return reject(new Error('Please choose a photo.'));
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => {
+        try { resolve(toJpeg(img, img.naturalWidth, img.naturalHeight)); } catch (e) { reject(e); } finally { URL.revokeObjectURL(url); }
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Could not read that photo. Please try again.')); };
+      img.src = url;
+    });
+  }
+  function setPhoto(kind: 'id' | 'selfie', dataUrl: string) {
+    const key = kind === 'id' ? 'idImage' : 'selfieImage';
+    state[key] = dataUrl.substring(dataUrl.indexOf(',') + 1);
+    const prev = $<HTMLImageElement>(kind === 'id' ? 'rt-id-prev' : 'rt-selfie-prev');
+    prev.src = dataUrl;
+    prev.classList.add('is-shown');
+    updateSubmit();
+  }
+
+  // ID: camera or photo library
+  $('rt-id-cam').addEventListener('click', () => $('rt-id-cam-file').click());
+  $('rt-id-pick').addEventListener('click', () => $('rt-id-pick-file').click());
+  ['rt-id-cam-file', 'rt-id-pick-file'].forEach((id) => {
+    const input = $<HTMLInputElement>(id);
+    input.addEventListener('change', async () => {
+      const f = input.files && input.files[0];
+      input.value = '';
+      if (!f) return;
+      const err = $('rt-err-idImage');
+      err.textContent = 'Processing photo…';
+      try {
+        setPhoto('id', await fileToJpeg(f));
+        err.textContent = '';
+        $('rt-id-cam').textContent = 'Retake photo';
+      } catch (e) {
+        state.idImage = '';
+        err.textContent = (e as Error).message;
+        updateSubmit();
+      }
+    });
+  });
+
+  // Selfie: must be fresh. Live front camera first; fallback = camera-only file input + recency check.
+  const cam = $('rt-cam');
+  const video = $<HTMLVideoElement>('rt-cam-video');
+  let stream: MediaStream | null = null;
+  let liveFailed = false;
+  const selfieInput = $<HTMLInputElement>('rt-selfie-file');
+
+  function stopCam() {
+    if (stream) stream.getTracks().forEach((t) => t.stop());
+    stream = null;
+    video.srcObject = null;
+    cam.classList.remove('is-open');
+  }
+  async function openLiveCamera(): Promise<boolean> {
+    if (liveFailed || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return false;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 1280 } }, audio: false });
+      video.srcObject = stream;
+      cam.classList.add('is-open');
+      await video.play().catch(() => {});
+      return true;
+    } catch {
+      liveFailed = true;
+      stopCam();
+      return false;
+    }
+  }
+  $('rt-selfie-btn').addEventListener('click', async () => {
+    const err = $('rt-err-selfieImage');
+    err.textContent = '';
+    const hasLive = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+    // No live camera (or it was blocked): open the phone camera directly, still inside this tap.
+    if (liveFailed || !hasLive) { selfieInput.click(); return; }
+    if (await openLiveCamera()) return;
+    err.textContent = 'Camera access is blocked. Tap "Open camera" to take the selfie with your phone camera.';
+    $('rt-selfie-btn').textContent = 'Open camera';
+  });
+  $('rt-cam-cancel').addEventListener('click', stopCam);
+  $('rt-cam-shot').addEventListener('click', () => {
+    const w = video.videoWidth, h = video.videoHeight;
+    if (!w || !h) return;
+    try {
+      setPhoto('selfie', toJpeg(video, w, h));
+      state.selfieSource = 'live';
+      $('rt-selfie-btn').textContent = 'Retake selfie';
+      $('rt-err-selfieImage').textContent = '';
+    } catch (e) {
+      $('rt-err-selfieImage').textContent = (e as Error).message;
+    }
+    stopCam();
+  });
+  selfieInput.addEventListener('change', async () => {
+    const f = selfieInput.files && selfieInput.files[0];
+    selfieInput.value = '';
+    if (!f) return;
+    const err = $('rt-err-selfieImage');
+    const age = Date.now() - (f.lastModified || 0);
+    if (!f.lastModified || age > SELFIE_MAX_AGE_MS || age < -SELFIE_MAX_AGE_MS) {
+      state.selfieImage = '';
+      updateSubmit();
+      err.textContent = "That photo isn't new. Please take a new selfie with your camera right now.";
+      return;
+    }
+    err.textContent = 'Processing photo…';
+    try {
+      setPhoto('selfie', await fileToJpeg(f));
+      state.selfieSource = 'file';
+      err.textContent = '';
+      $('rt-selfie-btn').textContent = 'Retake selfie';
+    } catch (e) {
+      state.selfieImage = '';
+      err.textContent = (e as Error).message;
+      updateSubmit();
+    }
+  });
+
+  $('rt-submit').addEventListener('click', async () => {
+    clearErrors();
+    alertTop('');
+    if (!consent.checked) { $('rt-err-consent').textContent = 'Please check the consent box first.'; return; }
+    const d = state.details;
+    if (!d) { goStep(1); return; }
+    const btn = $<HTMLButtonElement>('rt-submit');
+    const back = $<HTMLButtonElement>('rt-back');
+    busy(btn, true);
+    back.disabled = true;
+    const res = await call('POST', {
+      action: 'submit', ...d, consent: true, idImage: state.idImage, selfieImage: state.selfieImage, selfieSource: state.selfieSource,
+    }, 90000);
+    busy(btn, false);
+    back.disabled = false;
+    if (!res.ok) { updateSubmit(); return handleServerError(res, 2); }
+    summary('rt-sum3', d, res.whenLabel || state.whenLabel);
+    $('rt-done-email').textContent = d.email;
+    state.idImage = state.selfieImage = '';
+    goStep(3);
+  });
+
+  // ---------------------------------------------------------------- boot
+  (async () => {
+    const hint = new URLSearchParams(location.search).get('property') || '';
+    const res = await call('GET', { action: 'config', property: hint }, 30000);
+    $('rt-loading').hidden = true;
+    if (!res.ok) {
+      alertTop((res.message || 'Online booking is not available right now.') + (res.code === 'NETWORK' ? '' : ' To schedule, text ' + TEXT_PHONE + '.'));
+      return;
+    }
+    state.slots = res.slots || {};
+    fillProperties(res.properties || [], res.selected || '');
+    $('rt-step1').hidden = false;
+    updateSoonSms();
+  })();
+</script>

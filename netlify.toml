@@ -9,6 +9,19 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Rental self-tour pages: keep out of search (pages also carry a robots meta tag).
+[[headers]]
+  for = "/rental-tour/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Admin page: emailed approve/deny links carry a token in the #fragment; never leak the URL or cache the page.
+[[headers]]
+  for = "/rental-tour/admin/*"
+  [headers.values]
+    Referrer-Policy = "no-referrer"
+    Cache-Control = "no-store"
+
 [[redirects]]
   from = "/invest"
   to = "/investors/"
