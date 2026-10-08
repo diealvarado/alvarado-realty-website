@@ -82,11 +82,12 @@
 .rt-viewer img{max-width:100%;max-height:100%;border-radius:8px}
 .rt-toast{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);background:var(--navy);color:#fff;padding:.85rem 1.1rem;border-radius:12px;font-weight:600;z-index:110;max-width:92vw;display:none}
 .rt-toast.is-shown{display:block}
-.rt-noself{background:var(--accent-soft);border:1px solid #b7e2d7;border-radius:12px;padding:1.1rem 1.15rem;display:grid;gap:.6rem}
-.rt-noself h3{margin:0;font-size:1.05rem;color:var(--navy)}
-.rt-noself p{margin:0;font-size:.95rem}
+.rt-note p{margin:0}
+.rt-noself{display:grid;gap:.75rem}
+.rt-noself p{color:var(--ink);font-weight:600}
 .rt-noself .btn{min-height:50px;width:100%}
-#rt-bookable{margin-top:.85rem}
+.rt-field select:disabled{background:#eef2f6;color:var(--muted);border-color:var(--border);cursor:not-allowed;opacity:1}
+.rt-field:has(select:disabled) label{color:var(--muted)}
 .rt-codes p{margin:0 0 .35rem}
 .rt-codes p:last-child{margin-bottom:0}
 .rt-codes .rt-warn{color:#9a5b00;font-weight:600}

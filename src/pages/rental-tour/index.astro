@@ -46,28 +46,20 @@ import '../../styles/rental-tour.css';
             <select id="rt-property" required></select>
             <div class="rt-err" id="rt-err-property"></div>
           </div>
-          <div id="rt-noself" class="rt-noself" hidden role="status" aria-live="polite">
-            <h3>Self-guided tours aren't available for this home</h3>
-            <p>To schedule a tour, text <a href={rentalTour.smsHref}>{rentalTour.textPhone}</a> with your name, the address, and the times you prefer.</p>
-            <a class="btn btn-primary" id="rt-noself-sms" href={rentalTour.smsHref}>Text {rentalTour.textPhone}</a>
-          </div>
-        </div>
-        <div id="rt-bookable">
-        <div class="rt-row">
           <div class="rt-field" data-f="name">
             <label for="rt-name">Full name</label>
-            <input id="rt-name" type="text" autocomplete="name" maxlength="80" required />
+            <input id="rt-name" name="name" type="text" autocomplete="name" maxlength="80" required />
             <div class="rt-err" id="rt-err-name"></div>
           </div>
           <div class="rt-row two">
             <div class="rt-field" data-f="email">
               <label for="rt-email">Email</label>
-              <input id="rt-email" type="email" autocomplete="email" inputmode="email" maxlength="254" required />
+              <input id="rt-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required />
               <div class="rt-err" id="rt-err-email"></div>
             </div>
             <div class="rt-field" data-f="phone">
               <label for="rt-phone">Mobile phone</label>
-              <input id="rt-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="(214) 555-0123" required />
+              <input id="rt-phone" name="tel" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" placeholder="(214) 555-0123" required aria-describedby="rt-err-phone" />
               <div class="rt-err" id="rt-err-phone"></div>
             </div>
           </div>
@@ -82,18 +74,23 @@ import '../../styles/rental-tour.css';
             </div>
           </div>
           <div class="rt-err" id="rt-err-slotStart"></div>
-          <p class="rt-note">
-            Tours must be booked at least {rentalTour.minLeadHours} hours ahead. Want a sooner time?
-            <a id="rt-sms-soon" href={rentalTour.smsHref}>Text {rentalTour.textPhone}</a>
-            with your name, the address, your email, your phone, and the time you want.
-          </p>
+          <div class="rt-note" role="status" aria-live="polite">
+            <p id="rt-note-self">
+              Tours must be booked at least {rentalTour.minLeadHours} hours ahead. Want a sooner time?
+              <a id="rt-sms-soon" href={rentalTour.smsHref}>Text {rentalTour.textPhone}</a>
+              with your name, the address, your email, your phone, and the time you want.
+            </p>
+            <div id="rt-note-noself" class="rt-noself" hidden>
+              <p>This property isn't available for self-tours. Please text <a href={rentalTour.smsHref}>{rentalTour.textPhone}</a> with the property address, your full name, and your email, and we'll let you know the tour hours.</p>
+              <a class="btn btn-primary" id="rt-noself-sms" href={rentalTour.smsHref}>Text {rentalTour.textPhone}</a>
+            </div>
+          </div>
           <div class="rt-hp" aria-hidden="true">
-            <label>Website <input id="rt-website" type="text" tabindex="-1" autocomplete="off" /></label>
+            <label>Leave this empty <input id="rt-website" name="rt_hp_leave_empty" type="text" tabindex="-1" autocomplete="off" data-1p-ignore data-lpignore="true" /></label>
           </div>
         </div>
         <div class="rt-actions">
           <button type="submit" class="btn btn-primary" id="rt-next">Continue</button>
-        </div>
         </div>
       </form>
 
@@ -194,7 +191,8 @@ import '../../styles/rental-tour.css';
   };
 
   // ---------------------------------------------------------------- API (CORS simple requests only)
-  async function call(method: 'GET' | 'POST', payload: Record<string, unknown>, timeoutMs: number): Promise<Res> {
+  /** One request. Network failures, timeouts, and non-JSON answers (Google's HTML error pages) come back as {ok:false}. */
+  async function callOnce(method: 'GET' | 'POST', payload: Record<string, unknown>, timeoutMs: number): Promise<Res> {
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), timeoutMs);
     try {
@@ -207,12 +205,30 @@ import '../../styles/rental-tour.css';
         // A string body is sent as text/plain, so the browser makes no CORS preflight (Apps Script can't answer one).
         res = await fetch(API, { method: 'POST', body: JSON.stringify(payload), signal: ctl.signal });
       }
-      return (await res.json()) as Res;
-    } catch {
-      return { ok: false, code: 'NETWORK', message: 'Could not reach the booking system. Check your connection and try again, or text ' + TEXT_PHONE + '.' };
+      const text = await res.text();
+      try { return JSON.parse(text) as Res; } catch { return { ok: false, code: 'BAD_RESPONSE', message: '' }; }
+    } catch (e) {
+      const timedOut = ctl.signal.aborted || (e as Error)?.name === 'AbortError';
+      return { ok: false, code: timedOut ? 'TIMEOUT' : 'NETWORK', message: '' };
     } finally {
       clearTimeout(timer);
     }
+  }
+  /** Read-only calls (config, check) retry once by themselves; the final submit never auto-retries. */
+  async function call(method: 'GET' | 'POST', payload: Record<string, unknown>, timeoutMs: number): Promise<Res> {
+    const transient = (r: Res) => !r.ok && ['TIMEOUT', 'NETWORK', 'BAD_RESPONSE'].includes(String(r.code));
+    const safe = method === 'GET' || payload.action === 'check';
+    let res = await callOnce(method, payload, timeoutMs);
+    if (safe && transient(res)) res = await callOnce(method, payload, timeoutMs);
+    if (!transient(res)) return res;
+    if (!navigator.onLine) {
+      res.message = 'Your phone seems to be offline. Check your connection and try again, or text ' + TEXT_PHONE + '.';
+    } else if (payload.action === 'submit') {
+      res.message = "We didn't get an answer from the booking system. Your request may still have gone through: check your email for a confirmation in a few minutes before trying again, or text " + TEXT_PHONE + '.';
+    } else {
+      res.message = 'The booking system is slow to answer right now. Please try again in a minute, or text ' + TEXT_PHONE + '.';
+    }
+    return res;
   }
 
   // ---------------------------------------------------------------- UI helpers
@@ -255,16 +271,23 @@ import '../../styles/rental-tour.css';
   const IS_IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   function smsHref(body: string) { return SMS + (IS_IOS ? '&' : '?') + 'body=' + encodeURIComponent(body); }
 
-  /** Self-tour rental: show the booking fields. Otherwise: hide them and show the "text us" note + button. */
+  /** True when the chosen rental is listed but can't be booked online (Self-tour = N). */
+  function isBlocked() { const p = propSel.value; return !!p && state.selfTour[p] === false; }
+
+  /**
+   * Self-tour rental: normal note, day/time pickers and Continue enabled.
+   * Otherwise: same layout, day/time grayed out, Continue disabled, and the note box asks the renter to text us.
+   */
   function updateMode() {
-    const p = propSel.value;
-    const blocked = !!p && state.selfTour[p] === false;
-    $('rt-noself').hidden = !blocked;
-    $('rt-bookable').hidden = blocked;
+    const blocked = isBlocked();
+    $('rt-note-self').hidden = blocked;
+    $('rt-note-noself').hidden = !blocked;
+    $<HTMLButtonElement>('rt-next').disabled = blocked;
     if (blocked) {
       const name = $<HTMLInputElement>('rt-name').value.trim();
+      const email = $<HTMLInputElement>('rt-email').value.trim();
       $<HTMLAnchorElement>('rt-noself-sms').href = smsHref(
-        "Hi, I'd like to schedule a tour of " + p + '.\nMy name: ' + name + '\nTimes I prefer: ');
+        "Hi, I'd like to tour " + propSel.value + '.\nFull name: ' + name + '\nEmail: ' + email);
     }
   }
 
@@ -280,6 +303,7 @@ import '../../styles/rental-tour.css';
     daySel.innerHTML = '';
     const list = state.slots[propSel.value] || [];
     if (!propSel.value) { daySel.appendChild(el('option', 'Choose a rental first', { value: '' })); daySel.disabled = true; fillTimes(); return; }
+    if (isBlocked()) { daySel.appendChild(el('option', 'Not available for self-tour', { value: '' })); daySel.disabled = true; fillTimes(); return; }
     daySel.disabled = false;
     if (!list.length) { daySel.appendChild(el('option', 'No open days. Text ' + TEXT_PHONE, { value: '' })); fillTimes(); return; }
     daySel.appendChild(el('option', 'Choose a day', { value: '' }));
@@ -292,18 +316,31 @@ import '../../styles/rental-tour.css';
     const prev = timeSel.value;
     timeSel.innerHTML = '';
     const list = (state.slots[propSel.value] || []).filter((s) => s.day === daySel.value);
-    if (!daySel.value) { timeSel.appendChild(el('option', 'Choose a day first', { value: '' })); timeSel.disabled = true; return; }
+    if (!daySel.value) { timeSel.appendChild(el('option', isBlocked() ? 'Not available for self-tour' : 'Choose a day first', { value: '' })); timeSel.disabled = true; return; }
     timeSel.disabled = false;
     timeSel.appendChild(el('option', 'Choose a time', { value: '' }));
     list.forEach((s) => timeSel.appendChild(el('option', s.label, { value: String(s.start) })));
     if (prev && list.some((s) => String(s.start) === prev)) timeSel.value = prev;
+  }
+  /** Same rules as normalizePhone_ in Code.gs: 10 digits, or 11 starting with 1; any spacing/punctuation/+1. */
+  const PHONE_EXAMPLE = 'like (214) 555-0123';
+  function normalizePhone(raw: string): { ok: true; digits: string; formatted: string } | { ok: false; message: string } {
+    let s = String(raw || '');
+    try { s = s.normalize('NFKC'); } catch { /* keep as typed */ }
+    let d = s.replace(/\D+/g, '');
+    if (!d) return { ok: false, message: 'Enter your mobile phone number, ' + PHONE_EXAMPLE + '.' };
+    if (d.length === 11 && d[0] === '1') d = d.slice(1);
+    if (d.length < 10) return { ok: false, message: 'That phone number is missing digits. Enter all 10 digits, ' + PHONE_EXAMPLE + '.' };
+    if (d.length > 10) return { ok: false, message: 'That phone number has too many digits. Enter a 10-digit US number, ' + PHONE_EXAMPLE + '.' };
+    if (/^[01]/.test(d)) return { ok: false, message: 'Please check the area code. Enter a 10-digit US number, ' + PHONE_EXAMPLE + '.' };
+    return { ok: true, digits: d, formatted: '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6) };
   }
   function readDetails() {
     return {
       property: propSel.value,
       name: $<HTMLInputElement>('rt-name').value.trim(),
       email: $<HTMLInputElement>('rt-email').value.trim(),
-      phone: $<HTMLInputElement>('rt-phone').value.trim(),
+      phone: (() => { const raw = $<HTMLInputElement>('rt-phone').value.trim(); const n = normalizePhone(raw); return n.ok ? n.formatted : raw; })(),
       slotStart: Number(timeSel.value) || 0,
       website: $<HTMLInputElement>('rt-website').value,
     };
@@ -313,8 +350,8 @@ import '../../styles/rental-tour.css';
     if (!d.property) { setError('property', 'Choose a rental from the list.'); ok = false; }
     if (d.name.split(/\s+/).filter(Boolean).length < 2) { setError('name', 'Enter your first and last name.'); ok = false; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { setError('email', 'Enter a valid email address.'); ok = false; }
-    const digits = d.phone.replace(/\D/g, '');
-    if (!(digits.length === 10 || (digits.length === 11 && digits[0] === '1'))) { setError('phone', 'Enter a 10-digit US mobile number.'); ok = false; }
+    const ph = normalizePhone(d.phone);
+    if (!ph.ok) { setError('phone', ph.message); ok = false; }
     if (!d.slotStart) { setError('slotStart', 'Choose a day and time.'); ok = false; }
     return ok;
   }
@@ -343,6 +380,7 @@ import '../../styles/rental-tour.css';
     if (res.code === 'NO_SELF_TOUR') {
       state.selfTour[propSel.value] = false;
       goStep(1);
+      fillDays();
       updateMode();
       return;
     }
@@ -358,16 +396,28 @@ import '../../styles/rental-tour.css';
     if (res.code === 'INVALID' && res.errors) {
       const step1 = ['property', 'name', 'email', 'phone', 'slotStart'];
       if (fromStep === 2 && Object.keys(res.errors).some((k) => step1.includes(k))) goStep(1);
-      Object.entries(res.errors).forEach(([k, v]) => setError(k, v));
-      alertTop('Please fix the highlighted items.');
+      const unshown: string[] = [];
+      Object.entries(res.errors).forEach(([k, v]) => { if (document.getElementById('rt-err-' + k)) setError(k, v); else unshown.push(v); });
+      const msgs = Object.values(res.errors);
+      alertTop(unshown.length ? unshown.join(' ') : msgs.length === 1 ? msgs[0] : 'Please fix the highlighted items.');
       return;
     }
+    if (res.code === 'LIMIT' && res.field && fromStep === 1) setError(String(res.field), res.message || '');
     alertTop(res.message || 'Something went wrong. Please try again, or text ' + TEXT_PHONE + '.');
   }
 
   propSel.addEventListener('change', () => { daySel.value = ''; fillDays(); updateSoonSms(); updateMode(); });
   daySel.addEventListener('change', fillTimes);
   ['rt-name', 'rt-email', 'rt-phone'].forEach((id) => $(id).addEventListener('change', updateSoonSms));
+  // Tidy the number once they leave the field (works for typing, paste, and iOS/Android autofill).
+  const tidyPhone = () => {
+    const inp = $<HTMLInputElement>('rt-phone');
+    const n = normalizePhone(inp.value);
+    if (n.ok && inp.value !== n.formatted) inp.value = n.formatted;
+  };
+  $('rt-phone').addEventListener('blur', tidyPhone);
+  $('rt-phone').addEventListener('change', tidyPhone);
+  ['rt-name', 'rt-email'].forEach((id) => $(id).addEventListener('input', () => { if (isBlocked()) updateMode(); }));
   // Clear a field's error as soon as it is edited.
   document.querySelectorAll('#rt .rt-field').forEach((f) => {
     const clear = () => { f.classList.remove('is-bad'); const e = document.getElementById('rt-err-' + (f as HTMLElement).dataset.f); if (e) e.textContent = ''; };
@@ -378,6 +428,7 @@ import '../../styles/rental-tour.css';
 
   $('rt-step1').addEventListener('submit', async (ev) => {
     ev.preventDefault();
+    if (isBlocked()) { updateMode(); return; }
     clearErrors();
     alertTop('');
     const d = readDetails();
