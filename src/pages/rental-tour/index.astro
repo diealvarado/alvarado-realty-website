@@ -75,11 +75,7 @@ import '../../styles/rental-tour.css';
           </div>
           <div class="rt-err" id="rt-err-slotStart"></div>
           <div class="rt-note" role="status" aria-live="polite">
-            <p id="rt-note-self">
-              Tours must be booked at least {rentalTour.minLeadHours} hours ahead. Want a sooner time?
-              <a id="rt-sms-soon" href={rentalTour.smsHref}>Text {rentalTour.textPhone}</a>
-              with your name, the address, your email, your phone, and the time you want.
-            </p>
+            <p id="rt-note-self">Tours must be booked at least {rentalTour.minLeadHours} hours ahead. Want a sooner time? <a id="rt-sms-soon" href={rentalTour.smsHref}>Text {rentalTour.textPhone}</a> with your name, the address, your email, your phone, and the time you want.</p>
             <div id="rt-note-noself" class="rt-noself" hidden>
               <p>This property isn't available for self-tours. Please text <a href={rentalTour.smsHref}>{rentalTour.textPhone}</a> with the property address, your full name, and your email, and we'll let you know the tour hours.</p>
               <a class="btn btn-primary" id="rt-noself-sms" href={rentalTour.smsHref}>Text {rentalTour.textPhone}</a>
