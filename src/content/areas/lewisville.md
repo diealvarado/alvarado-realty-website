@@ -84,6 +84,6 @@ Campus assignments are address-specific and can change. Verify the zone for any 
 
 ## Nearby areas & related Insights
 
-Compare [Flower Mound](/areas/flower-mound/), [Highland Village](/areas/highland-village/), and [Coppell](/areas/coppell/). For a broader lake-corridor and North DFW shortlist, also see the [areas hub](/areas/).
+Compare [Flower Mound](/areas/flower-mound/), [Highland Village](/areas/highland-village/), and [Coppell](/areas/coppell/). For a broader lake-corridor and North DFW shortlist, also see the [areas hub](/areas/). Related Insights: [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/) · [Lewisville vs Highland Village](/insights/lewisville-vs-highland-village/).
 
 Ready to talk about Lewisville? Call [(214) 833-8911](tel:+12148338911), [contact Diego](/contact/), or visit [Hablo Español](/contacto/).

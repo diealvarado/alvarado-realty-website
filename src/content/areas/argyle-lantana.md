@@ -21,6 +21,6 @@ Diego Alvarado helps buyers, sellers, relocators, and investors navigate Argyle 
 
 ### Nearby areas
 
-Explore neighboring communities across the Grapevine Lake and North DFW belt on the [areas hub](/areas/).
+Compare [Flower Mound](/areas/flower-mound/), [Northlake](/areas/northlake/), [Bartonville](/areas/bartonville/), and [Copper Canyon](/areas/copper-canyon/). Explore neighboring communities across the Grapevine Lake and North DFW belt on the [areas hub](/areas/).
 
 Ready to talk about Argyle & Lantana? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). Hablo Español.
