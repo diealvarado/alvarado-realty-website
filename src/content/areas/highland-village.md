@@ -85,6 +85,6 @@ Campus assignments are address-specific and can change. Verify the zone for any 
 
 ## Nearby areas & related Insights
 
-Compare [Flower Mound](/areas/flower-mound/), [Lewisville](/areas/lewisville/), [Double Oak](/areas/double-oak/), and [Trophy Club](/areas/trophy-club/). Deep dive: [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/). For a broader lake-corridor shortlist, also see the [areas hub](/areas/).
+Compare [Flower Mound](/areas/flower-mound/), [Lewisville](/areas/lewisville/), [Double Oak](/areas/double-oak/), and [Trophy Club](/areas/trophy-club/). Deep dives: [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/) · [Lewisville vs Highland Village](/insights/lewisville-vs-highland-village/). For a broader lake-corridor shortlist, also see the [areas hub](/areas/).
 
 Ready to talk about Highland Village? Call [(214) 833-8911](tel:+12148338911), [contact Diego](/contact/), or visit [Hablo Español](/contacto/).
