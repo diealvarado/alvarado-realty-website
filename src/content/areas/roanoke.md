@@ -23,4 +23,4 @@ Diego Alvarado helps buyers, sellers, relocators, and investors navigate Roanoke
 
 Compare [Trophy Club](/areas/trophy-club/), [Northlake](/areas/northlake/), and [Argyle & Lantana](/areas/argyle-lantana/). Explore neighboring communities across the Grapevine Lake and North DFW belt on the [areas hub](/areas/).
 
-Ready to talk about Roanoke? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). Hablo Español.
+Ready to talk about Roanoke? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/).

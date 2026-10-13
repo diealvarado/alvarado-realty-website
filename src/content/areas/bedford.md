@@ -49,4 +49,4 @@ HEB ISD conversations are common — always confirm the campus for the exact add
 
 Compare [Euless](/areas/euless/), [Grapevine](/areas/grapevine/), and [Coppell](/areas/coppell/). Full airport-side shortlist: [Moving Near DFW Airport](/insights/moving-near-dfw-airport-coppell-grapevine-bedford-euless/). Pair with [Coppell vs Grapevine](/insights/coppell-vs-grapevine/) if you are also weighing the north airport suburbs.
 
-Ready to talk about Bedford? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). Hablo Español.
+Ready to talk about Bedford? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/).

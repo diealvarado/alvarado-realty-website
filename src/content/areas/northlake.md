@@ -23,4 +23,4 @@ Diego Alvarado helps buyers, sellers, relocators, and investors navigate Northla
 
 Compare [Roanoke](/areas/roanoke/), [Argyle & Lantana](/areas/argyle-lantana/), and [Trophy Club](/areas/trophy-club/). Explore neighboring communities across the Grapevine Lake and North DFW belt on the [areas hub](/areas/).
 
-Ready to talk about Northlake? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). Hablo Español.
+Ready to talk about Northlake? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/).

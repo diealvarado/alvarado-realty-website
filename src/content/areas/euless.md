@@ -49,4 +49,4 @@ Grapevine/Coppell are North DFW lifestyle suburbs with stronger lake/Old Town or
 
 See [Bedford](/areas/bedford/), [Grapevine](/areas/grapevine/), and [Coppell](/areas/coppell/). Related reads: [Moving Near DFW Airport](/insights/moving-near-dfw-airport-coppell-grapevine-bedford-euless/) and [Coppell vs Grapevine](/insights/coppell-vs-grapevine/).
 
-Ready to talk about Euless? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). Hablo Español.
+Ready to talk about Euless? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/).

@@ -23,4 +23,4 @@ Diego Alvarado helps buyers, sellers, relocators, and investors navigate Double 
 
 Compare [Flower Mound](/areas/flower-mound/), [Highland Village](/areas/highland-village/), and [Copper Canyon](/areas/copper-canyon/). Explore neighboring communities across the Grapevine Lake and North DFW belt on the [areas hub](/areas/).
 
-Ready to talk about Double Oak? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). Hablo Español.
+Ready to talk about Double Oak? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/).

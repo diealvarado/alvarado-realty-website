@@ -23,4 +23,4 @@ Diego Alvarado helps buyers, sellers, relocators, and investors navigate Copper 
 
 Compare [Double Oak](/areas/double-oak/), [Bartonville](/areas/bartonville/), [Argyle & Lantana](/areas/argyle-lantana/), and [Highland Village](/areas/highland-village/). Explore neighboring communities across the Grapevine Lake and North DFW belt on the [areas hub](/areas/).
 
-Ready to talk about Copper Canyon? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). Hablo Español.
+Ready to talk about Copper Canyon? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/).

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
 ---
 <BaseLayout
   title="Client Services | Diego Alvarado REALTOR®"
@@ -43,5 +44,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2 style="font-size:1.35rem;">Foreclosure</h2>
       <p>A calm guide to understanding your options.</p>
     </a>
+  </div></section>
+  <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
+    <p>
+      Call <a href={site.phoneHref}>{site.phone}</a>, start at <a href="/contact/">/contact/</a>, or use <a href="/contacto/">Hablo Español → /contacto/</a> if Spanish fits your household better.
+    </p>
   </div></section>
 </BaseLayout>
