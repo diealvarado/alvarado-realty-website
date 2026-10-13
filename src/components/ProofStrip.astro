@@ -19,6 +19,10 @@ const quotes = [
     text: "I can't say enough good things about working with Diego as our realtor! Diego recently helped my wife and me purchase our first investment property. As an experienced investor himself, his guidance throughout the process was invaluable. He was truly a partner and mentor throughout the process. I've learned so much from him.He was always very responsive to calls, emails and texts. Not only did he help by running comps to determine values and estimated rents, he also helped with estimating repair costs and evaluating rehab bids, reviewing and negotiating contracts.Once we had a property under contract, Diego came over to ensure our rehab bid included everything we need to get top rent, told us what to expect with tenant screening and tips on being an effective landlord.And his service has not stopped just because our transaction closed. He continues to make himself available throughout the rehab process.I will definitely be working with Diego again for our next real estate transaction.",
   },
 ] as const;
+
+/** Optional: show only these reviewers (e.g. ['Cris'] on /short-sale/). Default shows all. */
+const { only } = Astro.props as { only?: string[] };
+const shown = only ? quotes.filter((q) => only.includes(q.name)) : quotes;
 ---
 <div class="proof-strip">
   <div class="proof-strip__head">
@@ -35,7 +39,7 @@ const quotes = [
   </div>
   <p class="proof-strip__source">Google reviews</p>
   <div class="proof-strip__quotes">
-    {quotes.map((q) => (
+    {shown.map((q) => (
       <blockquote class="proof-strip__quote">
         <p>“{q.text}”</p>
         <footer>— {q.name}</footer>

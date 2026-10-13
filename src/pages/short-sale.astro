@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
+import ProofStrip from '../components/ProofStrip.astro';
 ---
 <BaseLayout
   title="Short Sale Guide for North DFW Homeowners | Diego Alvarado REALTOR®"
@@ -107,6 +108,21 @@ import { site } from '../data/site';
     </ol>
     <p>Diego is originally from Argentina and works in both English and Spanish, so your family can ask real questions without translation friction.</p>
 
+    <h2>Frequently asked questions</h2>
+    <h3>Does a short sale stop a foreclosure?</h3>
+    <p>Not by itself. A short sale and a foreclosure can move forward at the same time. If you have received foreclosure notices, speak with a licensed Texas attorney and your loan servicer right away.</p>
+    <h3>Will my lender approve a short sale?</h3>
+    <p>Lenders are not required to approve a short sale. A complete, well-organized file helps the lender review it, but approval is decided by the lender and cannot be guaranteed.</p>
+    <h3>Will I still owe money after a short sale closes?</h3>
+    <p>That depends on the terms of your lender’s approval. Have a licensed Texas attorney review the approval letter, and ask a CPA or tax professional about any tax questions.</p>
+    <h3>How long does a short sale take?</h3>
+    <p>Timelines vary with your lender’s review, the buyer, and your situation. Diego keeps you updated at each stage and recommends the next step so you are not left guessing.</p>
+    <h3>Can we talk in Spanish?</h3>
+    <p>Yes. Diego works in English and Spanish. Start at <a href="/contacto/">/contacto/</a> or call (214) 833-8911.</p>
+
+    <h2>Related pages</h2>
+    <p>Selling your home? See the <a href="/sellers/">sellers page</a>. Facing a notice from your lender? Read the <a href="/foreclosure/">foreclosure guide</a>. Diego serves homeowners across North DFW — see the <a href="/areas/">service areas</a>.</p>
+
     <h2>Important disclaimer</h2>
     <p>This article is general educational information only. It is not legal, tax, or financial advice. Diego Alvarado is a Texas REALTOR® with Monument Realty; he is not an attorney, CPA, or financial advisor. His recommendations relate to the real estate process; legal, tax, and loan decisions belong with the appropriate licensed professionals. Short-sale approval is decided by your lender and cannot be guaranteed. Before making decisions, please consult a licensed Texas attorney, a CPA or tax professional, your loan servicer, and, if helpful, a HUD-approved housing counselor.</p>
 
@@ -125,4 +141,13 @@ Alvarado Realty Group</p>
       <a class="btn btn-secondary" href="/contacto/">Hablo Español</a>
     </p>
   </div></section>
+  <section class="section section-alt" style="padding-top:2rem;">
+    <div class="container" style="max-width:42rem;">
+      <div class="section-head" style="margin-bottom:0.5rem;">
+        <p class="eyebrow">Client proof</p>
+        <h2>What clients say</h2>
+      </div>
+      <ProofStrip only={['Cris']} />
+    </div>
+  </section>
 </BaseLayout>

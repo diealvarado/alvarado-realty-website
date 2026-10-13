@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
+import ProofStrip from '../components/ProofStrip.astro';
 ---
 <BaseLayout
   title="Facing Foreclosure in Texas: Understanding Your Options | Diego Alvarado REALTOR®"
@@ -117,6 +118,21 @@ import { site } from '../data/site';
     </ol>
     <p>Diego is originally from Argentina and works in English and Spanish, so your family can talk through hard questions comfortably, in the language that feels right.</p>
 
+    <h2>Frequently asked questions</h2>
+    <h3>Can Diego stop or delay a foreclosure?</h3>
+    <p>No. Diego is a REALTOR®, not an attorney, and he cannot stop or delay a foreclosure. If you have received a notice of default or a notice of sale, contact a licensed Texas attorney and your loan servicer as soon as possible.</p>
+    <h3>Can I sell my home if I am behind on payments?</h3>
+    <p>Selling may be one option, depending on your timeline, your loan, and what the home could sell for. Talk with your attorney and servicer about deadlines, and Diego can walk you through the real estate side of a possible sale.</p>
+    <h3>What is the difference between a short sale and a foreclosure?</h3>
+    <p>In a short sale, you sell the home with the lender’s approval for less than what you owe. A foreclosure is the lender’s legal process to take the property. Read the <a href="/short-sale/">short sale guide</a> for more.</p>
+    <h3>Who should I call first after a foreclosure notice?</h3>
+    <p>A licensed Texas attorney and your loan servicer. A HUD-approved housing counselor can also provide free guidance. Diego can be part of the conversation on the real estate side.</p>
+    <h3>Can we talk in Spanish?</h3>
+    <p>Yes. Diego works in English and Spanish. Start at <a href="/contacto/">/contacto/</a> or call (214) 833-8911.</p>
+
+    <h2>Related pages</h2>
+    <p>Selling your home? See the <a href="/sellers/">sellers page</a>. Owe more than the home is worth? Read the <a href="/short-sale/">short sale guide</a>. Diego serves homeowners across North DFW — see the <a href="/areas/">service areas</a>.</p>
+
     <h2>Important disclaimer</h2>
     <p>This article is general educational information only. It is not legal, tax, or financial advice. Diego Alvarado is a Texas REALTOR® with Monument Realty; he is not an attorney, CPA, or financial advisor, and he cannot stop or delay a foreclosure. His recommendations relate to the real estate process; legal, tax, and loan decisions belong with the appropriate licensed professionals. Foreclosure rules and timelines depend on your loan documents and current law, and they can change. If you have received a notice of default or a notice of sale, please contact a licensed Texas attorney and your loan servicer as soon as possible. A HUD-approved housing counselor can also provide free guidance.</p>
 
@@ -135,4 +151,13 @@ Alvarado Realty Group</p>
       <a class="btn btn-secondary" href="/contacto/">Hablo Español</a>
     </p>
   </div></section>
+  <section class="section section-alt" style="padding-top:2rem;">
+    <div class="container" style="max-width:42rem;">
+      <div class="section-head" style="margin-bottom:0.5rem;">
+        <p class="eyebrow">Client proof</p>
+        <h2>What clients say</h2>
+      </div>
+      <ProofStrip />
+    </div>
+  </section>
 </BaseLayout>

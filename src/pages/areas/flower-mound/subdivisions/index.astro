@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import { flowerMoundSubdivisions } from '../../../../data/flowerMoundSubdivisions';
+import ProofStrip from '../../../../components/ProofStrip.astro';
 
 const title = 'Flower Mound Subdivisions | Diego Alvarado REALTOR®';
 const description =
@@ -45,6 +46,18 @@ const description =
         ))}
       </div>
 
+      <div class="prose" style="margin-top:2.5rem;">
+        <h2>Frequently asked questions</h2>
+        <h3>How do I choose a Flower Mound subdivision?</h3>
+        <p>Start with how you will live: commute, lake and trail use, golf, lot size, or lower-maintenance living. Shortlist the communities that match, then tour the specific streets — two homes in the same subdivision can still differ in lot, update level, and traffic.</p>
+        <h3>Do HOA dues and MUDs vary by subdivision?</h3>
+        <p>Yes. HOA dues, architectural rules, and any MUD or special-district obligations vary by community and by address. Confirm them for the specific property before you write an offer.</p>
+        <h3>Which schools serve each subdivision?</h3>
+        <p>Campus assignments are address-specific and can change. Verify the zone for the exact home with the district — this page does not list school placements.</p>
+        <h3>How does Diego help me compare subdivisions?</h3>
+        <p>Diego helps you build a shortlist that fits your priorities, tour in person or remotely, verify HOA and tax questions by address, and write offers with a clear plan.</p>
+      </div>
+
       <div class="cta-band" style="margin-top:2.5rem;">
         <div>
           <h2 style="color:#fff;margin:0 0 .4rem;">Buying or selling in Flower Mound?</h2>
@@ -58,6 +71,15 @@ const description =
           <a class="btn btn-on-dark" href="tel:+12148338911">(214) 833-8911</a>
         </div>
       </div>
+    </div>
+  </section>
+  <section class="section section-alt" style="padding-top:2rem;">
+    <div class="container" style="max-width:42rem;">
+      <div class="section-head" style="margin-bottom:0.5rem;">
+        <p class="eyebrow">Client proof</p>
+        <h2>What clients say</h2>
+      </div>
+      <ProofStrip />
     </div>
   </section>
 </BaseLayout>
