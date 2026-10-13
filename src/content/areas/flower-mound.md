@@ -76,6 +76,6 @@ Start with the featured seven — Bridlewood, Saddle Oaks, Wellington, Glenwick 
 
 ## Nearby areas & related Insights
 
-Compare [Highland Village](/areas/highland-village/), [Lewisville](/areas/lewisville/), [Grapevine](/areas/grapevine/), [Trophy Club](/areas/trophy-club/), and [Double Oak](/areas/double-oak/). Deep dive: [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/).
+Compare [Highland Village](/areas/highland-village/), [Lewisville](/areas/lewisville/), [Grapevine](/areas/grapevine/), [Trophy Club](/areas/trophy-club/), and [Double Oak](/areas/double-oak/). Deep dives: [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/) · [Flower Mound vs Coppell](/insights/flower-mound-vs-coppell/).
 
 Ready to talk about Flower Mound? Call [(214) 833-8911](tel:+12148338911), [contact Diego](/contact/), or visit [Hablo Español](/contacto/).
