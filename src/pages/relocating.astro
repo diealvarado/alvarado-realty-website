@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProofStrip from '../components/ProofStrip.astro';
+import { site } from '../data/site';
+
+const faqs = [
+  {
+    q: 'I’m relocating to Flower Mound. Who should I use?',
+    a: 'Look for a local REALTOR® who can tour on your timeline, explain the trade-offs between Flower Mound pockets and nearby North DFW cities, and keep you informed from out of state. Diego Alvarado is a bilingual (English/Spanish) REALTOR® with Monument Realty, based in Flower Mound, who works with relocators through remote tours, honest pocket-by-pocket comparisons, and a clear next step after every call.',
+  },
+  {
+    q: 'Can I buy a home in Flower Mound without visiting first?',
+    a: 'Many relocators start with live video tours and a narrowed shortlist, then fly in for a focused weekend. Diego can walk homes and streets on video, flag noise, drainage, and condition questions, and help you decide whether an in-person visit is needed before you write an offer.',
+  },
+  {
+    q: 'Should I choose the lake corridor or the airport side?',
+    a: 'It depends on your commute and how you want to spend weekends. Flower Mound, Highland Village, and the lake towns lean toward trails, parks, and a residential pace; Coppell and Grapevine put you closer to DFW Airport and the SH 121 / SH 114 corridors. Drive or map your real peak-hour route before you decide.',
+  },
+  {
+    q: 'How do I know which schools a home is zoned to?',
+    a: 'Campus assignments are address-specific and can change. Verify the zone for the exact home with the district before you finalize — this site does not list school placements.',
+  },
+  {
+    q: 'How long does a relocation purchase usually take?',
+    a: 'Every move is different. Your loan approval, lease end date, job start, and how quickly you can tour all shape the timeline. Diego will map your dates backward from move-in day on the first call so you know what needs to happen first.',
+  },
+];
+---
+<BaseLayout
+  title="Relocating to Flower Mound & North DFW | Diego Alvarado REALTOR®"
+  description="Relocating to Flower Mound or North DFW? Diego Alvarado, bilingual REALTOR® with Monument Realty, helps out-of-area buyers compare commutes, lake vs airport-side cities, timelines, and remote tours. Hablo Español."
+>
+  <section class="page-hero"><div class="container" style="max-width:42rem;">
+    <p class="eyebrow">Relocating</p>
+    <h1>Relocating to Flower Mound and North DFW</h1>
+    <p>
+      Moving from another city, state, or country means choosing a home — and a suburb — before
+      you know the area well. Diego helps relocators compare Flower Mound and nearby North DFW
+      cities honestly, tour remotely when you can’t be here, and keep the move on schedule.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/contact/">Plan my move</a>
+      <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+      <a class="btn btn-secondary" href="/contacto/">Hablo Español</a>
+    </div>
+  </div></section>
+
+  <section class="section" style="padding-top:0;"><div class="container prose" style="max-width:42rem;">
+    <h2>Who Diego is for relocators</h2>
+    <p>
+      Diego Alvarado is a REALTOR® with Monument Realty, based in Flower Mound. He is originally
+      from Argentina and works in English and Spanish, so households can ask real questions
+      without translation friction. Relocators get a local guide who explains trade-offs plainly,
+      tours on your timeline, and sends a clear next step after every call or showing.
+    </p>
+
+    <h2>Lake corridor or airport side?</h2>
+    <p>
+      Most North DFW relocation shortlists split into two families. The <strong>Grapevine Lake
+      corridor</strong> — <a href="/areas/flower-mound/">Flower Mound</a>,
+      <a href="/areas/highland-village/">Highland Village</a>, and
+      <a href="/areas/trophy-club/">Trophy Club</a> — leans toward parks, trails, and a residential
+      pace. The <strong>airport side</strong> — <a href="/areas/coppell/">Coppell</a> and
+      <a href="/areas/grapevine/">Grapevine</a> — puts you closer to DFW Airport and the SH 121 /
+      SH 114 corridors. <a href="/areas/lewisville/">Lewisville</a> sits between them along I-35E.
+      Every city has its own feel street by street, so treat this as a starting map, not a verdict.
+    </p>
+    <p>
+      In Flower Mound, start with the <a href="/areas/flower-mound/subdivisions/">Flower Mound
+      subdivisions guide</a> to see the approved list of communities, from lake-adjacent and golf
+      neighborhoods to master-planned and estate pockets.
+    </p>
+
+    <h2>Commute first</h2>
+    <p>
+      Before you fall for a kitchen, map your real peak-hour drive to work, the airport, and the
+      places you will visit every week. Two homes in the same city can sit on very different
+      traffic paths. Diego can drive or map the route with you during a tour.
+    </p>
+
+    <h2>Your timeline</h2>
+    <p>
+      Lease end dates, job start dates, loan approval, and school calendars all pull on the same
+      move. On the first call, Diego works backward from move-in day so you know what needs to
+      happen first — pre-approval, a scouting trip, remote tours, or an offer window.
+    </p>
+
+    <h2>Remote tours</h2>
+    <p>
+      If you can’t be in North DFW yet, Diego can walk homes and streets with you on live video,
+      point out condition, noise, and drainage questions, and help you narrow the list so any
+      in-person trip is focused.
+    </p>
+
+    <h2>Schools: verify by address</h2>
+    <p>
+      Campus assignments are address-specific and can change. Verify the zone for the exact home
+      with the district before you finalize. Taxes, HOA dues, and any MUD or special district also
+      vary by address — confirm them for the specific property.
+    </p>
+
+    <h2>Relocation FAQs</h2>
+    {faqs.map((f) => (
+      <>
+        <h3>{f.q}</h3>
+        <p>{f.a}</p>
+      </>
+    ))}
+
+    <h2>Next step</h2>
+    <p>
+      For the general buying process, see <a href="/buyers/">buyers</a>. Ready to talk about your
+      move? Call <a href={site.phoneHref}>{site.phone}</a>, start at <a href="/contact/">/contact/</a>,
+      or use <a href="/contacto/">Hablo Español → /contacto/</a> if Spanish fits your household better.
+    </p>
+    <p class="hero-actions" style="margin-top:1.25rem;">
+      <a class="btn btn-primary" href="/contact/">Plan my move</a>
+      <a class="btn btn-secondary" href={site.phoneHref}>{site.phone}</a>
+      <a class="btn btn-secondary" href="/contacto/">Hablo Español</a>
+    </p>
+  </div></section>
+
+  <section class="section section-alt" style="padding-top:2rem;">
+    <div class="container" style="max-width:42rem;">
+      <div class="section-head" style="margin-bottom:0.5rem;">
+        <p class="eyebrow">Client proof</p>
+        <h2>What clients say</h2>
+      </div>
+      <ProofStrip />
+    </div>
+  </section>
+</BaseLayout>
