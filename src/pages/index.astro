@@ -211,7 +211,10 @@ const faqs = [
         {faqs.map((item) => (
           <details>
             <summary>{item.q}</summary>
-            <p>{item.a}</p>
+            {/* Cloudflare Email Address Obfuscation skips content between email_off comments (#24). */}
+            <p>{item.a.includes(site.email) ? (
+              <>{item.a.split(site.email)[0]}<Fragment set:html="<!--email_off-->" />{site.email}<Fragment set:html="<!--/email_off-->" />{item.a.split(site.email).slice(1).join(site.email)}</>
+            ) : item.a}</p>
           </details>
         ))}
       </div>
