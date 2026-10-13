@@ -43,7 +43,7 @@ import { site } from '../data/site';
       <div>
         <div class="card">
           <h2>Contacte a Diego directamente</h2>
-          <p><a href={site.phoneHref}>{site.phone}</a><br /><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p><a href={site.phoneHref}>{site.phone}</a><br /><Fragment set:html="<!--email_off-->" /><a href={`mailto:${site.email}`}>{site.email}</a><Fragment set:html="<!--/email_off-->" /></p>
           <p>{site.address.full}</p>
           <p class="hint">{site.brokerage} · Licencia #{site.license}</p>
           <p><a href="/contact/">English contact form →</a></p>

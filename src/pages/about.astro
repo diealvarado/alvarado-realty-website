@@ -64,7 +64,7 @@ import { site } from '../data/site';
       <p>
         {site.name}, REALTOR® · Texas License #{site.license} · {site.brokerage}<br />
         {site.address.full}<br />
-        <a href={`mailto:${site.email}`}>{site.email}</a> · <a href={site.phoneHref}>{site.phone}</a>
+        <Fragment set:html="<!--email_off-->" /><a href={`mailto:${site.email}`}>{site.email}</a><Fragment set:html="<!--/email_off-->" /> · <a href={site.phoneHref}>{site.phone}</a>
       </p>
       <p><a class="btn btn-primary" href="/contact/">Start a conversation</a></p>
     </div>

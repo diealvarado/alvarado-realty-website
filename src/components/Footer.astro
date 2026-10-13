@@ -10,7 +10,8 @@ const biggerPocketsLink = findMeLinks.find(({ label }) => label === 'BiggerPocke
       <p style="margin:0 0 .75rem;">{site.brandSecondary}<br />{site.brokerage}</p>
       <p style="margin:0;">
         <a href={site.phoneHref}>{site.phone}</a><br />
-        <a href={`mailto:${site.email}`}>{site.email}</a><br />
+        {/* Cloudflare Email Address Obfuscation skips content between email_off comments, so crawlers get a plain mailto link. */}
+        <Fragment set:html="<!--email_off-->" /><a href={`mailto:${site.email}`}>{site.email}</a><Fragment set:html="<!--/email_off-->" /><br />
         {site.address.full}
       </p>
       <p style="margin:.85rem 0 0;color:#94a3b8;font-size:.9rem;"><a href="/contacto/">Hablo Español</a></p>
