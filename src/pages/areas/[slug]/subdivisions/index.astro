@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ProofStrip from '../../../../components/ProofStrip.astro';
+import type { CitySubdivisions } from '../../../../data/subdivisions/types';
+
+/** Renders only for cities with a data file in src/data/subdivisions/. Flower Mound keeps its own static page. */
+export async function getStaticPaths() {
+  const mods = import.meta.glob<{ default: CitySubdivisions }>('../../../../data/subdivisions/*.ts', { eager: true });
+  return Object.values(mods)
+    .map((m) => m.default)
+    .filter((d) => d && d.slug && d.slug !== 'flower-mound')
+    .map((d) => ({ params: { slug: d.slug }, props: { data: d } }));
+}
+
+const { data } = Astro.props as { data: CitySubdivisions };
+const cityHref = `/areas/${data.slug}/`;
+---
+<BaseLayout title={data.title} description={data.intro}>
+  <section class="page-hero">
+    <div class="container" style="max-width:42rem;">
+      <nav class="sub-crumbs" aria-label="Breadcrumb">
+        <a href="/areas/">Areas</a> › <a href={cityHref}>{data.city}</a> › <span aria-current="page">Subdivisions</span>
+      </nav>
+      <h1>{data.h1}</h1>
+      <p>{data.intro}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container prose" style="max-width:42rem;">
+      {data.groups.map((g) => (
+        <>
+          {g.heading && <h2>{g.heading}</h2>}
+          <ul class="sub-list">
+            {g.names.map((n) => <li>{n}</li>)}
+          </ul>
+        </>
+      ))}
+      <p style="margin-top:2rem;">
+        Back to <a href={cityHref}>{data.city} real estate</a> · Call <a href="tel:+12148338911">(214) 833-8911</a> · <a href="/contact/">Contact</a> · Hablo Español → <a href="/contacto/">/contacto/</a>
+      </p>
+    </div>
+  </section>
+  <section class="section section-alt" style="padding-top:2rem;">
+    <div class="container" style="max-width:42rem;">
+      <div class="section-head" style="margin-bottom:0.5rem;">
+        <p class="eyebrow">Client proof</p>
+        <h2>What clients say</h2>
+      </div>
+      <ProofStrip />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sub-crumbs { font-size: 0.85rem; margin-bottom: 0.75rem; }
+  .sub-list { columns: 2; column-gap: 2rem; }
+  @media (max-width: 560px) { .sub-list { columns: 1; } }
+</style>
