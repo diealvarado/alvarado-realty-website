@@ -13,6 +13,10 @@ Growing Denton County town northwest of Flower Mound and Trophy Club, with newer
 
 Diego Alvarado helps buyers, sellers, relocators, and investors navigate Northlake with clear communication and an investor-informed perspective. Whether you are comparing neighborhoods, timing a move from out of state, or evaluating a property as a long-term hold, you get practical guidance — not pressure.
 
+## Subdivisions in Northlake
+
+Buyers and sellers in Northlake often start the conversation with the subdivision name. Ones Diego is asked about include Canyon Falls, Creek Meadows, Creek Meadows West, Hawthorne Estates, North Ridge Estates, Pecan Square, Prairie View Farms, Stardust Ranch, The Highlands, and The Ridge. Names are as published in public subdivision directories; HOA rules, school assignments, and even city limits can vary by address, so confirm details for the specific property. [See all 10 Northlake subdivisions →](/areas/northlake/subdivisions/)
+
 ### How Diego helps in Northlake
 
 - **Buyers & relocators:** shortlists that match commute, lifestyle, and budget reality
