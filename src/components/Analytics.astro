@@ -18,17 +18,38 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || site.gaId || '';
         if (a.protocol === 'tel:') window.gtag('event', 'click_to_call', { phone: a.getAttribute('href') });
         if (a.protocol === 'mailto:') window.gtag('event', 'click_email', { email: a.getAttribute('href') });
       });
+      // Lead events: the Netlify form POST navigates to /thank-you/ before a normal gtag hit can leave,
+      // so the submit handler stores a one-time flag and /thank-you/ fires the event once per landing.
+      var LEAD_KEY = 'arg_pending_lead';
       document.addEventListener('submit', function (e) {
         var form = e.target;
-        if (!form || !form.getAttribute || !window.gtag) return;
+        if (!form || !form.getAttribute) return;
         var name = form.getAttribute('name');
+        var ev = null;
         if (name === 'contact' || name === 'contacto' || name === 'home-value' || name === 'property-alerts') {
-          window.gtag('event', 'generate_lead', { form_name: name });
+          ev = { event: 'generate_lead', params: { form_name: name } };
+        } else if (name === 'newsletter') {
+          ev = { event: 'sign_up', params: { method: 'newsletter', form_name: name } };
         }
-        if (name === 'newsletter') {
-          window.gtag('event', 'sign_up', { method: 'newsletter' });
+        if (!ev) return;
+        try {
+          sessionStorage.setItem(LEAD_KEY, JSON.stringify(ev));
+        } catch (err) {
+          // No sessionStorage: best effort, send now with beacon transport so it survives the navigation.
+          ev.params.transport_type = 'beacon';
+          if (window.gtag) window.gtag('event', ev.event, ev.params);
         }
       });
+      if (/^\/thank-you\/?$/.test(location.pathname)) {
+        try {
+          var raw = sessionStorage.getItem(LEAD_KEY);
+          if (raw) {
+            sessionStorage.removeItem(LEAD_KEY); // once per landing; a reload will not re-count
+            var pending = JSON.parse(raw);
+            if (pending && pending.event) window.gtag('event', pending.event, pending.params || {});
+          }
+        } catch (err) {}
+      }
     </script>
   </>
 )}
