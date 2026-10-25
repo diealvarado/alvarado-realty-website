@@ -1,0 +1,76 @@
+import type { CitySubdivisions } from './types';
+
+/** Diego-approved 10/25 list (ticket #38). Names only. */
+const data: CitySubdivisions = {
+  "slug": "coppell",
+  "city": "Coppell",
+  "title": "Coppell TX Subdivisions | Diego Alvarado REALTOR®",
+  "h1": "Coppell, TX Subdivisions",
+  "intro": "A working list of 58 subdivisions in Coppell, TX. Names are as published in public subdivision directories; HOA rules, school assignments, and city limits vary by address. Ask Diego about a specific street before you tour.",
+  "groups": [
+    {
+      "names": [
+        "Arbor Manors",
+        "Ashton Ridge",
+        "Bellacere",
+        "Belmont Landing",
+        "Big Cedar",
+        "Brighton Manor",
+        "Channel Pointe",
+        "Chateaus of Coppell",
+        "Chaucer Estates",
+        "Chautauqua",
+        "Coppell Greens",
+        "Coppell Heights",
+        "Coppell Village",
+        "Copperstone",
+        "Cottonwood Estates",
+        "Devonshire",
+        "East Lake Coppell",
+        "Estates at Cambridge Manor",
+        "Estates of Coppell",
+        "Fairways at Riverchase",
+        "Forest Cove Estates",
+        "Founders Crossing",
+        "Fountain Park",
+        "Gibbs Station",
+        "Hidden Valley Estates",
+        "Highland Meadows",
+        "Highland Oaks",
+        "Huntington Ridge",
+        "Irby",
+        "Lost Creek",
+        "Magnolia Park",
+        "Main Street",
+        "Meadow Ridge Condos",
+        "Meadows",
+        "North Lake Estates",
+        "North Lake Woodlands",
+        "Oakbend",
+        "Old Coppell Estates",
+        "Old Town",
+        "Park Meadows",
+        "Parkwood",
+        "Pecan Hollow",
+        "Raintree Village",
+        "Red Hawk",
+        "Riverchase Estates",
+        "Shadow Ridge Estates",
+        "Shady Dale Acres",
+        "Sherwood Park",
+        "St Andrews Estates",
+        "Stratford Manor",
+        "Summit at the Spring",
+        "The Woodlands of Coppell",
+        "Townhomes of Coppell",
+        "Village Cottonwood Creek",
+        "Villages of Coppell",
+        "Waterside Estates",
+        "Westhaven",
+        "Windsor Estates"
+      ]
+    }
+  ]
+};
+
+export default data;
