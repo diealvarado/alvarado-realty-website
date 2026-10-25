@@ -28,6 +28,10 @@ Grapevine’s inventory spans several product types:
 
 Treat Grapevine as multiple micro-markets, not one average price or one lifestyle.
 
+## Subdivisions in Grapevine
+
+Buyers and sellers in Grapevine often start the conversation with the subdivision name. Ones Diego is asked about include Austin Oaks, Belfort Addition, Box Addition, Cannon Homestead, Countryside Estates, Creekwood, Dove Crossing, Dove Landing, Dove Station, Eastwoods, Ferguson Place, Glade Crossing, Glade Hill, Glade Landing, Heatherwilde, Hidden Lake Estate, Hunters Ridge, Lake Pointe, Lakeside Estates, Lakeview Estates, Oak Creek, Park Hill Estates, Park Place, Parra Linda, Pecan Ridge, Placid Peninsula, Russwood Estates, Savannah Courts, Saybrooke, Shadow Glen, Shady Brook, Silver Lake, Silvercrest, Stone Bridge Oaks, Stone Gate, Stonewood, Tillery Commons, Town Park, Trail Lake, Vineyard Creek, Western Oaks, Winding Creek, and Woodland Hills Woodland Estates. Names are as published in public subdivision directories; HOA rules, school assignments, and even city limits can vary by address, so confirm details for the specific property. [See all 43 Grapevine subdivisions →](/areas/grapevine/subdivisions/)
+
 ## Lake, commute, and DFW Airport access
 
 Airport proximity is a headline feature — useful for crews, frequent flyers, and hybrid households — but confirm noise and traffic on the exact block. The SH 121 / SH 114 corridors and TEXRail shape how quickly you reach the terminals, Dallas, and Fort Worth, so drive *your* peak-hour route before you offer. Grapevine Lake trails, parks, and boat access are part of the value proposition when you will actually use them; for lake-adjacent homes, confirm flood, HOA, and use details for the specific property.
