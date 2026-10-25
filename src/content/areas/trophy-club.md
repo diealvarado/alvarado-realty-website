@@ -25,7 +25,11 @@ Trophy Club’s market is shaped by **master-planned and golf-community living**
 - **Established planned pockets** — resale homes where update level, lot orientation, and HOA rules matter as much as square footage
 - **Condition and product variation** — original finishes vs renovated interiors on similar floor plans; inspect the home, not only the community brand
 
-HOA dues, architectural review, and rental rules are **not uniform townwide**. Compare covenants and fees for the specific property. Neighborhood talk stays general here until a Diego-approved subdivision list is published — tour the street, not only the town brand.
+HOA dues, architectural review, and rental rules are **not uniform townwide**. Compare covenants and fees for the specific property.
+
+## Subdivisions in Trophy Club
+
+Buyers and sellers in Trophy Club often start the conversation with the subdivision name. Ones Diego is asked about include Beldonia, Canterbury Hills, Eagles Ridge, Enclave at Trophy Club, Falcon Estates, Fox Pointe, Highlands, Hogans Glen, Lake Forest Village, Lakeside, Oak Hill, The Knoll, The Lakes, Town Center, Trophy Club 1–14, and Village West. Names are as published in public subdivision directories; HOA rules, school assignments, and even city limits can vary by address, so confirm details for the specific property. [See all 16 Trophy Club subdivisions →](/areas/trophy-club/subdivisions/)
 
 ## Taxes, MUDs, and HOAs
 
@@ -63,6 +67,10 @@ In a mostly resale market, presentation and comparable selection matter more tha
 Investors should underwrite Trophy Club **street by street** — rent context, rehab scope, HOA rental rules, and hold thesis vary even inside the same town brand. As an investor-turned-REALTOR®, Diego brings comps, repair estimates, and landlord-practical questions into the conversation before you are under contract — not only after closing.
 
 Confirm rental restrictions, HOA approval processes, and tax/MUD obligations for the specific property before you write an offer — not every planned-community address is investor-friendly.
+
+## Leasing in Trophy Club
+
+Diego helps tenants and owners with **leasing in Trophy Club** — finding a rental home in a golf-community, amenity-oriented setting, or getting a home you own listed and leased. HOA rules on leasing can differ from one Trophy Club neighborhood to the next, so owners and tenants should review the covenants for the specific property before signing. For owners, Diego can help you price the lease against current comparable rentals, market the home, and screen applicants. Leasing here means placing a tenant; ongoing management after move-in is not part of this service. Call (214) 833-8911 or [reach out](/contact/) — Hablo Español.
 
 ## FAQs
 
