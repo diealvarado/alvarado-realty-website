@@ -15,6 +15,10 @@ Diego Alvarado helps buyers, sellers, relocators, and investors navigate Argyle 
 
 Argyle and Lantana are often searched together because they sit side by side in Denton County along the FM 407 corridor, but they offer different ways to live. The simplest way to frame the choice is **acreage and open space versus master-planned convenience** — and many buyers tour both before deciding.
 
+## Subdivisions in Argyle and Lantana
+
+In Argyle, buyers often ask about 5T Ranch, Argyle Crossing, Argyle Town Village, Avalon at Argyle, Canyon Oaks, Country Lakes, Creekview, Enclave at Hickory Hill, Harvest, Hickory Hill, Lakes Argyle, Red Bird Ridge, Settlers Point, The Oaks of Argyle, and Waterbrook. Several of these sit in Argyle ISD or the town's extraterritorial jurisdiction rather than inside town limits. Lantana is one master-planned community organized into villages, including Azalea, Bandera, Barrington, Bellaire, Brazos, Brenham, Camden, Carlisle, Crescent, Dakota, Fairlin, Gaillardia, Garner, Heritage, Isabel, Juniper, Kendall, Larkspur, Laviana, Madison, Magnolia, Meridian, Navarro, Palmetto, Reata, Sandlin, Sierra, Sonora, Telea, Wimberley, and Wisteria. Names are as published in public subdivision directories; HOA rules, school assignments, and town limits can vary by address, so confirm details for the specific property. [See all 46 Argyle and Lantana subdivisions →](/areas/argyle-lantana/subdivisions/)
+
 ## Argyle, TX
 
 Argyle is a town that many buyers associate with **larger lots, open space, and a more rural edge** than the denser suburbs to the south and east. Homes vary widely: some streets offer acreage-leaning properties with room for privacy, outbuildings, or simply space between neighbors, while other areas feel more like conventional newer suburban neighborhoods.
