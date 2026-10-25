@@ -25,7 +25,11 @@ Highland Village’s market is shaped by **established suburban and lakeside liv
 - **Lakeside-leaning streets** — recreation and weekend lifestyle as part of the value conversation; still inspect noise, traffic patterns, and lot orientation home by home
 - **Established residential streets** — resale homes where update level, lot size, and HOA rules matter as much as square footage
 
-HOA dues, architectural review, and rental rules are **not uniform citywide**. Compare covenants and fees for the specific property. Neighborhood talk stays general here until a Diego-approved Highland Village subdivision list is published — tour the street, not only the city brand.
+HOA dues, architectural review, and rental rules are **not uniform citywide**. Compare covenants and fees for the specific property.
+
+## Subdivisions in Highland Village
+
+Buyers and sellers in Highland Village often start the conversation with the subdivision name. Ones Diego is asked about include Briarhill Estates, Canyon Creek, Castlewood, Chapel Hill, Chapel Springs, Clearwater Estates, Highland Forest, Highland Hills, Highland Meadows, Highland Oaks, Highland Shores, Holiday Addition, Ladera, Lake Vista Estates, Montclair Estates, Oaks of Highland Village, Reserve at Chapel Hill, Rolling Hills Estates, Tequesta, The Overlook at Highland Shores, Village Estates, Wichita Estates, and Willow Creek. Names are as published in public subdivision directories; HOA rules, school assignments, and even city limits can vary by address, so confirm details for the specific property. [See all 23 Highland Village subdivisions →](/areas/highland-village/subdivisions/)
 
 ## Taxes, MUDs, and HOAs
 
