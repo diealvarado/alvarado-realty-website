@@ -13,6 +13,10 @@ Quiet residential town tucked between Flower Mound and Bartonville, with larger 
 
 Diego Alvarado helps buyers, sellers, relocators, and investors navigate Double Oak with clear communication and an investor-informed perspective. Whether you are comparing neighborhoods, timing a move from out of state, or evaluating a property as a long-term hold, you get practical guidance — not pressure.
 
+## Subdivisions in Double Oak
+
+Buyers and sellers in Double Oak often start the conversation with the subdivision name. Ones Diego is asked about include Carruth Estates, Cross Timbers, Hills Chinn Chapel, Taylor Oaks, and Twin Lakes. Names are as published in public subdivision directories; HOA rules, school assignments, and even city limits can vary by address, so confirm details for the specific property. [See all 5 Double Oak subdivisions →](/areas/double-oak/subdivisions/)
+
 ### How Diego helps in Double Oak
 
 - **Buyers & relocators:** shortlists that match commute, lifestyle, and budget reality
