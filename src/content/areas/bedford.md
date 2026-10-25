@@ -1,5 +1,5 @@
 ---
-title: "Bedford Real Estate | Diego Alvarado REALTOR®"
+title: "Bedford TX Real Estate | Diego Alvarado REALTOR®"
 name: "Bedford"
 description: "Buy or sell in Bedford, TX with Diego Alvarado, REALTOR® — Mid-Cities location, established neighborhoods, HEB ISD conversations, DFW access. Hablo Español."
 county: "Tarrant County"
@@ -21,7 +21,9 @@ Expect a **resale-first** market:
 - **Condition spread** — original vs renovated homes on the same street; inspection and update budget matter
 - **Lot and HOA variation** — many traditional lots; verify HOA status and fees property by property
 
-Popular search conversations often include settled areas near parks and schools (for example Forest Ridge / Meadow Creek–style pockets), but the right block depends on commute direction and renovation appetite.
+## Subdivisions in Bedford
+
+Buyers and sellers in Bedford often start the conversation with the subdivision name. Ones Diego is asked about include Bedford Meadows, Bedford Place, Bedford Square, Bell Hurst, Bellvue, Brook Hollow East, Brookwood Hills, Canterbury, Chateau Valee, Cross Timbers, Durango Ridge, Fairmont Villas, Glenbrook, Harwood Terrace, Harwood Village North, Kelmont Park, Loma Verda, Mayfair, Mayfair Hills, Meadow Wood, Oak Grove Estates, Oak Valley, Oak View Hills, Oakmont, Oaks at Central Park, Oakwood Park East, Quail Crest Estates, Rollingwood, Rustic Woods, Shady Brook, Shady Oaks East, Stonecourt, Stonegate, Timber View Estates, Village of Oak Park, West Bellvue, Whisperwood, and Woodbridge. Names are as published in public subdivision directories; HOA rules, school assignments, and even city limits can vary by address, so confirm details for the specific property. [See all 38 Bedford subdivisions →](/areas/bedford/subdivisions/)
 
 ## Commute and daily life
 
