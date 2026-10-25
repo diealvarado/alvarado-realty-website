@@ -26,7 +26,11 @@ Lewisville’s market is shaped by **resale diversity and corridor living** more
 - **Freeway-adjacent residential streets** — practical commute access along major connectors; trade-offs on road noise and traffic patterns that you should drive at peak hour before you offer
 - **Established suburban streets** — resale homes where update level, lot size, and HOA rules matter as much as square footage
 
-HOA dues, architectural review, and rental rules are **not uniform citywide**. Compare covenants and fees for the specific property. Neighborhood talk stays general here until a Diego-approved Lewisville subdivision list is published — tour the street, not only the city brand.
+HOA dues, architectural review, and rental rules are **not uniform citywide**. Compare covenants and fees for the specific property.
+
+## Subdivisions in Lewisville
+
+Buyers and sellers in Lewisville often start the conversation with the subdivision name. Ones Diego is asked about include Bella Lago, Belleville Village, Brownstones at Vista Ridge, Castle Hills Northeast, Castle Hills Southpointe, Castle Hills Villas, Chapel Springs, Chase Oaks, Chateaux at the Shops, Cowan, Creekside, Creekview Village, Crescent Estates, Diamond Hill Estates, Garden Oak Estates, Garden Park Place, Garden Ridge, Garden Ridge Estates, Heritage Trails, Hidden Cove Estate, High Meadow, Highland Oaks, Highpoint, Hunters Glen, Indian Oaks, Kings Grant, Lake Ridge Town Homes, Lakeland Terrace, Lakewood North, Lewisville Valley, Main Street Village, Meadow Lake, Meridian, Oakridge Park Estates, Orchard Hill, Orchard Valley Estates, Park Ridge Estates, Pebble Ridge Estates, Rockbrook Place, Settlers Village, Sylvan Creek, The Highlands, The Landing, The Summit, Timber Hill, Tribute, Valley Vista, Verona, Vista Del Lago, Vista Oaks, Vista Ridge Estates, Water Oak Estates, West Oaks, Westlake Park, Willow Grove, Windhaven Crossing, and Wyndale Meadows. Names are as published in public subdivision directories; HOA rules, school assignments, and even city limits can vary by address, so confirm details for the specific property. [See all 57 Lewisville subdivisions →](/areas/lewisville/subdivisions/)
 
 ## Taxes, MUDs, and HOAs
 

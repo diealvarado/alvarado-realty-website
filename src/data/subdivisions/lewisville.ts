@@ -1,0 +1,75 @@
+import type { CitySubdivisions } from './types';
+
+/** Diego-approved 10/25 list (ticket #36). Names only. */
+const data: CitySubdivisions = {
+  "slug": "lewisville",
+  "city": "Lewisville",
+  "title": "Lewisville TX Subdivisions | Diego Alvarado REALTOR®",
+  "h1": "Lewisville, TX Subdivisions",
+  "intro": "A working list of 57 subdivisions in Lewisville, TX. Names are as published in public subdivision directories; HOA rules, school assignments, and city limits vary by address. Ask Diego about a specific street before you tour.",
+  "groups": [
+    {
+      "names": [
+        "Bella Lago",
+        "Belleville Village",
+        "Brownstones at Vista Ridge",
+        "Castle Hills Northeast",
+        "Castle Hills Southpointe",
+        "Castle Hills Villas",
+        "Chapel Springs",
+        "Chase Oaks",
+        "Chateaux at the Shops",
+        "Cowan",
+        "Creekside",
+        "Creekview Village",
+        "Crescent Estates",
+        "Diamond Hill Estates",
+        "Garden Oak Estates",
+        "Garden Park Place",
+        "Garden Ridge",
+        "Garden Ridge Estates",
+        "Heritage Trails",
+        "Hidden Cove Estate",
+        "High Meadow",
+        "Highland Oaks",
+        "Highpoint",
+        "Hunters Glen",
+        "Indian Oaks",
+        "Kings Grant",
+        "Lake Ridge Town Homes",
+        "Lakeland Terrace",
+        "Lakewood North",
+        "Lewisville Valley",
+        "Main Street Village",
+        "Meadow Lake",
+        "Meridian",
+        "Oakridge Park Estates",
+        "Orchard Hill",
+        "Orchard Valley Estates",
+        "Park Ridge Estates",
+        "Pebble Ridge Estates",
+        "Rockbrook Place",
+        "Settlers Village",
+        "Sylvan Creek",
+        "The Highlands",
+        "The Landing",
+        "The Summit",
+        "Timber Hill",
+        "Tribute",
+        "Valley Vista",
+        "Verona",
+        "Vista Del Lago",
+        "Vista Oaks",
+        "Vista Ridge Estates",
+        "Water Oak Estates",
+        "West Oaks",
+        "Westlake Park",
+        "Willow Grove",
+        "Windhaven Crossing",
+        "Wyndale Meadows"
+      ]
+    }
+  ]
+};
+
+export default data;
