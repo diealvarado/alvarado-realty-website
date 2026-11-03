@@ -88,6 +88,6 @@ Campus assignments are address-specific and can change — verify the zone for a
 
 See [Coppell](/areas/coppell/), [Flower Mound](/areas/flower-mound/), [Highland Village](/areas/highland-village/), [Bedford](/areas/bedford/), and [Euless](/areas/euless/). Airport shortlist: [Moving Near DFW Airport](/insights/moving-near-dfw-airport-coppell-grapevine-bedford-euless/).
 
-Related Insights: [Coppell vs Grapevine](/insights/coppell-vs-grapevine/) · [Moving Near DFW Airport](/insights/moving-near-dfw-airport-coppell-grapevine-bedford-euless/)
+Related Insights: [Coppell vs Grapevine](/insights/coppell-vs-grapevine/) · [Moving Near DFW Airport](/insights/moving-near-dfw-airport-coppell-grapevine-bedford-euless/) · [Grapevine vs Trophy Club: Lake-and-Airport Living or Golf-Town Quiet?](/insights/grapevine-vs-trophy-club/)
 
 Ready to talk about Grapevine? [Contact Diego](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/).

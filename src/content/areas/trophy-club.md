@@ -91,6 +91,6 @@ Campus assignments are address-specific and can change. Verify the zone for any 
 
 ## Nearby areas & related Insights
 
-Compare [Roanoke](/areas/roanoke/), [Flower Mound](/areas/flower-mound/), [Argyle & Lantana](/areas/argyle-lantana/), and [Highland Village](/areas/highland-village/). For a broader lake-corridor shortlist, also see the [areas hub](/areas/). Related Insights: [Bilingual Buyer Guide for North DFW](/insights/bilingual-buyer-guide-north-dfw/).
+Compare [Roanoke](/areas/roanoke/), [Flower Mound](/areas/flower-mound/), [Argyle & Lantana](/areas/argyle-lantana/), and [Highland Village](/areas/highland-village/). For a broader lake-corridor shortlist, also see the [areas hub](/areas/). Related Insights: [Bilingual Buyer Guide for North DFW](/insights/bilingual-buyer-guide-north-dfw/) · [Grapevine vs Trophy Club: Lake-and-Airport Living or Golf-Town Quiet?](/insights/grapevine-vs-trophy-club/).
 
 Ready to talk about Trophy Club? Call [(214) 833-8911](tel:+12148338911), [contact Diego](/contact/), or visit [Hablo Español](/contacto/).
