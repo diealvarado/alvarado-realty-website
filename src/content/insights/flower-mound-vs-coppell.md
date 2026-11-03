@@ -65,4 +65,4 @@ Campus assignments are address-specific and can change. Verify the zone for any 
 
 Weighing the airport side further? See [Coppell vs Grapevine](/insights/coppell-vs-grapevine/) and [Moving Near DFW Airport: Coppell, Grapevine, Bedford & Euless Compared](/insights/moving-near-dfw-airport-coppell-grapevine-bedford-euless/). For lake-corridor comparisons, read [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/).
 
-Ready to compare Flower Mound and Coppell with local context? [Start a conversation](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/).
+Ready to compare Flower Mound and Coppell with local context? [Start a conversation](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/). [Relocating to Flower Mound and North DFW](/relocating/).

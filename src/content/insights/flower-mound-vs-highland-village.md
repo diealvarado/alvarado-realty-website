@@ -67,4 +67,4 @@ Many relocators start with Flower Mound for inventory breadth and lake-corridor 
 
 ## Next step
 
-Diego Alvarado helps buyers and relocators run this Flower Mound vs Highland Village comparison with local context — Hablo Español if that makes the process easier. Call [(214) 833-8911](tel:+12148338911), [start a conversation](/contact/), or visit [Hablo Español](/contacto/).
+Diego Alvarado helps buyers and relocators run this Flower Mound vs Highland Village comparison with local context — Hablo Español if that makes the process easier. Call [(214) 833-8911](tel:+12148338911), [start a conversation](/contact/), or visit [Hablo Español](/contacto/). [Relocating to Flower Mound and North DFW](/relocating/).

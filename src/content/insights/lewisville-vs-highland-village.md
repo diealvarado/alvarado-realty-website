@@ -71,4 +71,4 @@ Campus assignments are address-specific and can change. Verify the zone for any 
 
 Also weighing Flower Mound? Read [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/).
 
-Ready to compare Lewisville and Highland Village with local context? [Start a conversation](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/).
+Ready to compare Lewisville and Highland Village with local context? [Start a conversation](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/). [Relocating to Flower Mound and North DFW](/relocating/).

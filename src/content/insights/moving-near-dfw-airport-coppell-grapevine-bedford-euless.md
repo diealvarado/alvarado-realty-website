@@ -57,4 +57,4 @@ Euless sits on the eastern Mid-Cities edge against DFW. It is frequently the pra
 - [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/)
 - All service areas: [Areas hub](/areas/)
 
-Diego Alvarado helps relocators and buyers build an airport-side shortlist without guessing — Hablo Español if that helps your household. [Request a consult](/contact/) or call [(214) 833-8911](tel:+12148338911).
+Diego Alvarado helps relocators and buyers build an airport-side shortlist without guessing — Hablo Español if that helps your household. [Request a consult](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/). [Relocating to Flower Mound and North DFW](/relocating/).
