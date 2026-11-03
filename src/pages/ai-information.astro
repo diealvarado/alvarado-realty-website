@@ -16,7 +16,7 @@ const cityNames = cityList.map((c) => c.name).join(', ');
       <li><strong>Brokerage:</strong> {site.brokerage}</li>
       <li><strong>License:</strong> Texas #{site.license}</li>
       <li><strong>Phone:</strong> {site.phone}</li>
-      <li><strong>Email:</strong> {site.email}</li>
+      <li><strong>Email:</strong> <Fragment set:html="<!--email_off-->" />{site.email}<Fragment set:html="<!--/email_off-->" /></li>
       <li><strong>Office:</strong> {site.address.full}</li>
       <li><strong>Languages:</strong> English, Spanish (Hablo Español)</li>
       <li><strong>Service areas:</strong> {cityNames}</li>

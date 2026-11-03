@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { execSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 
 const buildDate = new Date().toISOString();
 
@@ -32,6 +32,16 @@ function lastmodFor(url) {
   const candidates = [];
   const insight = path.match(/^insights\/(.+)$/);
   const area = path.match(/^areas\/([^/]+)$/);
+  // /insights/ index: newest insight pubDate/updatedDate, so it moves when a post is added (#29).
+  if (path === 'insights') {
+    const dir = 'src/content/insights';
+    const dates = readdirSync(dir)
+      .filter((f) => /\.mdx?$/.test(f))
+      .map((f) => frontmatterDate(`${dir}/${f}`))
+      .filter(Boolean)
+      .sort();
+    if (dates.length) return dates[dates.length - 1];
+  }
   if (insight) {
     for (const ext of ['md', 'mdx']) {
       const f = `src/content/insights/${insight[1]}.${ext}`;
@@ -59,7 +69,11 @@ export default defineConfig({
     mdx(),
     // /rental-tour pages are noindex (sent directly to renters); keep them out of the sitemap.
     sitemap({
-      filter: (page) => !new URL(page).pathname.startsWith('/rental-tour'),
+      // /thank-you/ is a noindex form confirmation (#29); keep it out too.
+      filter: (page) => {
+        const p = new URL(page).pathname;
+        return !p.startsWith('/rental-tour') && !p.startsWith('/thank-you');
+      },
       serialize(item) {
         item.lastmod = lastmodFor(item.url);
         return item;
