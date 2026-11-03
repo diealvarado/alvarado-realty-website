@@ -44,6 +44,6 @@ The tradeoff is lifestyle intensity: Grapevine can feel more “eventful” and 
 
 ## Related North DFW reads
 
-If airport access is the main driver and you want a wider shortlist, also see [Moving Near DFW Airport: Coppell, Grapevine, Bedford & Euless Compared](/insights/moving-near-dfw-airport-coppell-grapevine-bedford-euless/). For lake-belt lifestyle comparisons further north, start with [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/).
+If airport access is the main driver and you want a wider shortlist, also see [Moving Near DFW Airport: Coppell, Grapevine, Bedford & Euless Compared](/insights/moving-near-dfw-airport-coppell-grapevine-bedford-euless/). For lake-belt lifestyle comparisons further north, start with [Flower Mound vs Highland Village](/insights/flower-mound-vs-highland-village/). Also see [Flower Mound vs Coppell: Which North DFW Suburb Fits Your Move?](/insights/flower-mound-vs-coppell/).
 
-Diego Alvarado helps buyers and relocators run this comparison with local context — Hablo Español if that makes the process easier. [Start a conversation](/contact/) or call [(214) 833-8911](tel:+12148338911).
+Diego Alvarado helps buyers and relocators run this comparison with local context — Hablo Español if that makes the process easier. [Start a conversation](/contact/) or call [(214) 833-8911](tel:+12148338911). [Hablo Español](/contacto/). [Relocating to Flower Mound and North DFW](/relocating/). [Coppell, TX Subdivisions](/areas/coppell/subdivisions/) · [Grapevine, TX Subdivisions](/areas/grapevine/subdivisions/).
