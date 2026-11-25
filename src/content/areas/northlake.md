@@ -72,7 +72,7 @@ They sit in the same North DFW conversation, with different street-level feels. 
 This page frames Northlake as a growing Denton County town with newer development, highway access, and room to expand. You and Diego will still tour the specific subdivision and street — HOA rules, school assignments, and even city limits can vary by address. Start with the 10 approved names on the [Northlake subdivisions](/areas/northlake/subdivisions/) page, including Canyon Falls, Hawthorne Estates, Pecan Square, and The Ridge.
 
 **How do taxes and HOAs work in Northlake?**
-They vary by address. Confirm taxing entities, any MUD or special district, and HOA dues for the specific property — do not rely on a citywide average or a neighbor's bill. This page does not list figures. Diego is not a tax advisor; you and Diego will help you gather the documents, and your tax professional should interpret them.
+They vary by address. Confirm taxing entities, any MUD or special district, and HOA dues for the specific property — do not rely on a citywide average or a neighbor's bill. This page does not list figures. Diego is not a tax advisor; Diego will help you gather the documents, and your tax professional should interpret them.
 
 **What about schools in Northlake?**
 District and campus assignments are address-specific and can change. Verify both for the exact home before you finalize. This page does not name districts or campuses.
