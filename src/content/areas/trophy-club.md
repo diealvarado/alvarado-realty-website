@@ -70,7 +70,7 @@ Confirm rental restrictions, HOA approval processes, and tax/MUD obligations for
 
 ## Leasing in Trophy Club
 
-Diego helps tenants and owners with **leasing in Trophy Club** — finding a rental home in a golf-community, amenity-oriented setting, or getting a home you own listed and leased. HOA rules on leasing can differ from one Trophy Club neighborhood to the next, so owners and tenants should review the covenants for the specific property before signing. For owners, Diego can help you price the lease against current comparable rentals, market the home, and screen applicants. Leasing here means placing a tenant; ongoing management after move-in is not part of this service. Call (214) 833-8911 or [reach out](/contact/) — Hablo Español.
+Diego helps tenants and owners with **leasing in Trophy Club** — finding a rental home in a golf-community, amenity-oriented setting, or getting a home you own listed and leased. See how [lease listing and tenant placement](/leasing/) work. HOA rules on leasing can differ from one Trophy Club neighborhood to the next, so owners and tenants should review the covenants for the specific property before signing. For owners, Diego can help you price the lease against current comparable rentals, market the home, and screen applicants. Leasing here means placing a tenant; ongoing management after move-in is not part of this service. Call (214) 833-8911 or [reach out](/contact/) — Hablo Español.
 
 ## FAQs
 
