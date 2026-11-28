@@ -1,11 +1,12 @@
 ---
 import { site } from '../data/site';
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || site.gaId || '';
+const phone = site.phone;
 ---
 {gaId && (
   <>
     <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-    <script is:inline define:vars={{ gaId }}>
+    <script is:inline define:vars={{ gaId, phone }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
       window.gtag = gtag;
@@ -18,38 +19,135 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || site.gaId || '';
         if (a.protocol === 'tel:') window.gtag('event', 'click_to_call', { phone: a.getAttribute('href') });
         if (a.protocol === 'mailto:') window.gtag('event', 'click_email', { email: a.getAttribute('href') });
       });
-      // Lead events: the Netlify form POST navigates to /thank-you/ before a normal gtag hit can leave,
-      // so the submit handler stores a one-time flag and /thank-you/ fires the event once per landing.
-      var LEAD_KEY = 'arg_pending_lead';
+
+      // Lead events fire only after Netlify returns a successful form POST, and never when the
+      // honeypot is filled. The static form still posts to /thank-you/ without JavaScript.
+      // Netlify strips data-netlify and netlify-honeypot from the HTML it serves, so this keys
+      // off the form name and the bot-field input. Loading /thank-you/ directly fires nothing.
+      /* lead-decision:start */
+      function leadEventFor(formName) {
+        if (formName === 'contact' || formName === 'contacto' || formName === 'home-value' || formName === 'property-alerts') {
+          return { event: 'generate_lead', params: { form_name: formName } };
+        }
+        if (formName === 'newsletter') {
+          return { event: 'sign_up', params: { method: 'newsletter', form_name: formName } };
+        }
+        return null;
+      }
+      function honeypotFilled(value) {
+        // Any non-empty value, including spaces. Netlify quietly rejects those posts.
+        return String(value == null ? '' : value) !== '';
+      }
+      function leadOutcome(formName, honeypotValue, responseOk) {
+        var accepted = responseOk === true;
+        return {
+          accepted: accepted,
+          event: accepted && !honeypotFilled(honeypotValue) ? leadEventFor(formName) : null
+        };
+      }
+      function thankYouPath(action) {
+        if (typeof action === 'string' && action.charAt(0) === '/' && action.indexOf('//') !== 0 && action.indexOf('\\') === -1) {
+          return action;
+        }
+        return '/thank-you/';
+      }
+      /* lead-decision:end */
+
+      function readHoneypot(form) {
+        var field = form.getAttribute('netlify-honeypot') || 'bot-field';
+        var input = form.querySelector('input[name="' + field.replace(/"/g, '') + '"]');
+        return input ? input.value : '';
+      }
+      function showFormError(form, text) {
+        var el = form.querySelector('[data-form-error]');
+        if (!el) {
+          el = document.createElement('p');
+          el.setAttribute('data-form-error', '');
+          el.setAttribute('role', 'alert');
+          el.style.flexBasis = '100%';
+          el.style.margin = '0';
+          el.style.fontSize = '0.9rem';
+          el.style.fontWeight = '600';
+          form.appendChild(el);
+        }
+        el.style.color = form.classList.contains('form-on-dark') ? '#fecaca' : '#9f1239';
+        el.textContent = text;
+      }
+      function failureMessage(formName) {
+        if (formName === 'contacto') {
+          return 'No se pudo enviar el formulario. Inténtelo de nuevo o llame al ' + phone + '.';
+        }
+        return 'Could not send the form. Please try again, or call ' + phone + '.';
+      }
+      function setFormBusy(form, busy) {
+        form.setAttribute('aria-busy', busy ? 'true' : 'false');
+        if (busy) form.setAttribute('data-submitting', '1');
+        else form.removeAttribute('data-submitting');
+        var buttons = form.querySelectorAll('button[type="submit"], input[type="submit"]');
+        for (var i = 0; i < buttons.length; i++) buttons[i].disabled = busy;
+      }
+      function fireThenGo(ev, path) {
+        var left = false;
+        function finish() {
+          if (left) return;
+          left = true;
+          window.location.assign(path);
+        }
+        if (!ev || !window.gtag) {
+          finish();
+          return;
+        }
+        var params = { event_callback: finish, event_timeout: 1500 };
+        var src = ev.params || {};
+        for (var key in src) {
+          if (Object.prototype.hasOwnProperty.call(src, key)) params[key] = src[key];
+        }
+        try {
+          window.gtag('event', ev.event, params);
+        } catch (err) {
+          finish();
+          return;
+        }
+        window.setTimeout(finish, 1800);
+      }
+
       document.addEventListener('submit', function (e) {
         var form = e.target;
         if (!form || !form.getAttribute) return;
         var name = form.getAttribute('name');
-        var ev = null;
-        if (name === 'contact' || name === 'contacto' || name === 'home-value' || name === 'property-alerts') {
-          ev = { event: 'generate_lead', params: { form_name: name } };
-        } else if (name === 'newsletter') {
-          ev = { event: 'sign_up', params: { method: 'newsletter', form_name: name } };
+        if (!leadEventFor(name)) return;
+        if (form.getAttribute('data-submitting') === '1') {
+          e.preventDefault();
+          return;
         }
-        if (!ev) return;
+        if (!window.fetch || !window.FormData || !window.URLSearchParams) return;
+        e.preventDefault();
+        var existing = form.querySelector('[data-form-error]');
+        if (existing) existing.textContent = '';
+        var body;
         try {
-          sessionStorage.setItem(LEAD_KEY, JSON.stringify(ev));
+          var params = new URLSearchParams(new FormData(form));
+          if (!params.get('form-name')) params.set('form-name', name);
+          body = params.toString();
         } catch (err) {
-          // No sessionStorage: best effort, send now with beacon transport so it survives the navigation.
-          ev.params.transport_type = 'beacon';
-          if (window.gtag) window.gtag('event', ev.event, ev.params);
+          showFormError(form, failureMessage(name));
+          return;
         }
+        var honeypotValue = readHoneypot(form);
+        setFormBusy(form, true);
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body
+        }).then(function (res) {
+          var outcome = leadOutcome(name, honeypotValue, res.ok);
+          if (!outcome.accepted) throw new Error('not accepted');
+          fireThenGo(outcome.event, thankYouPath(form.getAttribute('action')));
+        }).catch(function () {
+          setFormBusy(form, false);
+          showFormError(form, failureMessage(name));
+        });
       });
-      if (/^\/thank-you\/?$/.test(location.pathname)) {
-        try {
-          var raw = sessionStorage.getItem(LEAD_KEY);
-          if (raw) {
-            sessionStorage.removeItem(LEAD_KEY); // once per landing; a reload will not re-count
-            var pending = JSON.parse(raw);
-            if (pending && pending.event) window.gtag('event', pending.event, pending.params || {});
-          }
-        } catch (err) {}
-      }
     </script>
   </>
 )}
